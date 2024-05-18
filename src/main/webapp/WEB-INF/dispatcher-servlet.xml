@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/tool http://www.springframework.org/schema/tool/spring-tool.xsd
+       http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!--dispatcher-servlet.xml은 front controller 역할-->
+    <mvc:annotation-driven>
+    </mvc:annotation-driven>
+
+    <mvc:resources mapping="/resources/**" location="/resources/"/> <!--css, js들을 연결하는 코드 (resources 안에 있는 것들 매핑: resources/main.js 등등)-->
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> <!--어떤 뷰를 쓸건지에 대해 (bean 등록)-->
+        <property name="prefix" value="/WEB-INF/views/"/> <!--controller에서 받아온 값의 앞에 써주는 것-->
+        <property name="suffix" value=".jsp"/> <!--controller에서 받아온 값의 뒤에 써주는 것-->
+        <property name="order" value="1"/> <!--우선순위를 매겨주는 것-->
+    </bean>
+    <!-- Controller에서 hello 가 넘어오면,,, /WEB-INF/views/hello.jsp -->
+
+    <!--controller에 어노테이션으로 만든 것들을 bean으로 만들어 한번에 가져옴-->
+    <context:component-scan base-package="com.chunjae.learnandrun.controller"/>
+
+
+
+</beans>
