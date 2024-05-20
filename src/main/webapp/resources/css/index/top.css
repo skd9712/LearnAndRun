@@ -1,0 +1,55 @@
+body{
+    margin: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    position: fixed;
+    z-index: 5;
+}
+
+.header_img {
+    position: relative;
+    left: 8px;
+    width: 55px;
+}
+
+.header_01{
+    position: relative;
+    left: 10%;
+}
+
+.header_03 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    right: 10%;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.menu_tab{
+    margin-right: 10px;
+}
+
+.header_img_txt{
+    width: 70px;
+    position: relative;
+    top: -5px;
+}
+
+#login_btn{
+    background-color: #1A2375;
+    border-radius: 30px;
+    color: whitesmoke;
+    padding: 10px;
+}
