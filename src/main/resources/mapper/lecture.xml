@@ -1,14 +1,111 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.chunjae.learnandrun.dao.UserMapper">
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
+<mapper namespace="com.chunjae.learnandrun.dao.LectureMapper">
+    <select id="getCount" parameterType="hashmap" resultType="int">
+        select count(*)
+        from lecture
+        <where>
+            <![CDATA[
+                and startDate <= now()
+            ]]>
+            <if test="search_txt!=null and search_txt!='' and !''.equals(search_txt)">
+                <choose>
+                    <when test="search=='all'">
+                        and lectureName like concat('%', #{search_txt},'%')
+                        or teacher like concat('%', #{search_txt},'%')
+                        or subjectName like concat('%', #{search_txt},'%')
+                    </when>
+                    <when test="search=='lectureName'">
+                        and lectureName like concat('%', #{search_txt},'%')
+                    </when>
+                    <when test="search=='teacher'">
+                        and teacher like concat('%', #{search_txt},'%')
+                    </when>
+                    <when test="search=='subjectName'">
+                        and subjectName like concat('%', #{search_txt},'%')
+                    </when>
+                </choose>
+            </if>
+        </where>
+    </select>
+
+    <select id="listLecture" parameterType="hashmap" resultType="com.chunjae.learnandrun.dto.LectureDTO">
+        select lectureNo
+             , lectureName
+             , teacher
+             , subjectName
+             , description
+             , price
+             , startDate
+             , thumbnail
+             , lectureData
+             , target
+        from lecture
+        <where>
+            <![CDATA[
+                and startDate <= now()
+            ]]>
+            <if test="search_txt!=null and search_txt!='' and !''.equals(search_txt)">
+                <choose>
+                    <when test="search=='all'">
+                        and lectureName like concat('%', #{search_txt},'%')
+                        or teacher like concat('%', #{search_txt},'%')
+                        or subjectName like concat('%', #{search_txt},'%')
+                    </when>
+                    <when test="search=='lectureName'">
+                        and lectureName like concat('%', #{search_txt},'%')
+                    </when>
+                    <when test="search=='teacher'">
+                        and teacher like concat('%', #{search_txt},'%')
+                    </when>
+                    <when test="search=='subjectName'">
+                        and subjectName like concat('%', #{search_txt},'%')
+                    </when>
+                </choose>
+            </if>
+        </where>
+        <choose>
+            <when test="sort=='new'">
+                order by startDate desc
+            </when>
+            <!--            <when test="sort=='popular'">
+                            order by startDate desc
+                        </when>-->
+            <when test="sort=='lowPrice'">
+                order by price
+            </when>
+            <when test="sort=='highPrice'">
+                order by price desc
+            </when>
+            <otherwise>
+                order by startDate desc
+            </otherwise>
+        </choose>
+        <![CDATA[
+            limit #{startRow}, #{pageSize}
+        ]]>
+    </select>
+
+    <select id="detailLecture" parameterType="int" resultType="com.chunjae.learnandrun.dto.LectureDTO">
+        select lectureNo
+             , lectureName
+             , teacher
+             , subjectName
+             , description
+             , price
+             , startDate
+             , thumbnail
+             , lectureData
+             , target
+        from lecture
+        where lectureNo=#{lectureNo}
+    </select>
+
+    <delete id="deleteLecture" parameterType="int">
+        delete from lecture
+        where lectureNo=#{lectureNo}
+    </delete>
 </mapper>
-
-
-
-
-
-
-

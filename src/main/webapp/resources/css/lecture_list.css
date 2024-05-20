@@ -1,0 +1,116 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#wrap{
+    margin: 100px auto;
+    width: 90vw;
+}
+
+form{
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 450px;
+}
+
+#search{
+    padding: 0 30px 0 5px;
+    border: 2px solid #4C6EC6;
+    border-radius: 5px;
+    appearance:none;
+    background-image: url("/resources/img/caret-down-solid.svg");
+    background-repeat: no-repeat;
+    background-size: 10px;
+    background-position: 70px 8px;
+}
+
+
+#input_box{
+    width: 280px;
+    border: 2px solid #4C6EC6;
+    border-radius: 20px;
+    padding: 5px 10px;
+    position: relative;
+}
+
+#search_txt{
+    border: none;
+    background-color: transparent;
+    width: 250px;
+    padding: 3px 0;
+}
+
+#search_txt:focus{
+    outline: none;
+}
+
+#glass{
+    position: absolute;
+    left: 270px;
+    top: 15px;
+    border: none;
+    background-color: transparent;
+    color: #4C6EC6;
+}
+
+/* 정렬 */
+ul li{
+    list-style: none;
+}
+
+/* 강의 리스트 */
+#lecture_list{
+    width: 70vw;
+    margin: 140px auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    place-items: center;
+}
+
+.lecture_href{
+    text-decoration: none;
+}
+
+.lecture_room{
+    padding: 15px 15px 70px 15px;
+    /*padding: 2vh 1vw 6vh;*/
+    margin: 35px 0;
+    border: 1px solid silver;
+    border-radius: 20px;
+}
+
+.lecture_room:hover{
+    transform: translateY(-25px);
+    transition-duration: 0.7s;
+    transition-timing-function: ease-in-out;
+    box-shadow: 0 10px 3px rgba(0, 0, 0, 0.5);
+}
+
+ul li{
+    list-style: none;
+}
+
+.thumbnail{
+    width: 240px;
+    height: 180px;
+}
+
+/* 페이지 */
+#page{
+    display: flex;
+    justify-content: center;
+}
+
+#page a, #page p{
+    margin: 3px;
+    padding: 3px;
+    font-size: 1.1rem;
+}
+
+a>i{
+    position: relative;
+    top: 4px;
+}
