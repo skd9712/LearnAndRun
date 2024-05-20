@@ -1,0 +1,172 @@
+/*@font-face {*/
+/*    font-family: 'CookieRun-Regular';*/
+/*    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff') format('woff');*/
+/*    font-weight: normal;*/
+/*    font-style: normal;*/
+/*}*/
+
+/*body{*/
+/*    margin: 0;*/
+/*    !*overflow-x: hidden;*!*/
+/*}*/
+
+
+#wrap_main{
+    background-image: url("/resources/img/index/night_sky.jpg");
+    /*background-size: 150vw;*/
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#main_page1{
+    margin: 0 auto;
+    height: 93vh;
+    width: 100%;
+    padding-top: 55px;
+}
+
+#calendar{
+    width: 80%;
+    margin: 0 auto;
+    padding: 100px 30px 30px 30px;
+    background: white;
+    border-radius: 20px;
+}
+
+.night {
+    height: 93vh;
+    width: 100%;
+
+    background-image: url('/resources/img/index/night.png');
+    background-size: cover;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.surface {
+    height: 140px;
+    width: 500%;
+    background: url(/resources/img/index/grass.png);
+    display: block;
+    position: relative;
+    top:94%;
+    background-repeat: repeat-x;
+    animation: moveRight 6s linear infinite;
+}
+
+.car {
+    position: absolute;
+    bottom: 1%;
+    left: 36%;
+    animation: suspension 1s linear infinite;
+}
+
+.car>img{
+    width: 20vw;
+}
+
+.search{
+    width: 35px;
+    height: 35px;
+    margin-right: 5px;
+}
+
+.main_txt{
+    margin: 0 auto;
+    position: absolute;
+    top: 20vh;
+    left: 38vw;
+    font-size: 1.5rem;
+    white-space: nowrap;
+}
+.main_txt>h1{
+    color: whitesmoke;
+}
+
+/*.section_box{*/
+/*    margin-top: 5%;*/
+/*}*/
+
+/*서브 타이틀 시작*/
+.sub_title{
+    text-align: center;
+}
+
+.sub_title span {
+    position: relative;
+    top: 5px;
+    display: inline-block;
+    animation: bounce .5s ease infinite alternate;
+    /*font-family: 'CookieRun-Regular', cursive;*/
+    font-size: 20px;
+    color: #FFF;
+}
+
+.sub_title span:nth-child(2) { animation-delay: .1s; }
+.sub_title span:nth-child(3) { animation-delay: .2s; }
+.sub_title span:nth-child(4) { animation-delay: .3s; }
+.sub_title span:nth-child(5) { animation-delay: .4s; }
+.sub_title span:nth-child(6) { animation-delay: .5s; }
+.sub_title span:nth-child(7) { animation-delay: .6s; }
+.sub_title span:nth-child(8) { animation-delay: .7s; }
+.sub_title span:nth-child(9) { animation-delay: .8s; }
+.sub_title span:nth-child(10) { animation-delay: .9s; }
+.sub_title span:nth-child(11) { animation-delay: .10s; }
+.sub_title span:nth-child(12) { animation-delay: .11s; }
+
+/*서브 타이틀 끝*/
+
+
+.main_txt input {
+    border: 1px solid white;
+    font-size: 1rem;
+}
+
+.main_txt input:focus {
+    outline: none;
+}
+
+/*select{*/
+/*    border: 1px solid whitesmoke;*/
+/*    border-radius: 20px;*/
+/*    padding: 10px;*/
+/*}*/
+
+#search_form{
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: white;
+    border-radius: 20px;
+    padding: 5px;
+}
+
+#searchtxt{
+    width: 300px;
+}
+
+
+/* Animation*/
+@keyframes moveRight{
+    100%{
+        transform: translate(-2950px);
+    }
+}
+@keyframes suspension{
+    100%{
+        transform: translateY(-1px);
+    }
+    50%{
+        transform: translateY(2px);
+    }
+    0%{
+        transform: translateY(-1px);
+    }
+}
+
+
+/*서브 타이틀 글자 애니메이션*/
+@keyframes bounce {
+    100% {
+        top: 0px;
+    }
+}
