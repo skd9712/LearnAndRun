@@ -6,37 +6,37 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd  http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
     <!--db, service, dao 등 웹과 관련없는 것들 작성-->
 
-<!--    <context:property-placeholder location="classpath:db.properties"/>-->
-<!--    <bean name="dbconf" class="com.zaxxer.hikari.HikariConfig">-->
-<!--        <property name="driverClassName" value="${db.driver}"/>-->
-<!--        <property name="jdbcUrl" value="${db.url}"/>-->
-<!--        <property name="username" value="${db.user}"/>-->
-<!--        <property name="password" value="${db.pwd}"/>-->
-<!--    </bean>-->
+    <context:property-placeholder location="classpath:db.properties"/>
+    <bean name="dbconf" class="com.zaxxer.hikari.HikariConfig">
+        <property name="driverClassName" value="${db.driver}"/>
+        <property name="jdbcUrl" value="${db.url}"/>
+        <property name="username" value="${db.user}"/>
+        <property name="password" value="${db.pwd}"/>
+    </bean>
 
-<!--    <bean name="ds" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">-->
-<!--        <constructor-arg ref="dbconf"/>-->
-<!--    </bean>-->
+    <bean name="ds" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+        <constructor-arg ref="dbconf"/>
+    </bean>
 
-<!--    <bean name="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">-->
-<!--        <property name="dataSource" ref="ds"/>-->
-<!--        <property name="mapperLocations" value="classpath:mapper/**/*.xml"/>-->
-<!--    </bean>-->
+    <bean name="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="ds"/>
+        <property name="mapperLocations" value="classpath:mapper/**/*.xml"/>
+    </bean>
 
-<!--    <bean name="sqlsession" class="org.mybatis.spring.SqlSessionTemplate">-->
-<!--        <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>-->
-<!--    </bean>-->
+    <bean name="sqlsession" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
+    </bean>
 
-<!--    <context:component-scan base-package="com.chunjae.spring_day11_login.service"/>-->
-<!--    <context:component-scan base-package="com.chunjae.spring_day11_login.dao"/>-->
-<!--    <mybatis:scan base-package="com.chunjae.spring_day11_login.dao"/>-->
+    <context:component-scan base-package="com.chunjae.learnandrun.service"/>
+    <context:component-scan base-package="com.chunjae.learnandrun.dao"/>
+    <mybatis:scan base-package="com.chunjae.learnandrun.dao"/>
 
 
-<!--    &lt;!&ndash;트랜잭션 추가&ndash;&gt;-->
-<!--    <bean name="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">-->
-<!--        <property name="dataSource" ref="ds"/>-->
-<!--    </bean>-->
+    <!--트랜잭션 추가-->
+    <bean name="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="ds"/>
+    </bean>
 
-<!--    <tx:annotation-driven></tx:annotation-driven>-->
+    <tx:annotation-driven></tx:annotation-driven>
 
 </beans>
