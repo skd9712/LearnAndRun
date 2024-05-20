@@ -1,0 +1,60 @@
+@font-face {
+    font-family: 'Godo';
+    font-style: normal;
+    font-weight: 400;
+    src: url('//fastly.jsdelivr.net/korean-webfonts/1/corps/godo/Godo/GodoM.woff2') format('woff2'), url('//fastly.jsdelivr.net/korean-webfonts/1/corps/godo/Godo/GodoM.woff') format('woff');
+}
+
+.ad_mp4{
+    width: 50vw;
+    height: 60vh;
+    margin: 0 auto;
+    background: #0056b3;
+}
+
+.ad_container{
+    margin: 0 auto;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: white;
+    font-size: 2.5rem;
+    font-weight: bolder;
+    padding: 100px 0 0 0;
+}
+
+.neon1 {
+    font-size: 20px;
+    font-family: Godo;
+    font-weight: 700;
+    padding-bottom: 20px;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+    animation: neon-flicker 1s infinite alternate;
+}
+
+.neon2 {
+    font-size: 60px;
+    font-family: Godo;
+    font-weight: 700;
+    padding-bottom: 20px;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+    animation: neon-flicker 1s infinite alternate;
+}
+
+@keyframes neon-flicker {
+    0% {
+        text-shadow:
+                0 0 10px rgba(0, 255, 255, 0.7),
+                0 0 20px rgba(0, 255, 255, 0.7),
+                0 0 30px rgba(0, 255, 255, 0.7);
+    }
+    100% {
+        text-shadow:
+                0 0 20px rgba(0, 255, 255, 0.7),
+                0 0 30px rgba(0, 255, 255, 0.7),
+                0 0 40px rgba(0, 255, 255, 0.7);
+    }
+}

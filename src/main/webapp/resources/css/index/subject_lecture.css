@@ -1,0 +1,49 @@
+#subject{
+    width: 80%;
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    padding: 10px 0;
+}
+
+#subject_page1{
+    margin-top: 50px;
+}
+
+.section_box{
+    margin-bottom: 50px;
+}
+
+#subject>div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#subject>h1{
+    position: relative;
+    left: 50px;
+}
+
+#subject #title_icon1{
+    position: relative;
+    top: 5px;
+    width: 25px;
+    margin-right: 5px;
+}
+
+.subject_box{
+    text-align: center;
+}
+.subject_box>img{
+    width: 80px;
+    height: 80px;
+    background: rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.05);
+    border-radius: 20px;
+}
+.subject_box>img:hover{
+    border: 1px solid black;
+}
+
+
