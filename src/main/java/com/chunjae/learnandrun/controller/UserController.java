@@ -48,8 +48,9 @@ public class UserController {
 
     // 로그인
     @GetMapping("/user_login")
-    public String login() {
-        return "user_login";
+    public String login(Model model) {
+        model.addAttribute("page","login");
+        return "main/index";
     }
 
     @PostMapping("/loginresult")
