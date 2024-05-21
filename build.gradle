@@ -79,6 +79,12 @@ dependencies {
     implementation group: 'org.logback-extensions', name: 'logback-ext-spring', version: '0.1.4'
     implementation 'org.springframework.security:spring-security-crypto:5.7.1'
 
+
+    implementation 'net.coobird:thumbnailator:0.4.20'
+    /* apache upload 1.5 */
+    /* apache common io 2.11.0 */
+    implementation 'commons-fileupload:commons-fileupload:1.5'
+    implementation 'commons-io:commons-io:2.11.0'
 }
 
 test {

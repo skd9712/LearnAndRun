@@ -15,4 +15,8 @@ public interface LectureMapper {
     LectureDTO detailLecture(int lectureNo);
 
     int deleteLecture(int lectureNo);
+
+    int insertLecture(LectureDTO dto);
+
+    void updateLecture(LectureDTO dto);
 }

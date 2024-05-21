@@ -6,7 +6,7 @@
     <title>Title</title>
     <script src="https://kit.fontawesome.com/4e5b2f86bb.js" crossorigin="anonymous"></script>
     <script src="/resources/js/lecture_list.js"></script>
-    <link rel="stylesheet" href="/resources/css/lecture_list.css">
+    <link rel="stylesheet" href="/resources/css/lecture/lecture_list.css">
 </head>
 <body>
 <div id="wrap">
@@ -47,7 +47,7 @@
         <c:forEach var="item" items="${list}">
             <a href="/lecture_detail/${item.lectureNo}" class="lecture_href">
                 <div class="lecture_room">
-                    <img src="" alt="썸네일" class="thumbnail">
+                    <img src="/getImage/${item.thumbnail}" alt="썸네일" class="thumbnail">
                     <ul>
                         <li>
                             <h4>${item.lectureName}</h4>

@@ -36,9 +36,23 @@
             <mvc:exclude-mapping path="/user_logout*"/>
             <mvc:exclude-mapping path="/index*"/>
             <mvc:exclude-mapping path="/lecture_list*"/>
+            <mvc:exclude-mapping path="/lecture_insert*"/>
+            <mvc:exclude-mapping path="/lecture_update*"/>
+            <mvc:exclude-mapping path="/lecture_delete*"/>
+            <mvc:exclude-mapping path="/lecture_detail*"/>
+
             <ref bean="authInterrupt"/>
         </mvc:interceptor>
     </mvc:interceptors>
+
+    <context:component-scan base-package="com.chunjae.learnandrun.controller"/>
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxInMemorySize" value="10485760"/>
+        <property name="maxUploadSizePerFile" value="2097152"/>
+        <property name="uploadTempDir" value="upload"/>
+
+    </bean>
 
 
 </beans>
