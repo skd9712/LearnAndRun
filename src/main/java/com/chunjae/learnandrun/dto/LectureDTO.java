@@ -1,5 +1,7 @@
 package com.chunjae.learnandrun.dto;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class LectureDTO {
     private int lectureNo; //강의번호
     private String lectureName; //강의명
@@ -8,9 +10,11 @@ public class LectureDTO {
     private String description; //강의설명
     private int price; //가격
     private String startDate; //개강일
-    private String thumbnail; //썸네일
-    private String lectureData; //강의자료
+    private MultipartFile thumbnailFile; //썸네일파일
+    private MultipartFile lectureDataFile; //강의자료
     private String target; //수강대상
+    private String thumbnail; //썸네일
+    private String lectureData;
 
     public int getLectureNo() {
         return lectureNo;
@@ -68,6 +72,30 @@ public class LectureDTO {
         this.startDate = startDate;
     }
 
+    public MultipartFile getThumbnailFile() {
+        return thumbnailFile;
+    }
+
+    public void setThumbnailFile(MultipartFile thumbnailFile) {
+        this.thumbnailFile = thumbnailFile;
+    }
+
+    public MultipartFile getLectureDataFile() {
+        return lectureDataFile;
+    }
+
+    public void setLectureDataFile(MultipartFile lectureDataFile) {
+        this.lectureDataFile = lectureDataFile;
+    }
+
+    public String getTarget() {
+        return target;
+    }
+
+    public void setTarget(String target) {
+        this.target = target;
+    }
+
     public String getThumbnail() {
         return thumbnail;
     }
@@ -84,11 +112,21 @@ public class LectureDTO {
         this.lectureData = lectureData;
     }
 
-    public String getTarget() {
-        return target;
-    }
-
-    public void setTarget(String target) {
-        this.target = target;
+    @Override
+    public String toString() {
+        return "LectureDTO{" +
+                "lectureNo=" + lectureNo +
+                ", lectureName='" + lectureName + '\'' +
+                ", teacher='" + teacher + '\'' +
+                ", subjectName='" + subjectName + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", startDate='" + startDate + '\'' +
+                ", thumbnailFile=" + thumbnailFile +
+                ", lectureDataFile=" + lectureDataFile +
+                ", target='" + target + '\'' +
+                ", thumbnail='" + thumbnail + '\'' +
+                ", lectureData='" + lectureData + '\'' +
+                '}';
     }
 }

@@ -12,4 +12,8 @@ public interface LectureService {
     LectureDTO detailLecture(int lectureNo);
 
     int deleteLecture(int lectureNo);
+
+    int insertLecture(String uploadPath, LectureDTO dto);
+
+    void updateLecture(String uploadPath, LectureDTO dto);
 }
