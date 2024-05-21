@@ -24,7 +24,20 @@
 
     <!--controller에 어노테이션으로 만든 것들을 bean으로 만들어 한번에 가져옴-->
     <context:component-scan base-package="com.chunjae.learnandrun.controller"/>
-
+    <bean id="authInterrupt" class="com.chunjae.learnandrun.interrupt.UserInterrupt"/>
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/*"/>
+            <mvc:exclude-mapping path="/user_join*"/>
+            <mvc:exclude-mapping path="/joinresult*"/>
+            <mvc:exclude-mapping path="/checkId*"/>
+            <mvc:exclude-mapping path="/user_login*"/>
+            <mvc:exclude-mapping path="/loginresult*"/>
+            <mvc:exclude-mapping path="/user_logout*"/>
+            <mvc:exclude-mapping path="/index*"/>
+            <ref bean="authInterrupt"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
 
 </beans>
