@@ -19,21 +19,15 @@
 }
 #main_page1{
     margin: 0 auto;
-    height: 93vh;
+    height: 94vh;
     width: 100%;
     padding-top: 55px;
 }
 
-#calendar{
-    width: 80%;
-    margin: 0 auto;
-    padding: 100px 30px 30px 30px;
-    background: white;
-    border-radius: 20px;
-}
+
 
 .night {
-    height: 93vh;
+    height: 94vh;
     width: 100%;
 
     background-image: url('/resources/img/index/night.png');
@@ -51,7 +45,7 @@
     position: relative;
     top:94%;
     background-repeat: repeat-x;
-    animation: moveRight 6s linear infinite;
+    animation: moveRight 8s linear infinite;
 }
 
 .car {
@@ -62,7 +56,7 @@
 }
 
 .car>img{
-    width: 20vw;
+    width: 18vw;
 }
 
 .search{
