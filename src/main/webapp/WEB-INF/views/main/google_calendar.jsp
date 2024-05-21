@@ -96,10 +96,12 @@
     }
 
     #open_lecture_box{
-      flex-basis: 50vh;
+      height: 42vh;
       background: rgba(255,255,255,0.4);
       border-radius: 20px;
-      padding: 0 30px;
+      padding: 0 10px 30px 10px;
+      overflow: hidden;
+      white-space: nowrap;
     }
 
     #schedule_box{
@@ -136,7 +138,7 @@
       display:none;
       background-color:white;
       padding:20px;
-      border-radius:14px;
+      border-radius:30px;
       border:2px solid #eeeeee;
     }
 

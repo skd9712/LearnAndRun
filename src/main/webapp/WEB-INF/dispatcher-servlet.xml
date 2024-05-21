@@ -40,6 +40,7 @@
             <mvc:exclude-mapping path="/lecture_update*"/>
             <mvc:exclude-mapping path="/lecture_delete*"/>
             <mvc:exclude-mapping path="/lecture_detail*"/>
+
             <ref bean="authInterrupt"/>
         </mvc:interceptor>
     </mvc:interceptors>
