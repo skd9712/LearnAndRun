@@ -1,0 +1,11 @@
+.id_null{
+    color: green;
+    display: none;
+}
+.id_notnull{
+    color: red;
+    display: none;
+}
+.pwd_mismatch{
+    display: none;
+}

@@ -77,6 +77,8 @@ dependencies {
     }
 
     implementation group: 'org.logback-extensions', name: 'logback-ext-spring', version: '0.1.4'
+    implementation 'org.springframework.security:spring-security-crypto:5.7.1'
+
 }
 
 test {
