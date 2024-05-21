@@ -108,4 +108,40 @@
         delete from lecture
         where lectureNo=#{lectureNo}
     </delete>
+
+    <insert id="insertLecture" parameterType="com.chunjae.learnandrun.dto.LectureDTO">
+        insert into lecture(lectureName
+        , teacher
+        , subjectName
+        , description
+        , price
+        , startDate
+        , target
+        , thumbnail
+        , lectureData
+        )
+        values(#{lectureName}
+        , #{teacher}
+        , #{subjectName}
+        , #{description}
+        , #{price}
+        , #{startDate}
+        , #{target}
+        , #{thumbnail}
+        , #{lectureData}
+        )
+    </insert>
+    <update id="updateLecture" parameterType="com.chunjae.learnandrun.dto.LectureDTO">
+        update lecture
+        set lectureName=#{lectureName}
+          , teacher=#{teacher}
+          , subjectName=#{subjectName}
+          , description=#{description}
+          , price=#{price}
+          , startDate=#{startDate}
+          , target=#{target}
+          , thumbnail=#{thumbnail}
+          , lectureData=#{lectureData}
+        where lectureNo=#{lectureNo}
+    </update>
 </mapper>

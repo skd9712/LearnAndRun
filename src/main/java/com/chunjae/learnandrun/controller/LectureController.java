@@ -4,13 +4,26 @@ import com.chunjae.learnandrun.dto.LectureDTO;
 import com.chunjae.learnandrun.dto.MakePage;
 import com.chunjae.learnandrun.service.LectureService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 @Controller
@@ -52,28 +65,102 @@ public class LectureController {
         model.addAttribute("search_txt", search_txt);
         model.addAttribute("sort", sort);
 
-        return "lecture_list";
+        return "lecture/lecture_list";
     }
 
     /** 강의 등록 폼 */
     @GetMapping("/lecture_insert")
     public String insertLecture(){
-        return "lecture_insert";
+        return "lecture/lecture_insert";
     }
 
     /** 강의 등록 결과 */
     @PostMapping("/lecture_insert_result")
-    public String insertLectureResult(@RequestParam(required = false, defaultValue = "") String thumbnail
-            , @RequestParam(required = false, defaultValue = "") String lectureName
-            , @RequestParam(required = false, defaultValue = "") String teacher
-            , @RequestParam(required = false, defaultValue = "") String description
-            , @RequestParam(required = false, defaultValue = "") String subjectName
-            , @RequestParam(required = false, defaultValue = "") String target
-            , @RequestParam(required = false, defaultValue = "") String price
-            , @RequestParam(required = false, defaultValue = "") String startDate
-            , @RequestParam(required = false, defaultValue = "") String lectureData){
-        return "redirect:/lecture_list";
+    public String insertLectureResult(HttpServletRequest request
+            , LectureDTO dto
+            , Model model){
+
+        String path="upload/img";
+        String uploadPath=request.getSession().getServletContext().getRealPath(path);
+
+/*        LectureDTO dto=new LectureDTO();
+        dto.setThumbnailFile(thumbnailFile);
+        dto.setLectureName(lectureName);
+        dto.setTeacher(teacher);
+        dto.setDescription(description);
+        dto.setSubjectName(subjectName);
+        dto.setTarget(target);
+        dto.setPrice(price);
+        dto.setStartDate(startDate);
+        dto.setLectureDataFile(lectureDataFile);*/
+
+        int result=service.insertLecture(uploadPath, dto);
+
+        return "redirect:lecture_list";
     }
+
+
+    /** 이미지 */
+    @GetMapping(value = "/getImage/{filename}"
+            , produces = {MediaType.IMAGE_GIF_VALUE
+            , MediaType.IMAGE_PNG_VALUE})
+    public ResponseEntity<byte[]> getThumbnail(HttpServletRequest request
+            , @PathVariable String filename){
+
+        String path="/upload/img";
+        String realpath= request.getSession().getServletContext().getRealPath(path);
+        String fname = URLEncoder.encode(filename, StandardCharsets.UTF_8)
+                .replace("+", "%20");
+        InputStream in = null;
+        ResponseEntity<byte[]> entity=null;
+        try {
+            in = new FileInputStream(realpath + "/" + fname);
+            System.out.println("in....."+in);
+            HttpHeaders headers=new HttpHeaders();
+
+            entity=new ResponseEntity<byte[]>(FileCopyUtils.copyToByteArray(in)
+                    ,headers,  HttpStatus.OK);
+        }catch(IOException e)
+        {
+            entity=new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return entity;
+    }
+
+    /** 다운로드 */
+    @GetMapping(value="/download/{filename}")
+    @ResponseBody
+    public  ResponseEntity<Resource> getFile(@PathVariable String filename, HttpServletRequest request, HttpServletResponse response){
+
+        String path="/upload/img";
+        String realpath=  request.getSession().getServletContext().getRealPath(path);
+
+        String fname= URLEncoder.encode(filename, StandardCharsets.UTF_8).replace("+","%20");
+
+        File file=new File(realpath+"/" + fname);
+        if(!file.exists()) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+        HttpHeaders headers = new HttpHeaders();
+
+        Resource resource;
+        try {
+            resource= new InputStreamResource(new FileInputStream(file));
+            response.setHeader("Content-Type", "application/octet-stream");
+            response.setHeader("Content-Disposition", "attachment; filename="+fname);
+            headers.add("Cache-Control", "no-cache, no-store, must-revalidate");
+            headers.add("Pragma", "no-cache");
+            headers.add("Expires", "0");
+            headers.add("contentType","utf-8");
+            headers.setContentLength(file.length());
+            headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+        } catch(IOException e)
+        {
+            System.out.println("error....."+e);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>( resource, headers, HttpStatus.OK);
+    }
+
 
     /** 강의 상세 */
     @GetMapping("/lecture_detail/{lectureNo}")
@@ -81,14 +168,28 @@ public class LectureController {
 
         LectureDTO dto=service.detailLecture(lectureNo);
         model.addAttribute("dto", dto);
-        return "lecture_detail";
+        return "lecture/lecture_detail";
     }
 
-//    /** 강의 수정 폼 */
-//    @GetMapping("/lecture_update")
-//    public String updateLecture(){
-//        return "lecture_insert";
-//    }
+    /** 강의 수정 폼 */
+    @GetMapping("/lecture_update/{lectureNo}")
+    public String updateLecture(@PathVariable int lectureNo, Model model){
+
+        LectureDTO dto=service.detailLecture(lectureNo);
+        model.addAttribute("dto", dto);
+        return "lecture/lecture_update";
+    }
+
+    @PostMapping("/lecture_update_result")
+    public String updateLectureResult(HttpServletRequest request, LectureDTO dto){
+
+        String path="upload/img";
+        String uploadPath=request.getSession().getServletContext().getRealPath(path);
+
+        service.updateLecture(uploadPath, dto);
+
+        return "redirect:lecture_list";
+    }
 
     /** 강의 삭제 */
     @GetMapping("/lecture_delete/{lectureNo}")
@@ -98,6 +199,6 @@ public class LectureController {
 
         model.addAttribute("result", result);
 
-        return "lecture_delete";
+        return "lecture/lecture_delete";
     }
 }
