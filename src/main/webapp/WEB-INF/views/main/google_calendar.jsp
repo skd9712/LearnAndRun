@@ -136,7 +136,7 @@
       display:none;
       background-color:white;
       padding:20px;
-      border-radius:14px;
+      border-radius:30px;
       border:2px solid #eeeeee;
     }
 
