@@ -10,7 +10,7 @@
 <div id="main_page1">
     <div class="night">
         <div class="surface"></div>
-        <div class="car"><img src="/resources/img/index/running_rabbit.gif" alt="달리는 토끼"></div>
+        <div class="car"><img src="/resources/img/index/runnig_rabbit_slow.gif" alt="달리는 토끼"></div>
         <div class="main_txt">
             <h2 class="sub_title" id="sub_title">
                 <span>학</span>

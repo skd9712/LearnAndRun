@@ -1,10 +1,9 @@
-package com.chunjae.learnandrun.dao;
+package com.chunjae.learnandrun.service;
+
 
 import com.chunjae.learnandrun.dto.UserDTO;
-import org.apache.ibatis.annotations.Mapper;
 
-@Mapper
-public interface UserMapper {
+public interface UserService {
     void insertUser(UserDTO dto);
 
     UserDTO loginUser(UserDTO dto);

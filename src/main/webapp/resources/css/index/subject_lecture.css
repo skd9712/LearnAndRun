@@ -21,6 +21,8 @@
 }
 
 #subject>h1{
+    margin: 0;
+    padding:10px 0 20px 0;
     position: relative;
     left: 50px;
 }
@@ -42,8 +44,6 @@
     border: 1px solid rgba(0,0,0,0.05);
     border-radius: 20px;
 }
-.subject_box>img:hover{
-    border: 1px solid black;
-}
+
 
 
