@@ -13,7 +13,9 @@
     <link rel="stylesheet" href="/resources/css/user/user_login.css">
 </head>
 <body>
+<div id="wrap">
 <form method="post" action="loginresult">
+    <h2>로그인</h2>
     <ul>
         <li>
             <label for="userId">아이디</label>
@@ -34,5 +36,6 @@
         </li>
     </ul>
 </form>
+</div>
 </body>
 </html>
