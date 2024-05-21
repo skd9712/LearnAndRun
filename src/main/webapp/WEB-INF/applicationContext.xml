@@ -38,5 +38,6 @@
     </bean>
 
     <tx:annotation-driven></tx:annotation-driven>
+    <bean name="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
 
 </beans>
