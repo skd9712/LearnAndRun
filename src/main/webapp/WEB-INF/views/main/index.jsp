@@ -70,6 +70,16 @@
 
             </c:when>
 
+            <c:when test="${contentpage=='login'}">
+                <jsp:include page="../user_login.jsp"/>
+            </c:when>
+
+            <%--
+            <c:when test="${contentpage=='lecture_list'}">
+                <jsp:forward page="../lecture_list.jsp" />
+            </c:when>
+            --%>
+
 <%--            <c:when test="${contentpage=='login'}">--%>
 <%--                <div class="section_box">--%>
 <%--                    <jsp:include page="login.jsp"/>--%>
