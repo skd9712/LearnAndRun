@@ -1,10 +1,12 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!--한글 깨짐 방지 코드-->
 <%@page language="java" contentType="text/html; charset=utf-8" pageEncoding="UTF-8" %>
 <html lang='en'>
 <head>
   <meta charset='utf-8' />
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-  <link href='/resources/css/index/fullcalendar.main.min.css' rel='stylesheet' />
+  <link rel="stylesheet" href="/resources/css/index/fullcalendar.main.min.css"/>
+  <link rel="stylesheet" href="/resources/css/index/display_lecture2.css"/>
   <script defer src='/resources/js/index/ko.js'></script>
   <script src='/resources/js/index/fullcalendar.main.min.js'></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bPopup/0.11.0/jquery.bpopup.min.js"></script>
@@ -56,9 +58,14 @@
 
           $("#popup").html(contents);
           $("#popup").bPopup({
-            speed: 650,
-            transition: 'slideIn',
-            transitionClose: 'slideBack',
+            //팝업뜨는 속도
+            speed: 200,
+
+            //슬라이드 효과
+            //transition: 'slideIn',
+            //transitionClose: 'slideBack',
+
+            //팝업 뜨는 위치
             position: [($(document).width()-500)/2, 250] //x, y
           });
 
@@ -71,14 +78,40 @@
     });
   </script>
   <style>
+
+    #schedule_container{
+      display: flex;
+      flex-direction: row;
+      margin: 0 auto;
+      width: 80%;
+      justify-content: space-evenly;
+    }
+
+    #schedule_lecture_container{
+      flex-basis: 20vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin-bottom: 135px;
+    }
+
+    #open_lecture_box{
+      flex-basis: 50vh;
+      background: rgba(255,255,255,0.4);
+      border-radius: 20px;
+      padding: 0 30px;
+    }
+
     #schedule_box{
+      flex-basis: 50vw;
       text-align: center;
       padding-bottom: 100px;
     }
     #schedule_box>h1{
       position: relative;
-      top: 60px;
+      top: 30px;
       margin: 0;
+      z-index: 2;
     }
     #schedule_box img{
       width: 30px;
@@ -86,16 +119,113 @@
       top: 5px;
       padding: 0 5px;
     }
+
+    #calendar{
+      width: 100%;
+      margin: 0 auto;
+      padding: 100px 30px 30px 30px;
+      background: white;
+      border-radius: 20px;
+      position: relative;
+      top: -35px;
+    }
+
+    #popup{
+      width:500px;
+      height:300px;
+      display:none;
+      background-color:white;
+      padding:20px;
+      border-radius:14px;
+      border:2px solid #eeeeee;
+    }
+
   </style>
 </head>
 <body>
-<div id="schedule_box">
-  <h1>
-    <img src="/resources/img/index/carrot.png" alt="당근">
-    강의 일정
-    <img src="/resources/img/index/carrot.png" alt="당근"></h1>
-  <div id='calendar'></div>
-  <div id='popup' style="width:500px; height:300px; display:none; background-color:white; padding:20px; border-radius:14px; border:2px solid #eeeeee"></div>
+
+<div id="schedule_container">
+  <div id="schedule_lecture_container">
+
+    <!--개강 임박 강의 스크롤 영역-->
+    <section id="open_lecture_box">
+      <h1>
+        <img src="/resources/img/index/open_lecture_icon.png" alt="임박아이콘">
+        개강 임박 강의
+      </h1>
+      <div class="scrollBar">
+        <ul>
+          <c:forEach var="i" begin="0" end="9">
+            <li>
+              <img src="/resources/img/index/flower_icon.png" alt="꽃리스트">
+              2024-05-2${i} 이해하기 쉬운 수학${i}
+            </li>
+            <li>
+              <img src="/resources/img/index/flower_icon.png" alt="꽃리스트">
+              2024-05-2${i} 이해하기 쉬운 과학${i}
+            </li>
+          </c:forEach>
+        </ul>
+      </div>
+    </section>
+
+
+    <!--최신 강의 슬라이더 영역-->
+    <section class="display_lecture2">
+      <h1><img id="title_icon3" src="/resources/img/index/clock_icon.png" alt="최신">최신 강의</h1>
+      <div class="display_box2, slider2">
+
+        <div class="slide2">
+          <a href="#1">
+            <div class="lecture_box2">
+              <img src="/resources/img/index/night.png" alt="강의썸네일">
+              <h3>강의 제목1</h3>
+              <p>강의 설명1</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="slide2">
+          <a href="#2">
+            <div class="lecture_box2">
+              <img src="/resources/img/index/moon.jpg" alt="강의썸네일">
+              <h3>강의 제목2</h3>
+              <p>강의 설명2</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="slide2">
+          <a href="#3">
+            <div class="lecture_box2">
+              <img src="/resources/img/index/night_sky.jpg" alt="강의썸네일">
+              <h3>강의 제목3</h3>
+              <p>강의 설명3</p>
+            </div>
+          </a>
+        </div>
+
+
+      </div>
+    </section>
+  </div>
+
+
+  <!--캘린더 영역-->
+  <div id="schedule_box">
+    <h1>
+      <img src="/resources/img/index/carrot.png" alt="당근">
+      강의 일정
+      <img src="/resources/img/index/carrot.png" alt="당근"></h1>
+    <div id='calendar'></div>
+    <div id='popup'></div>
+  </div>
+
 </div>
+
+
+
+
+
 </body>
 </html>
