@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Title</title>
@@ -27,7 +27,7 @@
         .section_box {
             /* 기본적인 스타일 */
             opacity: 0; /* 초기에는 투명하게 설정 */
-            transform: translateY(50px); /* 아래에서 위로 50px만큼 이동 */
+            transform: translateY(50px); /* 아래에서 위로 50px 만큼 이동 */
 
             /* 트랜지션 */
             transition: opacity 0.5s ease, transform 0.5s ease; /* 변경 사항에 대한 애니메이션 지정 */
@@ -60,10 +60,6 @@
 
                     <div class="section_box">
                         <jsp:include page="display_lecture.jsp"/>
-                    </div>
-
-                    <div class="section_box">
-                        <jsp:include page="display_lecture2.jsp"/>
                     </div>
 
                     <div class="section_box">

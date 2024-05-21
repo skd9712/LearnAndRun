@@ -1,56 +1,80 @@
-.display_container{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 80%;
+
+/*개강 임박 강의 스크롤 구현*/
+
+.scrollBar {
+    height: 380px;
     margin: 0 auto;
+    overflow-y: scroll;
+}
+.scrollBar::-webkit-scrollbar {
+    /* 스크롤바의 너비 */
+    width: 10px;
+}
+.scrollBar::-webkit-scrollbar-thumb {
+    /* 스크롤바의 길이 */
+    height: 30%;
+    /* 스크롤바의 색상 */
+    background: rgba(252,200,87,0.5);
+    border-radius: 10px;
 }
 
-.display_box{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+.scrollBar::-webkit-scrollbar-track {
+    /*스크롤바 뒷 배경 색상*/
+    background: rgba(255,255,255,0.6);
+    border-radius: 50px;
 }
 
-.lecture_box>img{
+#open_lecture_box ul{
+    margin: 0 auto;
+    padding: 10px;
+}
+#open_lecture_box li{
+    list-style: none;
+    padding: 10px 0;
+}
+
+#open_lecture_box>h1>img{
+    position: relative;
+    top: 5px;
+    width: 30px;
+}
+
+#open_lecture_box li img{
+    width: 15px;
+}
+
+
+/*최신 강의 슬라이더 구현*/
+.lecture_box2>img{
     width: 250px;
     height: 150px;
     border-radius: 10px;
 }
 
-.display_lecture{
-    width: 100%;
+.display_lecture2{
+    flex-basis: 30vh;
+    width: 20vw;
     margin: 0 auto;
-    background: white;
+    background: rgba(255,255,255,0.4);
     border-radius: 20px;
-    padding: 0 0 20px 0;
+    padding: 0 0 10px 0;
 }
 
-.display_lecture>h1{
+.display_lecture2>h1{
     position: relative;
-    left: 50px;
+    left: 35px;
 }
 
-.display_lecture>h1>img{
+.display_lecture2 #title_icon3{
     position: relative;
-}
-
-.display_lecture #title_icon2{
-    top: 8px;
-    width: 30px;
-    margin-right: 5px;
-}
-
-
-.display_lecture #title_icon3{
-    top: 5px;
-    width: 25px;
-    margin-right: 8px;
+    top: 3px;
+    width: 22px;
+    margin-right: 10px;
 }
 
 /* 슬라이더 구현 */
 
-.slider {
+.slider2 {
     position: relative;
     overflow: hidden;
     margin: 0 auto;
@@ -58,7 +82,7 @@
     height: 250px;
 }
 
-.slide {
+.slide2{
     display: flex;
     flex-direction: row;
     position: absolute;
@@ -81,20 +105,20 @@
 */
 
 /*첫 번째 slide - animation 지연시간을 0로 줘서 animation 0% 부터 실행*/
-.slide:nth-child(1) {
+.slide2:nth-child(1) {
     animation-delay: 0s;
 }
 
 /*두 번째 slide - animation 지연시간 -5초 으로 줘서 animation 0% 에서 5초 실행한 뒤의 상태부터 실행*/
-.slide:nth-child(2) {
+.slide2:nth-child(2) {
     animation-delay: -5s;
 }
 /* 세 번째 slide - animation 지연시간 -10초 으로 줘서 animation 0% 에서 10초 실행한 뒤의 상태부터 실행*/
-.slide:nth-child(3) {
+.slide2:nth-child(3) {
     animation-delay: -10s;
 }
 
-@keyframes slider {
+@keyframes slider2 {
     0% {
         transform: translateX(0);
     }
