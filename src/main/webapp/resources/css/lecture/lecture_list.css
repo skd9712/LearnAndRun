@@ -1,11 +1,18 @@
-*{
-    margin: 0;
-    padding: 0;
-}
 
 #wrap{
-    margin: 100px auto;
+    margin: 0 auto;
     width: 90vw;
+}
+
+#lecture_search_box{
+    position: relative;
+    top: 140px;
+}
+
+#lecture_sort_box{
+    position: relative;
+    top: 100px;
+    left: 70vw;
 }
 
 form{

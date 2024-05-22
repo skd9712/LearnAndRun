@@ -33,7 +33,7 @@
                 <%--                <option value="강사명">강사명</option>--%>
                 <%--                <option value="강의제목">강의제목</option>--%>
                 <%--            </select>--%>
-                <input type="hidden" name="search" id="search" value="all">
+                <input type="hidden"name="search" id="search" value="all">
                 <input type="text" name="search_txt" id="search_txt">
             </form>
         </div>

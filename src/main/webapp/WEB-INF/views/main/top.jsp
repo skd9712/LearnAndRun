@@ -17,7 +17,28 @@
 
     <span class="header_03">
         <a class="menu_tab" href="/lecture_list">강의 탐색</a>
-        <a class="menu_tab" id="login_btn" href="/user_login">로그인</a>
+
+
+        <c:set var="uid" value="${sessionScope.dto.userNo}"/>
+        <c:choose>
+            <c:when test="${empty uid || uid==null}">
+                <a class="menu_tab" id="login_btn" href="/user_login">로그인</a>
+            </c:when>
+            <c:otherwise>
+                <c:choose>
+                    <c:when test="${uid==1}">
+                        <a class="menu_tab" href="#">관리자페이지</a>
+                    </c:when>
+                    <c:otherwise>
+                        <a class="menu_tab" href="#">마이페이지</a>
+                    </c:otherwise>
+                </c:choose>
+                <a class="menu_tab" id="logout_btn" href="/user_logout">로그아웃</a>
+            </c:otherwise>
+
+
+        </c:choose>
+
 <%--        <a href="#">관리자페이지</a>--%>
 <%--        <a href="#">마이페이지</a>--%>
     </span>

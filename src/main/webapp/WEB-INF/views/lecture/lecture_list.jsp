@@ -9,38 +9,45 @@
     <link rel="stylesheet" href="/resources/css/lecture/lecture_list.css">
 </head>
 <body>
+<jsp:include page="../main/top.jsp"/>
 <div id="wrap">
     <%-- 검색창 --%>
-    <form method="get" action="/lecture_list/${page.currPage}">
-        <select name="search" id="search">
-            <option value="all">전체검색</option>
-            <option value="lectureName">강의명</option>
-            <option value="teacher">강사명</option>
-            <option value="subjectName">과목</option>
-        </select>
-        <div id="input_box">
-            <input type="text" name="search_txt" id="search_txt" >
-            <button type="submit" id="glass">
-                <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-            </button>
-        </div>
-    </form>
+    <div id="lecture_search_box">
+        <form method="get" action="/lecture_list/${page.currPage}">
+            <select name="search" id="search">
+                <option value="all">전체검색</option>
+                <option value="lectureName">강의명</option>
+                <option value="teacher">강사명</option>
+                <option value="subjectName">과목</option>
+            </select>
+            <div id="input_box">
+                <input type="text" name="search_txt" id="search_txt" >
+                <button type="submit" id="glass">
+                    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+
 
     <%-- 정렬 --%>
-    <ul class="select_list">
-        <li class="select_option">
-            <a href="/lecture_list/${page.currPage}?search=${search}&search_txt=${search_txt}&sort=new">최신순</a>
-        </li>
-        <li class="select_option">
-            <a href="/lecture_list/${page.currPage}?search=${search}&search_txt=${search_txt}&sort=popular">인기순</a>
-        </li>
-        <li class="select_option">
-            <a href="/lecture_list/${page.currPage}?search=${search}&search_txt=${search_txt}&sort=lowPrice">낮은가격순</a>
-        </li>
-        <li class="select_option">
-            <a href="/lecture_list/${page.currPage}?search=${search}&search_txt=${search_txt}&sort=highPrice">높은가격순</a>
-        </li>
-    </ul>
+    <div id="lecture_sort_box">
+        <ul class="select_list">
+            <li class="select_option">
+                <a href="/lecture_list/${page.currPage}?search=${search}&search_txt=${search_txt}&sort=new">최신순</a>
+            </li>
+            <li class="select_option">
+                <a href="/lecture_list/${page.currPage}?search=${search}&search_txt=${search_txt}&sort=popular">인기순</a>
+            </li>
+            <li class="select_option">
+                <a href="/lecture_list/${page.currPage}?search=${search}&search_txt=${search_txt}&sort=lowPrice">낮은가격순</a>
+            </li>
+            <li class="select_option">
+                <a href="/lecture_list/${page.currPage}?search=${search}&search_txt=${search_txt}&sort=highPrice">높은가격순</a>
+            </li>
+        </ul>
+    </div>
+
 
     <%-- 강의 리스트 --%>
     <div id="lecture_list">
@@ -90,7 +97,7 @@
             <a href="/lecture_list/${page.totalPage}?search=${search}&search_txt=${search_txt}&sort=${sort}"><i class="fa-solid fa-angles-right"></i></a>
         </c:if>
     </div>
-
 </div>
+<jsp:include page="../main/footer.jsp"/>
 </body>
 </html>
