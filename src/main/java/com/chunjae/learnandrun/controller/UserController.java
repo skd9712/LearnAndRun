@@ -49,7 +49,7 @@ public class UserController {
     // 로그인
     @GetMapping("/user_login")
     public String login(Model model) {
-        model.addAttribute("page","login");
+        model.addAttribute("contentpage","login");
         return "main/index";
     }
 
