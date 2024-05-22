@@ -28,4 +28,52 @@
             addr     = #{addr}
         where userId = #{userId}
     </update>
+    <select id="getUserCount" parameterType="hashmap" resultType="int">
+        select count(*)
+        from user
+        <where>
+            <if test="search_txt!=null and search_txt!='' and !'',equals(search_txt)">
+                <choose>
+                    <when test="search=='all'">
+                        and userId like concat('%',#{search_txt},'%')
+                        or userName like concat('%',#{search_txt},'%')
+                        or addr like concat('%',#{search_txt},'%')
+                    </when>
+                    <when test="search=='userId'">
+                        and userId like concat('%',#{search_txt},'%')
+                    </when>
+                    <when test="search=='userName'">
+                        and userName like concat('%',#{search_txt},'%')
+                    </when>
+                    <when test="search=='addr'">
+                        and addr like concat('%',#{search_txt},'%')
+                    </when>
+                </choose>
+            </if>
+        </where>
+    </select>
+    <select id="listUser" parameterType="hashmap" resultType="com.chunjae.learnandrun.dto.UserDTO">
+        select userNo, userId, userName, addr
+        from user
+        <where>
+            <if test="search_txt!=null and search_txt!='' and !''.equals(search_txt)">
+                <choose>
+                    <when test="search=='all'">
+                        and userId like concat('%',#{search_txt},'%')
+                        or userName like concat('%',#{search_txt},'%')
+                        or addr like concat('%',#{search_txt},'%')
+                    </when>
+                    <when test="search=='userId'">
+                        and userId like concat('%',#{search_txt},'%')
+                    </when>
+                    <when test="search=='userName'">
+                        and userName like concat('%',#{search_txt},'%')
+                    </when>
+                    <when test="search=='addr'">
+                        and addr like concat('%',#{search_txt},'%')
+                    </when>
+                </choose>
+            </if>
+        </where>
+    </select>
 </mapper>
