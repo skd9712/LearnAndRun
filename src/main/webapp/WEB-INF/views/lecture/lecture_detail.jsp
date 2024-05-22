@@ -8,9 +8,9 @@
 </head>
 <body>
 <div id="wrap">
-<%--    <a href="/lecture_list">목록으로</a>
-    <a href="/lecture_update/${dto.lectureNo}">수정하기</a>
-    <a href="/lecture_delete/${dto.lectureNo}">삭제하기</a>--%>
+    <%--    <a href="/lecture_list">목록으로</a>
+        <a href="/lecture_update/${dto.lectureNo}">수정하기</a>
+        <a href="/lecture_delete/${dto.lectureNo}">삭제하기</a>--%>
 
     <header>
         <h2>${dto.lectureName}</h2>
@@ -22,8 +22,10 @@
         <article>
             <div id="mainInfo">
                 <img src="/getImage/${dto.thumbnail}" alt="${dto.thumbnail}">
-                <h3>${dto.lectureName}</h3>
                 <ul>
+                    <li>
+                        <h3>${dto.lectureName}</h3>
+                    </li>
                     <li>
                         <span>과목</span>
                         <span>${dto.subjectName}</span>
@@ -46,12 +48,23 @@
                     </li>
                 </ul>
             </div>
-            <ul>
+            <ul class="ul2">
                 <li>
                     <a href="#">바로결제</a>
                     <a href="#">찜하기</a>
                 </li>
             </ul>
+        </article>
+        <ul class="ul3">
+            <li><a href="#detailInfo">강의소개</a></li>
+            <li><a href="#">강의자료</a></li>
+            <li><a href="#">세부강의</a></li>
+        </ul>
+        <article id="detailInfo">
+            <h3>강의소개</h3>
+            <div id="lectureInfoBox">
+                ${dto.description}
+            </div>
         </article>
     </section>
 </div>

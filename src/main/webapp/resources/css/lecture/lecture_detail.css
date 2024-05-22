@@ -5,25 +5,107 @@
 
 #wrap{
     margin: 100px auto;
-    width: 75vw;
+    width: 90vw;
 }
 
 header{
+    width: 75%;
     display: flex;
     justify-content: space-between;
-    margin: 0 5px;
+    margin: 5px auto;
 }
 
 .line{
+    width: 75%;
     border: 1px solid silver;
-    margin: 5px 0 40px;
+    margin: 0 auto;
 }
 
 #mainInfo{
-    margin: 0 auto;
-    width: 65vw;
-    height: 28vh;
+    margin: 40px auto;
+    width: 70%;
+    height: 15vw;
     border: 2px solid silver;
+    border-radius: 15px;
     display: flex;
     flex-direction: row;
+}
+
+#mainInfo img{
+    margin: auto 1.5vw;
+    width: 16.8vw;
+    height: 12.6vw;
+    vertical-align: center;
+}
+
+ul{
+    margin: 1.5vw 1vw;
+}
+
+ul li{
+    list-style: none;
+    margin: 0 0 1vw 0;
+    font-size: 1rem;
+}
+
+ul li:nth-child(n+2){
+    font-size: clamp(10%, 1vw, 100%);
+}
+
+ul li span:first-child{
+    font-weight: bolder;
+    display: inline-block;
+    width: 150px;
+}
+
+.ul2{
+    display: flex;
+    justify-content: center;
+}
+
+.ul2 li a{
+    margin: 40px;
+    padding: 10px 70px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    color: white;
+    text-decoration: none;
+    box-shadow: 4px 4px 3px rgba(51, 51, 90, 0.25), inset 2px 2px 4px rgb(98, 128, 206);
+}
+
+.ul2 li a:first-child{
+    background-color: #1A2375;
+}
+
+.ul2 li a:last-child{
+    background-color: #3662D4;
+}
+
+.ul3{
+    margin: 50px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.ul3 a{
+    text-decoration: none;
+}
+
+#detailInfo{
+    width: 65vw;
+    margin: 50px auto;
+}
+
+#detailInfo h3{
+    color: #3662D4;
+    margin-left: 5px;
+}
+
+#lectureInfoBox{
+    width: 65vw;
+    height: 35vh;
+    margin-top: 5px;
+    border: 1px solid silver;
+    border-radius: 10px;
 }
