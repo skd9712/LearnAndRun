@@ -65,6 +65,8 @@ public class LectureController {
         model.addAttribute("search_txt", search_txt);
         model.addAttribute("sort", sort);
 
+        model.addAttribute("contentpage","lecture_list");
+
         return "lecture/lecture_list";
     }
 

@@ -25,7 +25,9 @@
         <ul>
             <h2>회원가입</h2>
             <li>
-                <input type="text" class="id_input" name="userId" id="userId" placeholder="아이디" required><br>
+                <input type="text" class="id_input" name="userId" id="userId" placeholder="아이디" required>
+            </li>
+            <li>
                 <span class="id_null">사용가능</span>
                 <span class="id_notnull">사용불가</span>
             </li>
@@ -59,7 +61,6 @@
             </li>
             <li>
                 <button type="submit">회원가입</button>
-                <button type="reset">취소</button>
             </li>
         </ul>
     </form>

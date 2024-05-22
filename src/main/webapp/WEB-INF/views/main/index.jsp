@@ -44,57 +44,65 @@
     <jsp:include page="top.jsp"/>
 
     <section>
-        <c:set var="contentpage" value="${page}"/>
-        <c:choose>
-            <c:when test="${empty contentpage || contentpage==''}">
-                <div id="wrap_main">
-                    <jsp:include page="main_section.jsp"/>
+        <div id="wrap_main">
 
-                    <div class="section_box">
-                        <jsp:include page="promote_section.jsp"/>
-                    </div>
+            <jsp:include page="main_section.jsp"/>
 
-                    <div id="subject_page1" class="section_box">
-                        <jsp:include page="subject_lecture.jsp"/>
-                    </div>
+            <div class="section_box">
+                <jsp:include page="promote_section.jsp"/>
+            </div>
 
-                    <div class="section_box">
-                        <jsp:include page="display_lecture.jsp"/>
-                    </div>
+            <div id="subject_page1" class="section_box">
+                <jsp:include page="subject_lecture.jsp"/>
+            </div>
 
-                    <div class="section_box">
-                        <jsp:include page="google_calendar.jsp"/>
-                    </div>
+            <div class="section_box">
+                <jsp:include page="${lec}"/>
+            </div>
 
-                </div>
+            <div class="section_box">
+                <jsp:include page="${calendar}"/>
+            </div>
 
-            </c:when>
+        </div>
+    </section>
 
-            <c:when test="${contentpage=='login'}">
-                <jsp:include page="../user_login.jsp"/>
-            </c:when>
+<%--    <section>--%>
+<%--        <c:set var="contentpage" value="${contentpage}"/>--%>
+<%--        <c:choose>--%>
+<%--            <c:when test="${empty contentpage || contentpage==''}">--%>
+<%--                <div id="wrap_main">--%>
+<%--                    <jsp:include page="main_section.jsp"/>--%>
 
-            <%--
-            <c:when test="${contentpage=='lecture_list'}">
-                <jsp:forward page="../lecture_list.jsp" />
-            </c:when>
-            --%>
+<%--                    <div class="section_box">--%>
+<%--                        <jsp:include page="promote_section.jsp"/>--%>
+<%--                    </div>--%>
+
+<%--                    <div id="subject_page1" class="section_box">--%>
+<%--                        <jsp:include page="subject_lecture.jsp"/>--%>
+<%--                    </div>--%>
+
+<%--                    <div class="section_box">--%>
+<%--                        <jsp:include page="${lec}"/>--%>
+<%--                    </div>--%>
+
+<%--                    <div class="section_box">--%>
+<%--                        <jsp:include page="${calendar}"/>--%>
+<%--                    </div>--%>
+
+<%--                </div>--%>
+
+<%--            </c:when>--%>
 
 <%--            <c:when test="${contentpage=='login'}">--%>
-<%--                <div class="section_box">--%>
-<%--                    <jsp:include page="login.jsp"/>--%>
-<%--                </div>--%>
+<%--                <jsp:include page="../user/user_login.jsp"/>--%>
 <%--            </c:when>--%>
 
-
-<%--            <c:when test="admin.do">--%>
-<%--                <jsp:include page="user/admin.jsp"/>--%>
+<%--            <c:when test="${contentpage=='lecture_list'}">--%>
+<%--                <jsp:include page="../lecture/lecture_list.jsp"/>--%>
 <%--            </c:when>--%>
-<%--            <c:otherwise>--%>
-<%--                <jsp:include page="${contentpage}"/>--%>
-<%--            </c:otherwise>--%>
-        </c:choose>
-    </section>
+<%--        </c:choose>--%>
+<%--    </section>--%>
 
 
 

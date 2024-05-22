@@ -13,10 +13,10 @@
 </head>
 <body>
 ${user.userId}님의 마이 페이지
-<input type="hidden" name="userNo" id="userNo" value="${user.userNo}">
-<input type="hidden" name="password" id="password" value="${user.password}">
-<input type="hidden" name="userName" id="userName" value="${user.userName}">
-<input type="hidden" name="addr" id="addr" value="${user.addr}">
+<%--<input type="hidden" name="userNo" id="userNo" value="${user.userNo}">--%>
+<%--<input type="hidden" name="password" id="password" value="${user.password}">--%>
+<%--<input type="hidden" name="userName" id="userName" value="${user.userName}">--%>
+<%--<input type="hidden" name="addr" id="addr" value="${user.addr}">--%>
 <a href="/user_update">내정보 수정</a>
 <a href="/user_logout">로그아웃</a>
 </body>

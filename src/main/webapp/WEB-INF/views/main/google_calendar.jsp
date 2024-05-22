@@ -96,7 +96,7 @@
     }
 
     #open_lecture_box{
-      height: 42vh;
+      height: 480px;
       background: rgba(255,255,255,0.4);
       border-radius: 20px;
       padding: 0 10px 30px 10px;
@@ -145,7 +145,8 @@
   </style>
 </head>
 <body>
-
+<%--데이터 :..... ${bo_list}--%>
+<%--최신강의 리스트: ${nl_list}--%>
 <div id="schedule_container">
   <div id="schedule_lecture_container">
 
@@ -157,16 +158,13 @@
       </h1>
       <div class="scrollBar">
         <ul>
-          <c:forEach var="i" begin="0" end="9">
+          <c:forEach var="item" items="${bo_list}">
             <li>
               <img src="/resources/img/index/flower_icon.png" alt="꽃리스트">
-              2024-05-2${i} 이해하기 쉬운 수학${i}
-            </li>
-            <li>
-              <img src="/resources/img/index/flower_icon.png" alt="꽃리스트">
-              2024-05-2${i} 이해하기 쉬운 과학${i}
+              ${item.startDate} ${item.lectureName}
             </li>
           </c:forEach>
+
         </ul>
       </div>
     </section>
@@ -177,36 +175,18 @@
       <h1><img id="title_icon3" src="/resources/img/index/clock_icon.png" alt="최신">최신 강의</h1>
       <div class="display_box2, slider2">
 
-        <div class="slide2">
-          <a href="#1">
-            <div class="lecture_box2">
-              <img src="/resources/img/index/night.png" alt="강의썸네일">
-              <h3>강의 제목1</h3>
-              <p>강의 설명1</p>
-            </div>
-          </a>
-        </div>
+        <c:forEach var="item" items="${nl_list}">
+          <div class="slide2">
 
-        <div class="slide2">
-          <a href="#2">
-            <div class="lecture_box2">
-              <img src="/resources/img/index/moon.jpg" alt="강의썸네일">
-              <h3>강의 제목2</h3>
-              <p>강의 설명2</p>
-            </div>
-          </a>
-        </div>
-
-        <div class="slide2">
-          <a href="#3">
-            <div class="lecture_box2">
-              <img src="/resources/img/index/night_sky.jpg" alt="강의썸네일">
-              <h3>강의 제목3</h3>
-              <p>강의 설명3</p>
-            </div>
-          </a>
-        </div>
-
+            <a href="#1">
+              <div class="lecture_box2">
+                <img src="/resources/img/index/night.png" alt="강의썸네일">
+                <h3>${item.lectureName}</h3>
+                <p>${item.description}</p>
+              </div>
+            </a>
+          </div>
+        </c:forEach>
 
       </div>
     </section>
