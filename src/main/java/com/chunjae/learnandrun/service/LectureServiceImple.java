@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.net.URLEncoder;
@@ -67,19 +68,33 @@ public class LectureServiceImple implements LectureService{
     }
 
     @Override
-    public int deleteLecture(int lectureNo) {
+    public int deleteLecture(String uploadPath, int lectureNo) {
+
+        String thumbnailName=detailLecture(lectureNo).getThumbnail();
+        String lectureDataName=detailLecture(lectureNo).getLectureData();
+
         int result=mapper.deleteLecture(lectureNo);
+
+        if(result>0){
+            File file1=new File(uploadPath+"/thumbnail/"+thumbnailName);
+            file1.delete();
+            File file2=new File(uploadPath+"/lectureData/"+lectureDataName);
+            file2.delete();
+        }
+
         return result;
     }
 
     @Override
     public int insertLecture(String uploadPath, LectureDTO dto) {
 
-        String thumbnail=thumbnailUpload(uploadPath, dto);
+        String thumbnailPath=uploadPath+"/thumbnail";
+        String thumbnail=thumbnailUpload(thumbnailPath, dto);
         dto.setThumbnail(thumbnail);
 
-        String zip=zipUpload(uploadPath, dto);
-        dto.setLectureData(zip);
+        String lectureDataPath=uploadPath+"/lectureData";
+        String lectureData=lectureDataUpload(lectureDataPath, dto);
+        dto.setLectureData(lectureData);
 
         int result=mapper.insertLecture(dto);
 
@@ -90,30 +105,36 @@ public class LectureServiceImple implements LectureService{
     }
 
     @Override
-    public void updateLecture(String uploadPath, LectureDTO dto) {
+    public void updateLecture(String uploadPath, LectureDTO dto, boolean ThumbnailIsEmpty, boolean LectureDataIsEmpty) {
 
-        String thumbnail=thumbnailUpload(uploadPath, dto);
-        dto.setThumbnail(thumbnail);
-        
-        //수정 전 파일 삭제 기능 추가하기
+        if(!ThumbnailIsEmpty){
+            String thumbnailPath=uploadPath+"/thumbnail";
+            String thumbnail=thumbnailUpload(thumbnailPath, dto);
+            dto.setThumbnail(thumbnail);
+            File file=new File(uploadPath+"/thumbnail/"+detailLecture(dto.getLectureNo()).getThumbnail());
+            file.delete();
+        }
 
-        String zip=zipUpload(uploadPath, dto);
-        dto.setLectureData(zip);
+        if(!LectureDataIsEmpty){
+            String lectureDataPath=uploadPath+"/lectureData";
+            String lectureData=lectureDataUpload(lectureDataPath, dto);
+            dto.setLectureData(lectureData);
+            File file=new File(uploadPath+"/lectureData/"+detailLecture(dto.getLectureNo()).getLectureData());
+            file.delete();
+        }
+
+        HashMap<String, Object> hm=new HashMap<>();
+        hm.put("dto", dto);
+        hm.put("ThumbnailIsEmpty", ThumbnailIsEmpty);
+        hm.put("LectureDataIsEmpty", LectureDataIsEmpty);
         
-        mapper.updateLecture(dto);
+        mapper.updateLecture(hm);
     }
 
     /** 썸네일 업로드 */
     private String thumbnailUpload(String uploadPath, LectureDTO dto){
 
-
-        System.out.println();
-        System.out.println();
-        System.out.println("가나다라");
-        System.out.println();
-        System.out.println();
         MultipartFile multi= dto.getThumbnailFile();
-
 
         String originalFilename=multi.getOriginalFilename();
         originalFilename= URLEncoder.encode(originalFilename, StandardCharsets.UTF_8)
@@ -135,11 +156,11 @@ public class LectureServiceImple implements LectureService{
                 File thumbnail=new File(thumbnailPath);
                 Thumbnailator.createThumbnail(file, thumbnail, 240, 180);
 
-                //로컬에 업로드
-                String localPath="D:\\LearnAndRun_test\\src\\main\\webapp\\upload\\img"
-                        +"/"+"thumbnail_"+uuid+"_"+originalFilename;
+/*                //로컬에 업로드
+                String localPath="D:\\LearnAndRun_test\\src\\main\\webapp\\upload\\thumbnail"
+                        +"/"+thumbnailName;
                 File thumbnailLocal=new File(localPath);
-                Thumbnailator.createThumbnail(file, thumbnailLocal, 240, 180);
+                Thumbnailator.createThumbnail(file, thumbnailLocal, 240, 180);*/
 
                 //원본 이미지 삭제
                 file.delete();
@@ -152,8 +173,8 @@ public class LectureServiceImple implements LectureService{
         return thumbnailName;
     }
 
-    /** zip파일 업로드 */
-    private String zipUpload(String uploadPath, LectureDTO dto){
+    /** lectureData zip 파일 업로드 */
+    private String lectureDataUpload(String uploadPath, LectureDTO dto){
 
         MultipartFile multi= dto.getLectureDataFile();
 
@@ -161,27 +182,30 @@ public class LectureServiceImple implements LectureService{
         String originalFilename=multi.getOriginalFilename();
         originalFilename= URLEncoder.encode(originalFilename, StandardCharsets.UTF_8)
                 .replace("+", "%20");
-        String zipName="";
+        String lectureDataName="";
 
         try{
             if(!multi.isEmpty()){
                 UUID uuid= UUID.randomUUID();
-                String fileName=uuid+"_"+originalFilename;
-                File file=new File(uploadPath, fileName);
+                lectureDataName="lecture_"+uuid+"_"+originalFilename;
+                File file=new File(uploadPath, lectureDataName);
+//                String fileName=uuid+"_"+originalFilename;
+//                File file=new File(uploadPath, fileName);
                 multi.transferTo(file);
 
-                zipName="lecture_"+uuid+"_"+originalFilename;
-
+/*
                 //로컬에 업로드
-                String localPath="D:\\LearnAndRun_test\\src\\main\\webapp\\upload\\img"
-                        +"/"+"lecture_"+uuid+"_"+originalFilename;
-                File zipLocal=new File(localPath);
-                multi.transferTo(zipLocal);
+                String localPath="D:\\LearnAndRun_test\\src\\main\\webapp\\upload\\lectureData"
+                        +"/"+lectureDataName;
+                File lectureDataLocal=new File(localPath);
+                multi.transferTo(lectureDataLocal);
+*/
+
             }
         }catch (IOException e){
             System.out.println(e);
         }
 
-        return zipName;
+        return lectureDataName;
     }
 }
