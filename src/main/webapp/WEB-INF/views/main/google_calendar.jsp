@@ -161,7 +161,10 @@
           <c:forEach var="item" items="${bo_list}">
             <li>
               <img src="/resources/img/index/flower_icon.png" alt="꽃리스트">
-              ${item.startDate} ${item.lectureName}
+              ${item.startDate}
+                <a href="#">
+                    ${item.lectureName}
+                </a>
             </li>
           </c:forEach>
 
@@ -180,7 +183,7 @@
 
             <a href="#1">
               <div class="lecture_box2">
-                <img src="/resources/img/index/night.png" alt="강의썸네일">
+                <img src="/getImage/${item.thumbnail}" alt="강의썸네일">
                 <h3>${item.lectureName}</h3>
                 <p>${item.description}</p>
               </div>
@@ -204,10 +207,6 @@
   </div>
 
 </div>
-
-
-
-
 
 </body>
 </html>

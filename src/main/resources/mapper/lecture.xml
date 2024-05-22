@@ -111,6 +111,20 @@
 
     </select>
 
+    <select id="hot_lecture" resultType="com.chunjae.learnandrun.dto.LectureDTO">
+        SELECT l.lectureNo, l.lectureName, l.description, l.thumbnail
+        FROM lecture l
+        INNER JOIN (
+        SELECT lectureNo, COUNT(userNo) AS num_orders
+        FROM orders
+        WHERE orderDate >= DATE_SUB(NOW(), INTERVAL 1 MONTH)
+        AND authority = 1
+        GROUP BY lectureNo
+        LIMIT 0,12
+        ) AS o USING (lectureNo)
+        ORDER BY num_orders DESC;
+    </select>
+
     <select id="detailLecture" parameterType="int" resultType="com.chunjae.learnandrun.dto.LectureDTO">
         select lectureNo
              , lectureName
