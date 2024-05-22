@@ -26,15 +26,14 @@
                 <span>!</span>
             </h2>
             <h1>어떤 강의를 찾고 있나요?</h1>
-            <form id="search_form" method="get" action="/lecture_list/1">
+            <form id="search_form" method="get" action="#">
                 <img class="search" src="/resources/img/index/search_icon.gif" alt="검색 아이콘">
                 <%--            <select name="search">--%>
                 <%--                <option value="과목명">과목명</option>--%>
                 <%--                <option value="강사명">강사명</option>--%>
                 <%--                <option value="강의제목">강의제목</option>--%>
                 <%--            </select>--%>
-                <input type="hidden" name="search" id="search" value="all">
-                <input type="text" name="search_txt" id="search_txt">
+                <input type="text" name="searchtxt" id="searchtxt">
             </form>
         </div>
     </div>
