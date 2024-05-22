@@ -65,7 +65,9 @@ public class LectureController {
         model.addAttribute("search_txt", search_txt);
         model.addAttribute("sort", sort);
 
-        return "lecture/lecture_list";
+        model.addAttribute("contentpage","lecture_list");
+
+        return "main/index";
     }
 
     /** 강의 등록 폼 */

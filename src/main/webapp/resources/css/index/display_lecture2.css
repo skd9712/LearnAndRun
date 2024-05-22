@@ -2,7 +2,7 @@
 /*개강 임박 강의 스크롤 구현*/
 
 .scrollBar {
-    height: 24vh;
+    height: 400px;
     margin: 0 auto;
     overflow-y: scroll;
 }
@@ -46,13 +46,13 @@
 
 /*최신 강의 슬라이더 구현*/
 .lecture_box2>img{
-    width: 15vw;
-    height: 12vh;
+    width: 250px;
+    height: 150px;
     border-radius: 10px;
 }
 
 .display_lecture2{
-    width: 24vw;
+    width: 400px;
     margin: 0 auto;
     background: rgba(255,255,255,0.4);
     border-radius: 20px;
@@ -78,7 +78,7 @@
     overflow: hidden;
     margin: 0 auto;
     width: 80%;
-    height: 22vh;
+    height: 250px;
 }
 
 .slide2{
