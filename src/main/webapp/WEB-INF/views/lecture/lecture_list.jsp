@@ -26,6 +26,9 @@
         </div>
     </form>
 
+    <%-- 등록하기 : 관리자만 볼 수 있도록 수정하기 --%>
+    <a href="/lecture_insert" id="insert">강의등록</a>
+
     <%-- 정렬 --%>
     <ul class="select_list">
         <li class="select_option">

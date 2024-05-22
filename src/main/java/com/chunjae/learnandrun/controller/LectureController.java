@@ -80,19 +80,8 @@ public class LectureController {
             , LectureDTO dto
             , Model model){
 
-        String path="upload/img";
+        String path="upload";
         String uploadPath=request.getSession().getServletContext().getRealPath(path);
-
-/*        LectureDTO dto=new LectureDTO();
-        dto.setThumbnailFile(thumbnailFile);
-        dto.setLectureName(lectureName);
-        dto.setTeacher(teacher);
-        dto.setDescription(description);
-        dto.setSubjectName(subjectName);
-        dto.setTarget(target);
-        dto.setPrice(price);
-        dto.setStartDate(startDate);
-        dto.setLectureDataFile(lectureDataFile);*/
 
         int result=service.insertLecture(uploadPath, dto);
 
@@ -107,7 +96,7 @@ public class LectureController {
     public ResponseEntity<byte[]> getThumbnail(HttpServletRequest request
             , @PathVariable String filename){
 
-        String path="/upload/img";
+        String path="/upload/thumbnail";
         String realpath= request.getSession().getServletContext().getRealPath(path);
         String fname = URLEncoder.encode(filename, StandardCharsets.UTF_8)
                 .replace("+", "%20");
@@ -132,7 +121,7 @@ public class LectureController {
     @ResponseBody
     public  ResponseEntity<Resource> getFile(@PathVariable String filename, HttpServletRequest request, HttpServletResponse response){
 
-        String path="/upload/img";
+        String path="/upload/lectureData";
         String realpath=  request.getSession().getServletContext().getRealPath(path);
 
         String fname= URLEncoder.encode(filename, StandardCharsets.UTF_8).replace("+","%20");
@@ -180,25 +169,45 @@ public class LectureController {
         return "lecture/lecture_update";
     }
 
+    /** 강의 수정 결과 */
     @PostMapping("/lecture_update_result")
-    public String updateLectureResult(HttpServletRequest request, LectureDTO dto){
+    public String updateLectureResult(HttpServletRequest request, LectureDTO dto
+            , @RequestParam String prevLectureData
+            , @RequestParam String prevThumbnail){
 
-        String path="upload/img";
+        boolean ThumbnailIsEmpty=false;
+        boolean LectureDataIsEmpty=false;
+
+        if(dto.getThumbnailFile().isEmpty()){
+            //이전 파일로 유지
+            ThumbnailIsEmpty=true;
+        }
+
+        if(dto.getLectureDataFile().isEmpty()){
+            //이전 파일로 유지
+            LectureDataIsEmpty=true;
+        }
+
+        String path="upload";
         String uploadPath=request.getSession().getServletContext().getRealPath(path);
 
-        service.updateLecture(uploadPath, dto);
+        service.updateLecture(uploadPath, dto, ThumbnailIsEmpty, LectureDataIsEmpty);
 
-        return "redirect:lecture_list";
+        return "redirect:/lecture_list";
     }
 
     /** 강의 삭제 */
     @GetMapping("/lecture_delete/{lectureNo}")
-    public String deleteLecture(@PathVariable int lectureNo, Model model){
+    public String deleteLecture(HttpServletRequest request, @PathVariable int lectureNo, Model model){
 
-        int result=service.deleteLecture(lectureNo);
+        String path="upload";
+        String uploadPath=request.getSession().getServletContext().getRealPath(path);
+
+        int result=service.deleteLecture(uploadPath, lectureNo);
+
 
         model.addAttribute("result", result);
 
-        return "lecture/lecture_delete";
+        return "redirect:/lecture_list";
     }
 }

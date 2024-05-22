@@ -8,6 +8,11 @@
     width: 80vw;
 }
 
+h2{
+    position: relative;
+    left: 5px;
+}
+
 .line{
     border: 1px solid silver;
     margin-top: 10px;

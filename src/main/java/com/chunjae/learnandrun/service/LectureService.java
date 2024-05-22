@@ -11,9 +11,9 @@ public interface LectureService {
 
     LectureDTO detailLecture(int lectureNo);
 
-    int deleteLecture(int lectureNo);
+    int deleteLecture(String uploadPath, int lectureNo);
 
     int insertLecture(String uploadPath, LectureDTO dto);
 
-    void updateLecture(String uploadPath, LectureDTO dto);
+    void updateLecture(String uploadPath, LectureDTO dto, boolean ThumbnailIsEmpty, boolean LectureDataIsEmpty);
 }

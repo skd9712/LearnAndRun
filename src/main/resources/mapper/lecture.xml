@@ -131,17 +131,56 @@
         , #{lectureData}
         )
     </insert>
-    <update id="updateLecture" parameterType="com.chunjae.learnandrun.dto.LectureDTO">
-        update lecture
-        set lectureName=#{lectureName}
-          , teacher=#{teacher}
-          , subjectName=#{subjectName}
-          , description=#{description}
-          , price=#{price}
-          , startDate=#{startDate}
-          , target=#{target}
-          , thumbnail=#{thumbnail}
-          , lectureData=#{lectureData}
-        where lectureNo=#{lectureNo}
+    <update id="updateLecture" parameterType="hashmap">
+        <choose>
+            <when test="ThumbnailIsEmpty==true and LectureDataIsEmpty==true">
+                update lecture
+                set lectureName=#{dto.lectureName}
+                , teacher=#{dto.teacher}
+                , subjectName=#{dto.subjectName}
+                , description=#{dto.description}
+                , price=#{dto.price}
+                , startDate=#{dto.startDate}
+                , target=#{dto.target}
+                where lectureNo=#{dto.lectureNo}
+            </when>
+            <when test="ThumbnailIsEmpty==true">
+                update lecture
+                set lectureName=#{dto.lectureName}
+                , teacher=#{dto.teacher}
+                , subjectName=#{dto.subjectName}
+                , description=#{dto.description}
+                , price=#{dto.price}
+                , startDate=#{dto.startDate}
+                , target=#{dto.target}
+                , lectureData=#{dto.lectureData}
+                where lectureNo=#{dto.lectureNo}
+            </when>
+            <when test="LectureDataIsEmpty==true">
+                update lecture
+                set lectureName=#{dto.lectureName}
+                , teacher=#{dto.teacher}
+                , subjectName=#{dto.subjectName}
+                , description=#{dto.description}
+                , price=#{dto.price}
+                , startDate=#{dto.startDate}
+                , target=#{dto.target}
+                , thumbnail=#{dto.thumbnail}
+                where lectureNo=#{dto.lectureNo}
+            </when>
+            <otherwise>
+                update lecture
+                set lectureName=#{dto.lectureName}
+                , teacher=#{dto.teacher}
+                , subjectName=#{dto.subjectName}
+                , description=#{dto.description}
+                , price=#{dto.price}
+                , startDate=#{dto.startDate}
+                , target=#{dto.target}
+                , thumbnail=#{dto.thumbnail}
+                , lectureData=#{dto.lectureData}
+                where lectureNo=#{dto.lectureNo}
+            </otherwise>
+        </choose>
     </update>
 </mapper>
