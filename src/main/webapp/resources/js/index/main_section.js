@@ -5,7 +5,7 @@ var searchKeywords = ["고등 수학", "중등 국어", "중등 영어", "중등
 var isTyping = false;
 
 // input 요소 가져오기
-var searchInput = document.getElementById("searchtxt");
+var searchInput = document.getElementById("search_txt");
 
 // 검색어를 한 글자씩 타이핑하는 함수
 function typeSearchKeyword(keyword, index) {
