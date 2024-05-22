@@ -16,7 +16,7 @@ public interface UserService {
 
     UserDTO detailUser(String userId);
 
-    List<UserDTO> listUser(String search, String search_txt);
+    List<UserDTO> listUser(int startRow, int pageSize, String search, String search_txt);
 
     int getUserCount(String search, String search_txt);
 }

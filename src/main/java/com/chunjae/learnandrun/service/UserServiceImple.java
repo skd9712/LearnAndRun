@@ -53,8 +53,10 @@ public class UserServiceImple implements UserService{
         return result;
     }
     @Override
-    public List<UserDTO> listUser(String search, String search_txt) {
+    public List<UserDTO> listUser(int startRow, int pageSize, String search, String search_txt) {
         HashMap<String, Object> hm = new HashMap<>();
+        hm.put("startRow",startRow);
+        hm.put("pageSize",pageSize);
         hm.put("search",search);
         hm.put("search_txt",search_txt);
 
