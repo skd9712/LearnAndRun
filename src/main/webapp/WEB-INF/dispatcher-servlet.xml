@@ -13,7 +13,8 @@
     <mvc:annotation-driven>
     </mvc:annotation-driven>
 
-    <mvc:resources mapping="/resources/**" location="/resources/"/> <!--css, js들을 연결하는 코드 (resources 안에 있는 것들 매핑: resources/main.js 등등)-->
+    <mvc:resources mapping="/resources/**"
+                   location="/resources/"/> <!--css, js들을 연결하는 코드 (resources 안에 있는 것들 매핑: resources/main.js 등등)-->
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> <!--어떤 뷰를 쓸건지에 대해 (bean 등록)-->
         <property name="prefix" value="/WEB-INF/views/"/> <!--controller에서 받아온 값의 앞에 써주는 것-->
@@ -24,10 +25,12 @@
 
     <!--controller에 어노테이션으로 만든 것들을 bean으로 만들어 한번에 가져옴-->
     <context:component-scan base-package="com.chunjae.learnandrun.controller"/>
+    <!--    인터럽트 처리-->
     <bean id="authInterrupt" class="com.chunjae.learnandrun.interrupt.UserInterrupt"/>
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/*"/>
+            <!--            아래부터는 로그인을 안해도 접근 가능한 링크-->
             <mvc:exclude-mapping path="/user_join*"/>
             <mvc:exclude-mapping path="/joinresult*"/>
             <mvc:exclude-mapping path="/checkId*"/>

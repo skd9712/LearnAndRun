@@ -15,20 +15,18 @@
 <body>
 <div id="wrap">
 <form method="post" action="loginresult">
-    <h2>로그인</h2>
     <ul>
+        <h2>로그인</h2>
         <li>
-            <label for="userId">아이디</label>
-            <input type="text" name="userId" id="userId">
+            <input type="text" name="userId" id="userId" placeholder="아이디">
         </li>
         <li>
-            <label for="password">비밀번호</label>
-            <input type="password" name="password" id="password">
+            <input type="password" name="password" id="password" placeholder="비밀번호">
         </li>
         <li>
             <button type="submit">로그인</button>
-            <button type="reset">취소</button>
         </li>
+        <a href="/user_join">회원가입</a>
         <li>
             <c:if test = "${result == 0}">
                 <div class="login_warn">사용자ID 또는 비밀번호를 잘못 입력하셨습니다.</div>
