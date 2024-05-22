@@ -67,7 +67,7 @@ public class LectureController {
 
         model.addAttribute("contentpage","lecture_list");
 
-        return "main/index";
+        return "lecture/lecture_list";
     }
 
     /** 강의 등록 폼 */

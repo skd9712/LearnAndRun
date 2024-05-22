@@ -21,4 +21,6 @@ public interface LectureMapper {
     int insertLecture(LectureDTO dto);
 
     void updateLecture(LectureDTO dto);
+
+    List<LectureDTO> new_lecture();
 }

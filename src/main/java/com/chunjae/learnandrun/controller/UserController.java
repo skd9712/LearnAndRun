@@ -50,7 +50,7 @@ public class UserController {
     @GetMapping("/user_login")
     public String login(Model model) {
         model.addAttribute("contentpage","login");
-        return "main/index";
+        return "user/user_login";
     }
 
     @PostMapping("/loginresult")

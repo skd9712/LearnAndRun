@@ -96,7 +96,19 @@
                 , lectureName
         from lecture
         where startDate > NOW()
+        order by startDate asc
+    </select>
+
+    <select id="new_lecture" resultType="com.chunjae.learnandrun.dto.LectureDTO">
+        select  lectureNo
+                , lectureName
+                , description
+                , thumbnail
+        from lecture
+        where NOW() >= startDate
         order by startDate desc
+        limit 0,3
+
     </select>
 
     <select id="detailLecture" parameterType="int" resultType="com.chunjae.learnandrun.dto.LectureDTO">
