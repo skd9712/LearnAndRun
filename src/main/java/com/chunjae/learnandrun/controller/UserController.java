@@ -153,10 +153,10 @@ public class UserController {
     }
 
     //관리자 페이지
-    @GetMapping("/user_manager")
+    @GetMapping(value = {"/user_manager","/user_manager/{curr}"})
     public String user_manager(HttpServletRequest request, Model model
             , RedirectAttributes redirect
-            , @RequestParam(required = false, defaultValue = "1") String curr
+            , @PathVariable(required = false) String curr
             , @RequestParam(required = false, defaultValue = "") String search
             , @RequestParam(required = false, defaultValue = "") String search_txt) {
         HttpSession session = request.getSession(false);
@@ -166,18 +166,19 @@ public class UserController {
                 // 사용자 아이디가 "admin"인지 확인
                 if ("admin".equals(user.getUserId())) {
                     // 관리자 페이지로 이동
-                    int currpage = Integer.parseInt(curr);
+                    int currpage = 1;
                     if(curr!=null)
                         currpage = Integer.parseInt(curr);
                     int totalCount = userService.getUserCount(search,search_txt);
-                    int pageSize = 12;
+                    int pageSize = 10;
                     int blockSize= 5;
                     MakePage page = new MakePage(currpage,totalCount,pageSize,blockSize);
-                    List<UserDTO> list = userService.listUser(search, search_txt);
+                    List<UserDTO> list = userService.listUser(page.getStartRow(),pageSize,search, search_txt);
                     model.addAttribute("list", list);
                     model.addAttribute("page",page);
                     model.addAttribute("search", search);
                     model.addAttribute("search_txt", search_txt);
+
                     return "user/user_manager";
                 } else {
                     // 일반 사용자인 경우 사용자 관리 페이지로 이동

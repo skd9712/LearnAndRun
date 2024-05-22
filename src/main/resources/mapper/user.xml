@@ -75,5 +75,8 @@
                 </choose>
             </if>
         </where>
+        <![CDATA[
+        limit #{startRow},#{pageSize}
+        ]]>
     </select>
 </mapper>
