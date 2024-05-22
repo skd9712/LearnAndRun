@@ -57,7 +57,7 @@
                 <input type="file" name="lectureDataFile" id="lectureDataFile">
             </li>
             <li>
-                <input type="submit" value="등록하기">
+                <input type="submit" id="append" value="등록하기">
             </li>
         </ul>
     </form>

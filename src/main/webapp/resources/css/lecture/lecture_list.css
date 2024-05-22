@@ -28,7 +28,7 @@ form{
     border: 2px solid #4C6EC6;
     border-radius: 5px;
     appearance:none;
-    background-image: url("/resources/img/caret-down-solid.svg");
+    background-image: url("/resources/img/lecture/caret-down-solid.svg");
     background-repeat: no-repeat;
     background-size: 10px;
     background-position: 70px 8px;
@@ -63,6 +63,17 @@ form{
     color: #4C6EC6;
 }
 
+#insert{
+    float: right;
+    color: white;
+    background-color: #4C6EC6;
+    text-decoration: none;
+    padding: 7px 20px;
+    border-radius: 10px;
+    letter-spacing: 1px;
+    font-size: 1.1rem;
+}
+
 /* 정렬 */
 ul li{
     list-style: none;
@@ -73,7 +84,8 @@ ul li{
     width: 70vw;
     margin: 140px auto;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4,auto);
+    grid-gap: 50px;
     place-items: center;
 }
 
@@ -85,15 +97,18 @@ ul li{
     padding: 15px 15px 70px 15px;
     /*padding: 2vh 1vw 6vh;*/
     margin: 35px 0;
-    border: 1px solid silver;
-    border-radius: 20px;
+    border: 2px solid #b7b9c7;
+    border-radius: 17px;
 }
 
 .lecture_room:hover{
     transform: translateY(-25px);
     transition-duration: 0.7s;
-    transition-timing-function: ease-in-out;
-    box-shadow: 0 10px 3px rgba(0, 0, 0, 0.5);
+    /*transition-timing-function: ease-in-out;*/
+    border-bottom: none;
+    border-radius: 17px;
+    border-color: #3A5693;
+    box-shadow: 0 16px #3A5693;
 }
 
 ul li{

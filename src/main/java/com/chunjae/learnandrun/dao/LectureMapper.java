@@ -20,7 +20,8 @@ public interface LectureMapper {
 
     int insertLecture(LectureDTO dto);
 
-    void updateLecture(LectureDTO dto);
+    void updateLecture(HashMap<String, Object> hm);
 
     List<LectureDTO> new_lecture();
+
 }

@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#wrap{
+    margin: 100px auto;
+    width: 75vw;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 5px;
+}
+
+.line{
+    border: 1px solid silver;
+    margin: 5px 0 40px;
+}
+
+#mainInfo{
+    margin: 0 auto;
+    width: 65vw;
+    height: 28vh;
+    border: 2px solid silver;
+    display: flex;
+    flex-direction: row;
+}
