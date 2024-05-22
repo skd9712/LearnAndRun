@@ -44,7 +44,7 @@
     <jsp:include page="top.jsp"/>
 
     <section>
-        <c:set var="contentpage" value="${page}"/>
+        <c:set var="contentpage" value="${contentpage}"/>
         <c:choose>
             <c:when test="${empty contentpage || contentpage==''}">
                 <div id="wrap_main">
@@ -74,17 +74,9 @@
                 <jsp:include page="../user_login.jsp"/>
             </c:when>
 
-            <%--
             <c:when test="${contentpage=='lecture_list'}">
-                <jsp:forward page="../lecture_list.jsp" />
+                <jsp:include page="../lecture/lecture_list.jsp"/>
             </c:when>
-            --%>
-
-<%--            <c:when test="${contentpage=='login'}">--%>
-<%--                <div class="section_box">--%>
-<%--                    <jsp:include page="login.jsp"/>--%>
-<%--                </div>--%>
-<%--            </c:when>--%>
 
 
 <%--            <c:when test="admin.do">--%>
