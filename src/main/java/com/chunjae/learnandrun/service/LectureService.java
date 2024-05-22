@@ -16,4 +16,8 @@ public interface LectureService {
     int insertLecture(String uploadPath, LectureDTO dto);
 
     void updateLecture(String uploadPath, LectureDTO dto);
+
+    List<LectureDTO> before_open_lecture();
+
+    List<LectureDTO> new_lecture();
 }
