@@ -1,0 +1,49 @@
+#mypage {
+    margin:0 auto;
+    padding: 0;
+    width: 70%;
+    position: relative;
+    height: 80%;
+    top: 10vh;
+}
+
+.myinfo {
+    margin-bottom: 20px;
+}
+
+.myinfo h3 {
+    margin: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.myinfo a {
+    display: block;
+    margin-top: 10px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.myinfo a:hover {
+    text-decoration: underline;
+}
+
+.lecture_list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.lecture_list li {
+    display: inline-block;
+    width: 48%;
+    margin-right: 2%;
+    vertical-align: top;
+}
+
+.lecture_list li:last-child {
+    margin-right: 0;
+}
+
+.lecture_list h4 {
+    margin-top: 0;
+}
