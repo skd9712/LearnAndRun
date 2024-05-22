@@ -10,14 +10,23 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" href="/resources/css/user/user_mypage.css">
 </head>
 <body>
-${user.userId}님의 마이 페이지
-<%--<input type="hidden" name="userNo" id="userNo" value="${user.userNo}">--%>
-<%--<input type="hidden" name="password" id="password" value="${user.password}">--%>
-<%--<input type="hidden" name="userName" id="userName" value="${user.userName}">--%>
-<%--<input type="hidden" name="addr" id="addr" value="${user.addr}">--%>
-<a href="/user_update">내정보 수정</a>
-<a href="/user_logout">로그아웃</a>
+<div id="mypage">
+    <section class="myinfo">
+        <h3>${user.userId}님의 마이 페이지</h3>
+        <a href="/user_update">내정보 수정</a>
+        <a href="/user_logout">로그아웃</a>
+    </section>
+    <ul class="lecture_list">
+    <li class="mylecture">
+        <h4>수강중인 강의 목록</h4>
+    </li>
+    <li class="wishlist">
+        <h4>내가 찜한 목록</h4>
+    </li>
+    </ul>
+</div>
 </body>
 </html>
