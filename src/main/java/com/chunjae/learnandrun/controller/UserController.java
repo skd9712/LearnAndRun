@@ -1,5 +1,6 @@
 package com.chunjae.learnandrun.controller;
 
+import com.chunjae.learnandrun.dto.MakePage;
 import com.chunjae.learnandrun.dto.UserDTO;
 import com.chunjae.learnandrun.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -43,13 +45,13 @@ public class UserController {
         String fullAddr = roadAddress + " " + extraAddress + " " + detailAddress;
         dto.setAddr(fullAddr);
         userService.insertUser(dto);
-        return "user/user_login";
+        return "redirect:/user_login";
     }
 
     // 로그인
     @GetMapping("/user_login")
     public String login(Model model) {
-        model.addAttribute("contentpage","login");
+        model.addAttribute("contentpage", "login");
         return "user/user_login";
     }
 
@@ -100,6 +102,7 @@ public class UserController {
         }
         return "redirect:/index";
     }
+
     //마이페이지
     @GetMapping("/user_mypage")
     public String mypage(HttpServletRequest request, Model model, RedirectAttributes redirect) {
@@ -114,42 +117,48 @@ public class UserController {
         redirect.addFlashAttribute("message", "로그인필요");
         return "user/user_login";
     }
+
     //사용자 정보 수정
     @GetMapping("/user_update")
-    public String updateUser(HttpSession session, Model model){
+    public String updateUser(HttpSession session, Model model) {
 
         UserDTO sessionUser = (UserDTO) session.getAttribute("dto");
-        if(sessionUser!=null){
+        if (sessionUser != null) {
             String userId = sessionUser.getUserId();
             UserDTO user = userService.detailUser(userId);
-            model.addAttribute("user",user);
+            model.addAttribute("user", user);
         }
 
         return "user/user_update";
     }
+
     @PostMapping("/updateresult")
     public String updateUserResult(@ModelAttribute UserDTO dto
-            ,@RequestParam String roadAddress
+            , @RequestParam String roadAddress
             , @RequestParam String extraAddress
-            , @RequestParam String detailAddress, HttpSession session){
+            , @RequestParam String detailAddress, HttpSession session) {
         System.out.println("Updating user with data: " + dto);
         String fullAddr = roadAddress + " " + extraAddress + " " + detailAddress;
         dto.setAddr(fullAddr);
         int result = userService.updateUser(dto);
         System.out.println("Update result: " + result);
 
-        if(result>0){
+        if (result > 0) {
 
-            session.setAttribute("user",dto);
+            session.setAttribute("user", dto);
             return "user/user_mypage";
-        }else{
+        } else {
             return "redirect:/index";
         }
     }
 
     //관리자 페이지
     @GetMapping("/user_manager")
-    public String user_manager(HttpServletRequest request, Model model, RedirectAttributes redirect){
+    public String user_manager(HttpServletRequest request, Model model
+            , RedirectAttributes redirect
+            , @RequestParam(required = false, defaultValue = "1") String curr
+            , @RequestParam(required = false, defaultValue = "") String search
+            , @RequestParam(required = false, defaultValue = "") String search_txt) {
         HttpSession session = request.getSession(false);
         if (session != null) {
             UserDTO user = (UserDTO) session.getAttribute("dto");
@@ -157,17 +166,31 @@ public class UserController {
                 // 사용자 아이디가 "admin"인지 확인
                 if ("admin".equals(user.getUserId())) {
                     // 관리자 페이지로 이동
+                    int currpage = Integer.parseInt(curr);
+                    if(curr!=null)
+                        currpage = Integer.parseInt(curr);
+                    int totalCount = userService.getUserCount(search,search_txt);
+                    int pageSize = 12;
+                    int blockSize= 5;
+                    MakePage page = new MakePage(currpage,totalCount,pageSize,blockSize);
+                    List<UserDTO> list = userService.listUser(search, search_txt);
+                    model.addAttribute("list", list);
+                    model.addAttribute("page",page);
+                    model.addAttribute("search", search);
+                    model.addAttribute("search_txt", search_txt);
                     return "user/user_manager";
                 } else {
                     // 일반 사용자인 경우 사용자 관리 페이지로 이동
                     model.addAttribute("user", user);
+                    redirect.addFlashAttribute("message", "관리자만 접속 가능합니다.");
                     return "redirect:/index";
                 }
             }
         }
         // 세션이 없거나 사용자 정보가 없는 경우 로그인 페이지로 리다이렉트
         redirect.addFlashAttribute("message", "로그인필요");
-        return "redirect:/user/user_login";
+        return "redirect:/user_login";
     }
+
 
 }

@@ -5,6 +5,9 @@ import com.chunjae.learnandrun.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.List;
+
 @Service("userService")
 public class UserServiceImple implements UserService{
     private final UserMapper userMapper;
@@ -39,4 +42,24 @@ public class UserServiceImple implements UserService{
     public UserDTO detailUser(String userId) {
         return userMapper.detailUser(userId);
     }
+
+    @Override
+    public int getUserCount(String search, String search_txt) {
+        HashMap<String,Object> hm = new HashMap<>();
+        hm.put("search",search);
+        hm.put("search_txt",search_txt);
+
+        int result = userMapper.getUserCount(hm);
+        return result;
+    }
+    @Override
+    public List<UserDTO> listUser(String search, String search_txt) {
+        HashMap<String, Object> hm = new HashMap<>();
+        hm.put("search",search);
+        hm.put("search_txt",search_txt);
+
+        List<UserDTO> list = userMapper.listUser(hm);
+        return list;
+    }
+
 }
