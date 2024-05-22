@@ -12,6 +12,8 @@ public interface LectureMapper {
 
     List<LectureDTO> listLecture(HashMap<String, Object> hm);
 
+    List<LectureDTO> before_open_lecture();
+
     LectureDTO detailLecture(int lectureNo);
 
     int deleteLecture(int lectureNo);

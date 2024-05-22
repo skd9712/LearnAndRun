@@ -89,6 +89,16 @@
         ]]>
     </select>
 
+
+    <select id="before_open_lecture" resultType="com.chunjae.learnandrun.dto.LectureDTO">
+        select  lectureNo
+                , startDate
+                , lectureName
+        from lecture
+        where startDate > NOW()
+        order by startDate desc
+    </select>
+
     <select id="detailLecture" parameterType="int" resultType="com.chunjae.learnandrun.dto.LectureDTO">
         select lectureNo
              , lectureName
