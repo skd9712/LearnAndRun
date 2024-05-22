@@ -9,6 +9,7 @@
 <jsp:include page="../main/top.jsp"/>
 <div id="wrap">
 <form method="post" action="loginresult">
+<%--    <img src="/resources/img/index/rabbit_moon.png" alt="토끼"/>--%>
     <ul>
         <h2>로그인</h2>
         <li>
