@@ -21,4 +21,5 @@ public interface LectureService {
 
     List<LectureDTO> new_lecture();
 
+    List<LectureDTO> hot_lecture();
 }
