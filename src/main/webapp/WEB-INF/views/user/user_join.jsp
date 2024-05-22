@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: user
-  Date: 2024-05-21
-  Time: 오후 1:17
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -20,6 +13,7 @@
     <script src="/resources/js/user/findaddr.js"></script>
 </head>
 <body>
+<jsp:include page="../main/top.jsp"/>
 <div id="wrap">
     <form method="post" action="joinresult">
         <ul>
@@ -66,5 +60,6 @@
     </form>
     <script defer src="/resources/js/user/valid.js"></script>
 </div>
+<jsp:include page="../main/footer.jsp"/>
 </body>
 </html>
