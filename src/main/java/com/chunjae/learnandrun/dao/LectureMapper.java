@@ -24,4 +24,5 @@ public interface LectureMapper {
 
     List<LectureDTO> new_lecture();
 
+    List<LectureDTO> hot_lecture();
 }

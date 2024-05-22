@@ -23,11 +23,17 @@ public class IndexController {
         //최신 강의 리스트
         List<LectureDTO> nl_list = service.new_lecture();
 
+        //인기 강의 리스트
+        List<LectureDTO> hl_list = service.hot_lecture();
+
         //개강 임박 강의 리스트 넘김
         model.addAttribute("bo_list", bo_list);
 
         //최신 강의 리스트 넘김
         model.addAttribute("nl_list", nl_list);
+
+        //인기 강의 리스트 넘김
+        model.addAttribute("hl_list", hl_list);
 
         //데이터 넘겨야 하는 페이지들
         model.addAttribute("lec","display_lecture.jsp");

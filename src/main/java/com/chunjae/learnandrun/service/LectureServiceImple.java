@@ -62,6 +62,12 @@ public class LectureServiceImple implements LectureService{
     }
 
     @Override
+    public List<LectureDTO> hot_lecture() {
+        List<LectureDTO> list = mapper.hot_lecture();
+        return list;
+    }
+
+    @Override
     public LectureDTO detailLecture(int lectureNo) {
         LectureDTO dto=mapper.detailLecture(lectureNo);
         return dto;
