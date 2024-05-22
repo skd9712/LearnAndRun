@@ -71,7 +71,7 @@
             </c:when>
 
             <c:when test="${contentpage=='login'}">
-                <jsp:include page="../user_login.jsp"/>
+                <jsp:include page="../user/user_login.jsp"/>
             </c:when>
 
             <c:when test="${contentpage=='lecture_list'}">

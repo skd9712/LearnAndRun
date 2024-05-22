@@ -27,7 +27,7 @@ public class UserController {
     // 회원가입
     @GetMapping("/user_join")
     public String join() {
-        return "user_join";
+        return "user/user_join";
     }
 
     @PostMapping("/joinresult")
@@ -43,7 +43,7 @@ public class UserController {
         String fullAddr = roadAddress + " " + extraAddress + " " + detailAddress;
         dto.setAddr(fullAddr);
         userService.insertUser(dto);
-        return "redirect:/user_login";
+        return "user/user_login";
     }
 
     // 로그인
@@ -61,16 +61,19 @@ public class UserController {
         if (user != null) {
             pwd = dto.getPassword();
             encodePwd = user.getPassword();
+            // BCryptPasswordEncoder를 사용하여 입력된 비밀번호와 저장된 비밀번호가 일치하는지 확인
             if (bCryptPasswordEncoder.matches(pwd, encodePwd)) {
                 user.setPassword("");
                 session.setAttribute("dto", user);
                 return "redirect:/index";
             } else {
+                // 비밀번호가 일치하지 않는 경우 로그인 실패 처리
                 int result = 0;
                 redirect.addFlashAttribute("result", result);
                 return "redirect:/user_login";
             }
         } else {
+            // 사용자 정보가 존재하지 않는 경우 로그인 실패 처리
             int result = 0;
             redirect.addFlashAttribute("result", result);
             return "redirect:/user_login";
@@ -97,7 +100,7 @@ public class UserController {
         }
         return "redirect:/index";
     }
-
+    //마이페이지
     @GetMapping("/user_mypage")
     public String mypage(HttpServletRequest request, Model model, RedirectAttributes redirect) {
         HttpSession session = request.getSession(false);
@@ -105,12 +108,13 @@ public class UserController {
             UserDTO user = (UserDTO) session.getAttribute("dto");
             if (user != null) {
                 model.addAttribute("user", user);
-                return "user_mypage";
+                return "user/user_mypage";
             }
         }
         redirect.addFlashAttribute("message", "로그인필요");
-        return "redirect:/user_login";
+        return "user/user_login";
     }
+    //사용자 정보 수정
     @GetMapping("/user_update")
     public String updateUser(HttpSession session, Model model){
 
@@ -121,7 +125,7 @@ public class UserController {
             model.addAttribute("user",user);
         }
 
-        return "user_update";
+        return "user/user_update";
     }
     @PostMapping("/updateresult")
     public String updateUserResult(@ModelAttribute UserDTO dto
@@ -137,9 +141,33 @@ public class UserController {
         if(result>0){
 
             session.setAttribute("user",dto);
-            return "redirect:/user_mypage";
+            return "user/user_mypage";
         }else{
             return "redirect:/index";
         }
     }
+
+    //관리자 페이지
+    @GetMapping("/user_manager")
+    public String user_manager(HttpServletRequest request, Model model, RedirectAttributes redirect){
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            UserDTO user = (UserDTO) session.getAttribute("dto");
+            if (user != null) {
+                // 사용자 아이디가 "admin"인지 확인
+                if ("admin".equals(user.getUserId())) {
+                    // 관리자 페이지로 이동
+                    return "user/user_manager";
+                } else {
+                    // 일반 사용자인 경우 사용자 관리 페이지로 이동
+                    model.addAttribute("user", user);
+                    return "redirect:/index";
+                }
+            }
+        }
+        // 세션이 없거나 사용자 정보가 없는 경우 로그인 페이지로 리다이렉트
+        redirect.addFlashAttribute("message", "로그인필요");
+        return "redirect:/user/user_login";
+    }
+
 }

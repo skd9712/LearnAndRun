@@ -1,6 +1,7 @@
 .id_null{
     color: green;
     display: none;
+    margin-top: 10px;
 }
 .id_notnull{
     color: red;
@@ -10,9 +11,11 @@
     display: none;
 }
 #wrap{
-    margin:5% auto;
+    margin:0 auto;
     padding: 0;
     width: 30vw;
+    height: 80%;
+    top: 10vh;
     position: relative;
 }
 #wrap ul{
@@ -22,7 +25,10 @@
     padding: 10px;
     text-align: center;
     left: 50%;
+    top:10vh;
     transform: translateX(-50%);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 #wrap ul li{
     list-style: none;
@@ -38,15 +44,26 @@ li > input {
 }
 
 button {
-    padding: 6px 90px;
+    padding: 10px 50px;
     color: #FFFFFF;
-    border-color: #2189E9;
+    border: none; /* 테두리 제거 */
     background-color: #2189E9;
-    border-radius: 7px;
+    border-radius: 20px; /* 더 둥근 모서리 */
     width: 90%;
-    font-size: 1.2rem;
-    margin: 10px 0;
+    font-size: 1rem;
+    margin: 20px 0;
+    cursor: pointer; /* 마우스 오버 시 커서 변경 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 상자 그림자 추가 */
+    transition: all 0.3s ease; /* 부드러운 상태 변화 효과 */
 }
 button:hover {
     background: #3c66ab;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 키우기 */
+    transform: translateY(-2px); /* 호버 시 버튼을 약간 띄움 */
+}
+
+button:active {
+    background: #1a508b;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 클릭 시 그림자 줄이기 */
+    transform: translateY(1px); /* 클릭 시 버튼을 약간 내림 */
 }
