@@ -1,0 +1,17 @@
+#order_list{
+    margin: 0 auto;
+    padding: 0;
+    width: 60vw;
+    height: 80%;
+    top: 12vh;
+    position: relative;
+}
+.admin_func{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.admin_func a{
+    margin: 0 10px;
+}

@@ -18,4 +18,13 @@
                 , #{order_id}
         )
     </insert>
+    <select id="listOrder" resultType="com.chunjae.learnandrun.dto.OrderDTO">
+        select orderNo, userNo,orderDate,lectureNo,authority,orderNum
+        from orders
+    </select>
+    <update id="updateAuthorities" parameterType="hashmap">
+        update orders
+        set authority = #{authority}
+        where orderNo = #{orderNo}
+    </update>
 </mapper>
