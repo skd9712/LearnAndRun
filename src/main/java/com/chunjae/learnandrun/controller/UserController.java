@@ -229,9 +229,10 @@ public class UserController {
         redirect.addFlashAttribute("message", "로그인필요");
         return "redirect:/user_login";
     }
-
-    @GetMapping("/order_list")
+//강의 리스트
+    @GetMapping(value = {"/order_list","/order_list/{curr}"})
     public String order_list(HttpServletRequest request
+            , @PathVariable(required = false) String curr
             , Model model
             , RedirectAttributes redirect) {
         HttpSession session = request.getSession(false);
@@ -239,8 +240,16 @@ public class UserController {
             UserDTO user = (UserDTO) session.getAttribute("dto");
             if (user != null) {
                 if ("admin".equals(user.getUserId())) {
-                    List<OrderDTO> list = orderService.listOrder();
+                    int currpage = 1;
+                    if (curr != null)
+                        currpage = Integer.parseInt(curr);
+                    int totalCount = orderService.getOrderCount();
+                    int pageSize = 10;
+                    int blockSize = 5;
+                    MakePage page = new MakePage(currpage, totalCount, pageSize, blockSize);
+                    List<OrderDTO> list = orderService.listOrder(page.getStartRow(),pageSize);
                     model.addAttribute("list", list);
+                    model.addAttribute("page",page);
                     return "order/order_list";
                 } else {
                     model.addAttribute("user", user);

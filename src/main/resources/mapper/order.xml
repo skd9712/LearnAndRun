@@ -18,9 +18,16 @@
                 , #{order_id}
         )
     </insert>
-    <select id="listOrder" resultType="com.chunjae.learnandrun.dto.OrderDTO">
+    <select id="getOrderCount" resultType="int">
+        select count(*)
+        from orders
+    </select>
+    <select id="listOrder" parameterType="hashmap" resultType="com.chunjae.learnandrun.dto.OrderDTO">
         select orderNo, userNo,orderDate,lectureNo,authority,orderNum
         from orders
+        <![CDATA[
+        limit #{startRow},#{pageSize}
+        ]]>
     </select>
     <update id="updateAuthorities" parameterType="hashmap">
         update orders
