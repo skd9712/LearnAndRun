@@ -33,8 +33,31 @@
             <input type="checkbox" name="authority_${item.orderNo}" value="true" ${item.authority ? 'checked' : ''}/>
             Authority
         </li>
-
     </c:forEach>
+    <div id="page">
+        <c:if test="${page.prev}">
+        <a href="/order_list/1"><i class="fa-solid fa-angles-left"></i></a>
+        <a href="/order_list/${page.startBlock-1}"><i
+                class="fa-solid fa-angles-left"></i></a>
+        </c:if>
+        <c:forEach var="index" begin="${page.startBlock}" end="${page.endBlock}">
+            <c:choose>
+                <c:when test="${index==page.currPage}">
+                    <p><c:out value="${index}"/></p>
+                </c:when>
+                <c:otherwise>
+                    <a href="/order_list/${index}"><c:out
+                            value="${index}"/></a>
+                </c:otherwise>
+            </c:choose>
+        </c:forEach>
+        <c:if test="${page.next}">
+            <a href="/order_list/${page.endBlock+1}">
+                <i class="fa-solid fa-angle-right"></i></a>
+            <a href="/order_list/${page.totalPage}">
+                <i class="fa-solid fa-angle-right"></i></a>
+        </c:if>
+    </div>
     <input type="submit" value="Update">
 </form>
 </div>

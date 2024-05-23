@@ -8,7 +8,9 @@ import java.util.Map;
 public interface OrderService {
     void insertOrder(int buyer_buyid, int lecture_id, String order_id);
 
-    List<OrderDTO> listOrder();
+    List<OrderDTO> listOrder(int startRow,int pageSize);
 
     void updateAuthorities(Map<String, Boolean> hm);
+
+    int getOrderCount();
 }
