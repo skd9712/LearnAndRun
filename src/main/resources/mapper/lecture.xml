@@ -106,7 +106,7 @@
                 , thumbnail
         from lecture
         where NOW() >= startDate
-        order by startDate desc
+        order by lectureNo desc
         limit 0,3
 
     </select>
