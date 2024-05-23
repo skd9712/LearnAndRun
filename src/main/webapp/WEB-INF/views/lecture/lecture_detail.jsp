@@ -47,7 +47,7 @@
        </article>
         <ul class="ul2">
             <li>
-                <a href="#" id="order">바로결제</a>
+                <a href="/lecture_order/${lectureNo}" id="order">바로결제</a>
                 <a href="#" id="wish">찜하기</a>
             </li>
         </ul>
