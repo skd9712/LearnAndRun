@@ -50,7 +50,7 @@
             </div>
             <ul class="ul2">
                 <li>
-                    <a href="#">바로결제</a>
+                    <a href="/lecture_order/${dto.lectureNo}">바로결제</a>
                     <a href="#">찜하기</a>
                 </li>
             </ul>
