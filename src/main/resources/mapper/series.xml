@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.chunjae.learnandrun.dao.SeriesMapper">
+    <select id="listSeries" parameterType="int" resultType="com.chunjae.learnandrun.dto.SeriesDTO">
+        select seriesNo
+             , lectureNo
+             , detailName
+             , detailUrl
+        from series
+        where lectureNo=#{lectureNo}
+    </select>
+    <insert id="insertSeries" parameterType="hashmap">
+        insert into series(lectureNo
+                         , detailName
+                         , detailUrl
+                         )
+        values(#{lectureNo}
+             , #{detailName}
+             , #{detailUrl}
+             )
+    </insert>
+    <delete id="deleteSeries" parameterType="int">
+        delete from series
+        where seriesNo=#{seriesNo}
+    </delete>
+</mapper>

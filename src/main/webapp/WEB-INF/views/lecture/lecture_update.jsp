@@ -7,6 +7,7 @@
     <script src="/resources/js/lecture/lecture_update.js"></script>
 </head>
 <body>
+<jsp:include page="../main/top.jsp"/>
 <div id="wrap">
     <h2>강의 수정</h2>
     <div class="line"></div>
@@ -93,5 +94,6 @@
         </ul>
     </form>
 </div>
+<jsp:include page="../main/top.jsp"/>
 </body>
 </html>

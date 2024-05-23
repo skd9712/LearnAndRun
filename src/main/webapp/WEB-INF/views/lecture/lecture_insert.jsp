@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="/resources/css/lecture/lecture_insert.css">
 </head>
 <body>
+<jsp:include page="../main/top.jsp"/>
 <div id="wrap">
     <h2>강의 등록</h2>
     <div class="line"></div>
@@ -62,5 +63,6 @@
         </ul>
     </form>
 </div>
+<jsp:include page="../main/footer.jsp"/>
 </body>
 </html>
