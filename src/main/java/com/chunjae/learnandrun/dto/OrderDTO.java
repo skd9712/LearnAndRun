@@ -12,4 +12,5 @@ public class OrderDTO {
     private String orderDate;
     private int lectureNo;
     private boolean authority;
+    private String orderNum;
 }

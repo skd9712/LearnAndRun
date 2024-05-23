@@ -12,10 +12,8 @@ const order_no = "order_"+uid+"_"+lid+"_"+(Math.random()*100) //주문번호 랜
 const onClickPay = async () => {
     //결제 정보 넘김
     IMP.request_pay({
-        //pg사 선택
+        //pg사 - 카카오페이 간편결제
         pg:"kakaopay"
-        //pg:"tosspayments"
-        //pg:"html5_inicis"
         , pay_method: "card"
         , amount: total_price.toString()
         , name: pname.toString()
