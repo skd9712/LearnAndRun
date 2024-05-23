@@ -1,4 +1,10 @@
 
+/*body{*/
+/*    background-image: url("/resources/img/index/night_background4.png");*/
+/*    background-size: cover;*/
+/*    background-repeat: no-repeat;*/
+/*}*/
+
 #wrap{
     margin: 0 auto;
     width: 90vw;
@@ -94,9 +100,10 @@ ul li{
 }
 
 .lecture_room{
-    padding: 15px 15px 70px 15px;
+    padding: 15px;
     /*padding: 2vh 1vw 6vh;*/
     margin: 35px 0;
+    background: white;
     border: 2px solid #b7b9c7;
     border-radius: 17px;
 }
@@ -111,9 +118,6 @@ ul li{
     box-shadow: 0 16px #3A5693;
 }
 
-ul li{
-    list-style: none;
-}
 
 .thumbnail{
     width: 240px;

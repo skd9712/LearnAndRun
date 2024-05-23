@@ -27,10 +27,10 @@
             <c:otherwise>
                 <c:choose>
                     <c:when test="${uid==1}">
-                        <a class="menu_tab" href="#">관리자페이지</a>
+                        <a class="menu_tab" href="/user_manager">관리자페이지</a>
                     </c:when>
                     <c:otherwise>
-                        <a class="menu_tab" href="#">마이페이지</a>
+                        <a class="menu_tab" href="/user_mypage">마이페이지</a>
                     </c:otherwise>
                 </c:choose>
                 <a class="menu_tab" id="logout_btn" href="/user_logout">로그아웃</a>

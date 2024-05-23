@@ -51,6 +51,7 @@
                 <a href="#" id="wish">찜하기</a>
             </li>
         </ul>
+
         <ul class="ul3">
             <li><a href="#lectureDescription">강의소개</a></li>
             <li><a href="#lectureData">강의자료</a></li>

@@ -162,7 +162,7 @@
             <li>
               <img src="/resources/img/index/flower_icon.png" alt="꽃리스트">
               ${item.startDate}
-                <a href="#">
+                <a href="/lecture_detail/${item.lectureNo}">
                     ${item.lectureName}
                 </a>
             </li>
@@ -181,7 +181,7 @@
         <c:forEach var="item" items="${nl_list}">
           <div class="slide2">
 
-            <a href="#1">
+            <a href="/lecture_detail/${item.lectureNo}">
               <div class="lecture_box2">
                 <img src="/getImage/${item.thumbnail}" alt="강의썸네일">
                 <h3>${item.lectureName}</h3>

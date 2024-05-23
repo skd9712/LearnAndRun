@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.chunjae.learnandrun.dao.OrderMapper">
+    <insert id="insertOrder" parameterType="hashmap">
+        insert into orders( userNo
+                            , orderDate
+                            , lectureNo
+                            , authority
+                            , orderNum
+        )
+        values ( #{buyer_buyerid}
+                , NOW()
+                , #{lecture_id}
+                , 1
+                , #{order_id}
+        )
+    </insert>
+    <select id="listOrder" resultType="com.chunjae.learnandrun.dto.OrderDTO">
+        select orderNo, userNo,orderDate,lectureNo,authority,orderNum
+        from orders
+    </select>
+    <update id="updateAuthorities" parameterType="hashmap">
+        update orders
+        set authority = #{authority}
+        where orderNo = #{orderNo}
+    </update>
+</mapper>
