@@ -1,5 +1,6 @@
 package com.chunjae.learnandrun.dao;
 
+import com.chunjae.learnandrun.dto.LectureDTO;
 import com.chunjae.learnandrun.dto.UserDTO;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -21,4 +22,10 @@ public interface UserMapper {
     List<UserDTO> listUser(HashMap<String,Object> hm);
 
     int getUserCount(HashMap<String, Object> hm);
+
+    int deleteUser(int userNo);
+
+    List<LectureDTO> lectUser(int userNo);
+
+    List<LectureDTO> wishUser(int userNo);
 }

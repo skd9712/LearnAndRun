@@ -1,6 +1,7 @@
 package com.chunjae.learnandrun.service;
 
 
+import com.chunjae.learnandrun.dto.LectureDTO;
 import com.chunjae.learnandrun.dto.UserDTO;
 
 import java.util.List;
@@ -19,4 +20,10 @@ public interface UserService {
     List<UserDTO> listUser(int startRow, int pageSize, String search, String search_txt);
 
     int getUserCount(String search, String search_txt);
+
+    int deleteUser(int userNo);
+
+    List<LectureDTO> lectUser(int userNo);
+
+    List<LectureDTO> wishUser(int userNo);
 }

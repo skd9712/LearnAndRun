@@ -50,3 +50,36 @@ i:hover{
 i:active{
     cursor: pointer;
 }
+#page{
+    display: flex;
+    justify-content: center;
+}
+
+#page a, #page p{
+    margin: 3px;
+    padding: 3px;
+    font-size: 1.1rem;
+}
+
+a>i{
+    position: relative;
+    top: 4px;
+}
+/*관리자 페이지 크기*/
+#user_list{
+    margin: 0 auto;
+    padding: 0;
+    width: 60vw;
+    height: 80%;
+    top: 12vh;
+    position: relative;
+}
+.admin_func{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.admin_func a{
+    margin: 0 10px;
+}

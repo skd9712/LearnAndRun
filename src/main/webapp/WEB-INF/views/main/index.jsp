@@ -4,6 +4,8 @@
 <head>
     <title>Title</title>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="/resources/css/index/scroll_up.css">
+    <script defer src="/resources/js/index/scroll_up.js"></script>
     <style>
 
         @font-face {
@@ -22,20 +24,6 @@
         }
         * {
             font-family: 'SeoulNamsanM';
-        }
-
-        .section_box {
-            /* 기본적인 스타일 */
-            opacity: 0; /* 초기에는 투명하게 설정 */
-            transform: translateY(50px); /* 아래에서 위로 50px 만큼 이동 */
-
-            /* 트랜지션 */
-            transition: opacity 0.5s ease, transform 0.5s ease; /* 변경 사항에 대한 애니메이션 지정 */
-        }
-
-        .section_box.show {
-            opacity: 1; /* 보이게 만듦 */
-            transform: translateY(0); /* 이동하지 않음 */
         }
 
     </style>
@@ -67,63 +55,7 @@
         </div>
     </section>
 
-<%--    <section>--%>
-<%--        <c:set var="contentpage" value="${contentpage}"/>--%>
-<%--        <c:choose>--%>
-<%--            <c:when test="${empty contentpage || contentpage==''}">--%>
-<%--                <div id="wrap_main">--%>
-<%--                    <jsp:include page="main_section.jsp"/>--%>
-
-<%--                    <div class="section_box">--%>
-<%--                        <jsp:include page="promote_section.jsp"/>--%>
-<%--                    </div>--%>
-
-<%--                    <div id="subject_page1" class="section_box">--%>
-<%--                        <jsp:include page="subject_lecture.jsp"/>--%>
-<%--                    </div>--%>
-
-<%--                    <div class="section_box">--%>
-<%--                        <jsp:include page="${lec}"/>--%>
-<%--                    </div>--%>
-
-<%--                    <div class="section_box">--%>
-<%--                        <jsp:include page="${calendar}"/>--%>
-<%--                    </div>--%>
-
-<%--                </div>--%>
-
-<%--            </c:when>--%>
-
-<%--            <c:when test="${contentpage=='login'}">--%>
-<%--                <jsp:include page="../user/user_login.jsp"/>--%>
-<%--            </c:when>--%>
-
-<%--            <c:when test="${contentpage=='lecture_list'}">--%>
-<%--                <jsp:include page="../lecture/lecture_list.jsp"/>--%>
-<%--            </c:when>--%>
-<%--        </c:choose>--%>
-<%--    </section>--%>
-
-
-
     <jsp:include page="footer.jsp" flush="true"/>
 
-
-    <script>
-        window.addEventListener('scroll', function() {
-            // 각 section_box 요소들에 대해 반복
-            let sectionBoxes = document.querySelectorAll('.section_box');
-            sectionBoxes.forEach(function(sectionBox) {
-                // section_box 요소의 상단 위치 계산
-                let sectionBoxTop = sectionBox.getBoundingClientRect().top;
-                // 윈도우의 높이
-                let windowHeight = window.innerHeight;
-                // 특정 위치까지 스크롤됐을 때 클래스 추가
-                if (sectionBoxTop < windowHeight * 0.75) {
-                    sectionBox.classList.add('show');
-                }
-            });
-        });
-    </script>
 </body>
 </html>
