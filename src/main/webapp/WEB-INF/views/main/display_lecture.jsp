@@ -13,7 +13,7 @@
 
                 <div class="slide">
                     <c:forEach var="i" begin="0" end="3">
-                        <a href="#1">
+                        <a href="/lecture_detail/${hl_list[i].lectureNo}">
                             <div class="lecture_box">
                                 <img src="/getImage/${hl_list[i].thumbnail}" alt="강의썸네일">
                                 <h3>${hl_list[i].lectureName}</h3>
@@ -25,7 +25,7 @@
 
                 <div class="slide">
                     <c:forEach var="i" begin="4" end="7">
-                        <a href="#2">
+                        <a href="/lecture_detail/${hl_list[i].lectureNo}">
                             <div class="lecture_box">
                                 <img src="/getImage/${hl_list[i].thumbnail}" alt="강의썸네일">
                                 <h3>${hl_list[i].lectureName}</h3>
@@ -37,7 +37,7 @@
 
                 <div class="slide">
                     <c:forEach var="i" begin="8" end="11">
-                        <a href="#3">
+                        <a href="/lecture_detail/${hl_list[i].lectureNo}">
                             <div class="lecture_box">
                                 <img src="/getImage/${hl_list[i].thumbnail}" alt="강의썸네일">
                                 <h3>${hl_list[i].lectureName}</h3>
