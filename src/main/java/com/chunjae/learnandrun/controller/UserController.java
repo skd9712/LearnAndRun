@@ -1,7 +1,11 @@
 package com.chunjae.learnandrun.controller;
 
+import com.chunjae.learnandrun.dto.LectureDTO;
 import com.chunjae.learnandrun.dto.MakePage;
+import com.chunjae.learnandrun.dto.OrderDTO;
 import com.chunjae.learnandrun.dto.UserDTO;
+import com.chunjae.learnandrun.service.LectureService;
+import com.chunjae.learnandrun.service.OrderService;
 import com.chunjae.learnandrun.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -12,17 +16,25 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class UserController {
     private final UserService userService;
+
+    private final LectureService service;
+
+    private final OrderService orderService;
     // 암호화
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    public UserController(UserService userService, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public UserController(UserService userService, LectureService service, OrderService orderService, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userService = userService;
+        this.service = service;
+        this.orderService = orderService;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
@@ -110,7 +122,15 @@ public class UserController {
         if (session != null) {
             UserDTO user = (UserDTO) session.getAttribute("dto");
             if (user != null) {
+                int userNo = user.getUserNo();
+                //마이페이지
                 model.addAttribute("user", user);
+                List<LectureDTO> list = userService.lectUser(userNo);
+                List<LectureDTO> wishlist = userService.wishUser(userNo);
+                //내가 수강중인 강의 목록
+                model.addAttribute("lecturelist", list);
+                //찜한 목록
+                model.addAttribute("wishlist", wishlist);
                 return "user/user_mypage";
             }
         }
@@ -118,13 +138,20 @@ public class UserController {
         return "user/user_login";
     }
 
-    //사용자 정보 수정
-    @GetMapping("/user_update")
-    public String updateUser(HttpSession session, Model model) {
+    // 사용자 정보 수정
+    @GetMapping(value = {"/user_update", "/user_update/{user_id}"})
+    public String updateUser(HttpSession session
+            , Model model
+            , @PathVariable(required = false) String user_id) {
 
         UserDTO sessionUser = (UserDTO) session.getAttribute("dto");
+        String userId;
         if (sessionUser != null) {
-            String userId = sessionUser.getUserId();
+            if ("admin".equals(sessionUser.getUserId())) {
+                userId = user_id;
+            } else {
+                userId = sessionUser.getUserId();
+            }
             UserDTO user = userService.detailUser(userId);
             model.addAttribute("user", user);
         }
@@ -132,8 +159,9 @@ public class UserController {
         return "user/user_update";
     }
 
-    @PostMapping("/updateresult")
-    public String updateUserResult(@ModelAttribute UserDTO dto
+    @PostMapping(value = {"/updateresult", "/user_update/{user_id}"})
+    public String updateUserResult(@PathVariable(required = false) String user_id
+            , @ModelAttribute UserDTO dto
             , @RequestParam String roadAddress
             , @RequestParam String extraAddress
             , @RequestParam String detailAddress, HttpSession session) {
@@ -146,14 +174,23 @@ public class UserController {
         if (result > 0) {
 
             session.setAttribute("user", dto);
-            return "user/user_mypage";
+            return "redirect:/user_manager";
         } else {
             return "redirect:/index";
         }
     }
 
+    @GetMapping("/user_delete/{userNo}")
+    public String deleteUser(HttpServletRequest request, @PathVariable int userNo
+            , Model model) {
+        int result = userService.deleteUser(userNo);
+        model.addAttribute("result", result);
+
+        return "redirect:/user_manager";
+    }
+
     //관리자 페이지
-    @GetMapping(value = {"/user_manager","/user_manager/{curr}"})
+    @GetMapping(value = {"/user_manager", "/user_manager/{curr}"})
     public String user_manager(HttpServletRequest request, Model model
             , RedirectAttributes redirect
             , @PathVariable(required = false) String curr
@@ -167,15 +204,15 @@ public class UserController {
                 if ("admin".equals(user.getUserId())) {
                     // 관리자 페이지로 이동
                     int currpage = 1;
-                    if(curr!=null)
+                    if (curr != null)
                         currpage = Integer.parseInt(curr);
-                    int totalCount = userService.getUserCount(search,search_txt);
+                    int totalCount = userService.getUserCount(search, search_txt);
                     int pageSize = 10;
-                    int blockSize= 5;
-                    MakePage page = new MakePage(currpage,totalCount,pageSize,blockSize);
-                    List<UserDTO> list = userService.listUser(page.getStartRow(),pageSize,search, search_txt);
+                    int blockSize = 5;
+                    MakePage page = new MakePage(currpage, totalCount, pageSize, blockSize);
+                    List<UserDTO> list = userService.listUser(page.getStartRow(), pageSize, search, search_txt);
                     model.addAttribute("list", list);
-                    model.addAttribute("page",page);
+                    model.addAttribute("page", page);
                     model.addAttribute("search", search);
                     model.addAttribute("search_txt", search_txt);
 
@@ -193,5 +230,48 @@ public class UserController {
         return "redirect:/user_login";
     }
 
+    @GetMapping("/order_list")
+    public String order_list(HttpServletRequest request
+            , Model model
+            , RedirectAttributes redirect) {
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            UserDTO user = (UserDTO) session.getAttribute("dto");
+            if (user != null) {
+                if ("admin".equals(user.getUserId())) {
+                    List<OrderDTO> list = orderService.listOrder();
+                    model.addAttribute("list", list);
+                    return "order/order_list";
+                } else {
+                    model.addAttribute("user", user);
+                    redirect.addFlashAttribute("message", "관리자만 접속 가능합니다.");
+                    return "redirect:/index";
+                }
+            }
+        }
+        redirect.addFlashAttribute("message", "로그인필요");
+        return "redirect:/user_login";
+    }
 
+    @PostMapping("/updateAuthority")
+    public String updateAuth(@RequestParam Map<String, String> params) {
+        Map<String, Boolean> hm = new HashMap<>();
+
+        // 파라미터 맵에서 orderNo와 authority 값 추출
+        for (Map.Entry<String, String> entry : params.entrySet()) {
+            String key = entry.getKey();
+
+            // orderNo_로 시작하는 키를 찾습니다.
+            if (key.startsWith("orderNo_")) {
+                String orderNo = entry.getValue(); // orderNo 값을 추출합니다.
+                String authKey = "authority_" + orderNo; // 해당 orderNo에 대한 authority 키를 생성합니다.
+
+                // authority 값이 "true"인지 확인합니다.
+                boolean authority = params.containsKey(authKey) && "true".equals(params.get(authKey));
+                hm.put(orderNo, authority); // orderNo와 authority 값을 Map에 저장합니다.
+            }
+        }
+        orderService.updateAuthorities(hm);
+        return "redirect:/order_list";
+    }
 }
