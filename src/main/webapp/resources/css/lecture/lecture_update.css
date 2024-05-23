@@ -4,8 +4,10 @@
 }
 
 #wrap{
-    margin: 100px auto;
+    margin: 0 auto;
     width: 80vw;
+    position: relative;
+    top: 150px;
 }
 
 h2{
