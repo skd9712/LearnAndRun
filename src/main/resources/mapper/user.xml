@@ -79,4 +79,23 @@
         limit #{startRow},#{pageSize}
         ]]>
     </select>
+    <delete id="deleteUser" parameterType="int">
+        delete
+        from user
+        where userNo = #{userNo}
+    </delete>
+    <select id="lectUser" parameterType="int" resultType="com.chunjae.learnandrun.dto.LectureDTO">
+        select l.lectureNo, l.thumbnail, l.lectureName
+        from lecture l
+                 inner join orders o
+                            on l.lectureNo = o.lectureNo
+        where o.userNo = #{userNo}
+    </select>
+    <select id="wishUser" parameterType="int" resultType="com.chunjae.learnandrun.dto.LectureDTO">
+        select l.lectureNo, l.thumbnail, l.lectureName
+        from wish w
+                 inner join lecture l
+                            on w.lectureNo = l.lectureNo
+        where w.userNo = #{userNo}
+    </select>
 </mapper>

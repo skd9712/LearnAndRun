@@ -14,88 +14,83 @@
     <link rel="stylesheet" href="/resources/css/user/user_manager.css">
 </head>
 <body>
-관리자 페이지입니다.
-환영합니다 ${dto.userId}님
-<a href="/user_logout">로그아웃</a>
-<a href="/lecture_insert">강의 등록하기</a>
-<form method="get" action="/user_manager/${page.currPage}">
-    <select name="search" id="search">
-        <option value="all">전체검색</option>
-        <option value="userId">아이디</option>
-        <option value="userName">사용자명</option>
-        <option value="addr">주소</option>
-    </select>
-    <div id="input_box">
-        <input type="text" name="search_txt" id="search_txt">
-        <button type="submit" id="glass">
-            <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-        </button>
+<%--관리자 페이지입니다.--%>
+<%--환영합니다 ${dto.userId}님--%>
+<%--<a href="/user_logout">로그아웃</a>--%>
+<%--<a href="/lecture_insert">강의 등록하기</a>--%>
+<jsp:include page="../main/top.jsp"/>
+<div id="user">
+
+    <div id="user_list">
+        <div class="admin_func">
+        <a href="/user_manager/">
+            <h2>회원 정보</h2>
+        </a>
+        <a href="/order_list">
+            <h2>수강 내역</h2>
+        </a>
+        </div>
+        <%--    검색--%>
+        <form method="get" action="/user_manager/${page.currPage}">
+            <select name="search" id="search">
+                <option value="all">전체검색</option>
+                <option value="userId">아이디</option>
+                <option value="userName">사용자명</option>
+                <option value="addr">주소</option>
+            </select>
+            <div id="input_box">
+                <input type="text" name="search_txt" id="search_txt">
+                <button type="submit" id="glass">
+                    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+                </button>
+            </div>
+        </form>
+        <table>
+            <th>
+                <tr>유저번호</tr>
+                <tr>아이디</tr>
+                <tr>사용자명</tr>
+                <tr>주소</tr>
+            </th>
+            <c:forEach var="item" items="${list}">
+                <tbody>
+                <td>${item.userNo}</td>
+                <td><a href="/user_update/${item.userId}">${item.userId}</a></td>
+                <td>${item.userName}</td>
+                <td>${item.addr}</td>
+                </tbody>
+            </c:forEach>
+        </table>
+        <div id="page">
+            <%--    이전--%>
+            <c:if test="${page.prev}">
+                <a href="/user_manager/1?search=${search}&search_txt=${search_txt}"><i class="fa-solid fa-angles-left"></i></a>
+                <a href="/user_manager/${page.startBlock-1}?search=${search}&search_txt=${search_txt}"><i
+                        class="fa-solid fa-angles-left"></i></a>
+            </c:if>
+            <%--페이지 번호--%>
+            <c:forEach var="index" begin="${page.startBlock}" end="${page.endBlock}">
+                <c:choose>
+                    <c:when test="${index==page.currPage}">
+                        <p><c:out value="${index}"/></p>
+                    </c:when>
+                    <c:otherwise>
+                        <a href="/user_manager/${index}?search=${search}&search_txt=${search_txt}"><c:out
+                                value="${index}"/></a>
+                    </c:otherwise>
+                </c:choose>
+            </c:forEach>
+            <%--다음--%>
+            <c:if test="${page.next}">
+                <a href="/user_manager/${page.endBlock+1}?search=${search}&search_txt=${search_txt}">
+                    <i class="fa-solid fa-angle-right"></i></a>
+                <a href="/user_manager/${page.totalPage}?search=${search}&search_txt=${search_txt}">
+                    <i class="fa-solid fa-angle-right"></i></a>
+            </c:if>
+        </div>
     </div>
-</form>
-<div id="user_list">
-    <c:forEach var="item" items="${list}">
-        <ul>
-            <li>${item.userNo}</li>
-            <li>${item.userId}</li>
-            <li>${item.userName}</li>
-            <li>${item.addr}</li>
-        </ul>
-    </c:forEach>
+
 </div>
-
-<div id="page">
-<%--    이전--%>
-    <c:if test="${page.prev}">
-        <a href="/user_manager/1?search=${search}&search_txt=${search_txt}"><i class="fa-solid fa-angles-left"></i></a>
-        <a href="/user_manager/${page.startBlock-1}?search=${search}&search_txt=${search_txt}"><i
-                class="fa-solid fa-angles-left"></i></a>
-    </c:if>
-<%--페이지 번호--%>
-    <c:forEach var="index" begin="${page.startBlock}" end="${page.endBlock}">
-        <c:choose>
-            <c:when test="${index==page.currPage}">
-                <p><c:out value="${index}"/></p>
-            </c:when>
-            <c:otherwise>
-                <a href="/user_manager/${index}?search=${search}&search_txt=${search_txt}"><c:out value="${index}"/></a>
-            </c:otherwise>
-        </c:choose>
-    </c:forEach>
-<%--다음--%>
-    <c:if test="${page.next}">
-        <a href="/user_manager/${page.endBlock+1}?search=${search}&search_txt=${search_txt}">
-            <i class="fa-solid fa-angle-right"></i></a>
-        <a href="/user_manager/${page.totalPage}?search=${search}&search_txt=${search_txt}">
-            <i class="fa-solid fa-angle-right"></i></a>
-    </c:if>
-</div>
-<script>
-    window.onload = function() {
-        // URL에서 검색 조건(search)과 검색어(search_txt) 값을 가져옵니다.
-        var search = getParameterByName('search');
-        var searchTxt = getParameterByName('search_txt');
-
-        // 검색 조건(select box)에 이전에 선택했던 값을 설정합니다.
-        if(search) {
-            document.getElementById('search').value = search;
-        }
-
-        // 검색어(input box)에 이전에 입력했던 값을 설정합니다.
-        if(searchTxt) {
-            document.getElementById('search_txt').value = searchTxt;
-        }
-    };
-
-    // URL에서 특정 파라미터 값을 가져오는 함수입니다.
-    function getParameterByName(name) {
-        name = name.replace(/[\[\]]/g, '\\$&');
-        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-            results = regex.exec(window.location.href);
-        if (!results) return null;
-        if (!results[2]) return '';
-        return decodeURIComponent(results[2].replace(/\+/g, ' '));
-    }
-</script>
-
+<jsp:include page="../main/footer.jsp"/>
 </body>
 </html>

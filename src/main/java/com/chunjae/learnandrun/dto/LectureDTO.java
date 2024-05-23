@@ -16,6 +16,26 @@ public class LectureDTO {
     private String thumbnail; //썸네일
     private String lectureData;
 
+    public OrderDTO dto2;
+
+    public OrderDTO getDto2() {
+        return dto2;
+    }
+
+    public void setDto2(OrderDTO dto2) {
+        this.dto2 = dto2;
+    }
+
+    public WishDTO wishDTO;
+
+    public WishDTO getWishDTO() {
+        return wishDTO;
+    }
+
+    public void setWishDTO(WishDTO wishDTO) {
+        this.wishDTO = wishDTO;
+    }
+
     public int getLectureNo() {
         return lectureNo;
     }
