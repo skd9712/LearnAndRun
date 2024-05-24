@@ -32,7 +32,7 @@
         select count(*)
         from user
         <where>
-            <if test="search_txt!=null and search_txt!='' and !'',equals(search_txt)">
+            <if test="search_txt!=null and search_txt!='' and !''.equals(search_txt)">
                 <choose>
                     <when test="search=='all'">
                         and userId like concat('%',#{search_txt},'%')
