@@ -11,7 +11,7 @@ import java.util.List;
 public interface OrderMapper {
     void insertOrder(HashMap<String, Object> hm);
 
-    List<OrderDTO> listOrder(HashMap<String,Object>hm);
+    List<HashMap<String,Object>> listOrder(HashMap<String,Object>hm);
 
 //    void updateAuthorities(String key, Boolean value);
     void updateAuthorities(@Param("orderNo") String orderNo, @Param("authority") boolean authority);

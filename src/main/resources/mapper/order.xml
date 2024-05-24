@@ -6,25 +6,28 @@
 <mapper namespace="com.chunjae.learnandrun.dao.OrderMapper">
     <insert id="insertOrder" parameterType="hashmap">
         insert into orders( userNo
-                            , orderDate
-                            , lectureNo
-                            , authority
-                            , orderNum
+        , orderDate
+        , lectureNo
+        , authority
+        , orderNum
         )
         values ( #{buyer_buyerid}
-                , NOW()
-                , #{lecture_id}
-                , 1
-                , #{order_id}
+        , NOW()
+        , #{lecture_id}
+        , 1
+        , #{order_id}
         )
     </insert>
     <select id="getOrderCount" resultType="int">
         select count(*)
         from orders
     </select>
-    <select id="listOrder" parameterType="hashmap" resultType="com.chunjae.learnandrun.dto.OrderDTO">
-        select orderNo, userNo,orderDate,lectureNo,authority,orderNum
-        from orders
+    <select id="listOrder" parameterType="hashmap" resultType="hashmap">
+        select o.orderNo as orderNo, u.userName as userName,o.orderDate as orderDate
+        ,l.lectureName as lectureName,o.authority as authority,o.orderNum as orderNum
+        from orders o inner join lecture l
+        on o.lectureNo = l.lectureNo inner join user u
+        on o.userNo = u.userNo
         <![CDATA[
         limit #{startRow},#{pageSize}
         ]]>
