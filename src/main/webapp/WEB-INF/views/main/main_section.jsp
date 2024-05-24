@@ -26,7 +26,7 @@
                 <span>!</span>
             </h2>
             <h1>어떤 강의를 찾고 있나요?</h1>
-            <form id="search_form" method="get" action="/lecture_list/1">
+            <form id="search_form" method="get" action="/lecture_list/1#lecture_search_box">
                 <img class="search" src="/resources/img/index/search_icon.gif" alt="검색 아이콘">
                 <%--            <select name="search">--%>
                 <%--                <option value="과목명">과목명</option>--%>

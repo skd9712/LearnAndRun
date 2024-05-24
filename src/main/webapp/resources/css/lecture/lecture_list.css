@@ -1,24 +1,77 @@
+@font-face {
+    font-family: 'SeoulNamsanM';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/SeoulNamsanM.woff') format('woff');
+    font-size: 1.2rem;
+    font-weight: normal;
+    font-style: normal;
+}
 
-/*body{*/
-/*    background-image: url("/resources/img/index/night_background4.png");*/
-/*    background-size: cover;*/
-/*    background-repeat: no-repeat;*/
-/*}*/
+@font-face {
+    font-family: 'pretty';
+    font-style: normal;
+    font-weight: 400;
+    src: url('/resources/font/omyu_pretty.ttf') format('truetype');
+}
+
+body{
+    background-image: url("/resources/img/index/night_background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: whitesmoke;
+}
 
 #wrap{
     margin: 0 auto;
     width: 90vw;
+    display: flex;
+    flex-direction: column;
+}
+
+#banner_box{
+    border-radius: 20px;
+    width: 70%;
+    height: 230px;
+    background: #3c66ab;
+    margin: 0 auto;
+    position: relative;
+    top: 100px;
 }
 
 #lecture_search_box{
     position: relative;
-    top: 140px;
+    top: 160px;
 }
 
 #lecture_sort_box{
+    display: block;
     position: relative;
-    top: 100px;
-    left: 70vw;
+    top: 220px;
+    padding: 10px 0;
+    width: 75%;
+    margin: 0 auto;
+}
+
+#lecture_sort_box a{
+    margin-left: 30px;
+    font-weight: bold;
+    font-family: pretty;
+    font-size: 20px;
+}
+
+#telescope{
+    width: 30px;
+}
+
+.sort_check{
+    width: 20px;
+}
+
+.color_txt{
+    /*color: #FED370;*/
+    color: #90CAF9;
+}
+.white_txt{
+    color: whitesmoke;
 }
 
 form{
@@ -30,30 +83,39 @@ form{
 }
 
 #search{
-    padding: 0 30px 0 5px;
-    border: 2px solid #4C6EC6;
-    border-radius: 5px;
+    padding: 0 23px 0 10px;
+    border: 2px solid #90CAF9;
+    border-radius: 10px;
     appearance:none;
     background-image: url("/resources/img/lecture/caret-down-solid.svg");
     background-repeat: no-repeat;
     background-size: 10px;
     background-position: 70px 8px;
+    opacity: 0.8;
+    text-align: center;
+    font-family: pretty;
+    font-size: 18px;
 }
 
+#search:focus {
+    outline: none;
+}
 
 #input_box{
     width: 280px;
-    border: 2px solid #4C6EC6;
+    border: 2px solid #90CAF9;
     border-radius: 20px;
     padding: 5px 10px;
     position: relative;
 }
+
 
 #search_txt{
     border: none;
     background-color: transparent;
     width: 250px;
     padding: 3px 0;
+    color: whitesmoke;
 }
 
 #search_txt:focus{
@@ -66,18 +128,7 @@ form{
     top: 15px;
     border: none;
     background-color: transparent;
-    color: #4C6EC6;
-}
-
-#insert{
-    float: right;
-    color: white;
-    background-color: #4C6EC6;
-    text-decoration: none;
-    padding: 7px 20px;
-    border-radius: 10px;
-    letter-spacing: 1px;
-    font-size: 1.1rem;
+    color: #90CAF9;
 }
 
 /* 정렬 */
@@ -86,9 +137,10 @@ ul li{
 }
 
 /* 강의 리스트 */
+
 #lecture_list{
     width: 70vw;
-    margin: 140px auto;
+    margin: 250px auto;
     display: grid;
     grid-template-columns: repeat(4,auto);
     grid-gap: 50px;
@@ -100,40 +152,108 @@ ul li{
 }
 
 .lecture_room{
+    height: 300px;
+    width: 240px;
     padding: 15px;
-    /*padding: 2vh 1vw 6vh;*/
     margin: 35px 0;
-    background: white;
-    border: 2px solid #b7b9c7;
-    border-radius: 17px;
+    background: rgba(255,255,255,0.9);
+    /*border: 2px solid #b7b9c7;*/
+    border-radius: 30px;
+    font-family: SeoulNamsanM;
+
 }
 
-.lecture_room:hover{
-    transform: translateY(-25px);
-    transition-duration: 0.7s;
-    /*transition-timing-function: ease-in-out;*/
-    border-bottom: none;
-    border-radius: 17px;
-    border-color: #3A5693;
-    box-shadow: 0 16px #3A5693;
+/*.lecture_room:hover{*/
+/*    transform: translateY(-25px);*/
+/*    transition-duration: 0.7s;*/
+/*    !*transition-timing-function: ease-in-out;*!*/
+/*    border-bottom: none;*/
+/*    border-radius: 30px;*/
+/*    border-color: #b7b9c7;*/
+/*    box-shadow: 0 12px #b7b9c7;*/
+/*}*/
+
+.lecture_info{
+    padding: 0 0 0 10px;
 }
+
+.lecture_name_field{
+    width: 230px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 10px 5px;
+}
+
+.lecture_info li{
+    margin: 15px 0;
+}
+
+.subject_style1{
+    padding: 2px 8px;
+    border-radius: 30px;
+    background: #FFEDC9;
+}
+
+.subject_style2{
+    padding: 2px 8px;
+    border-radius: 30px;
+    background: #F8DDDC;
+}
+
+.subject_style3{
+    padding: 2px 8px;
+    border-radius: 30px;
+    background: #C7D8EB;
+}
+
+.subject_style4{
+    padding: 2px 8px;
+    border-radius: 30px;
+    background: #D2DCE0;
+}
+
+.subject_style5{
+    padding: 2px 8px;
+    border-radius: 30px;
+    background: #DDE7CF;
+}
+
+
 
 
 .thumbnail{
     width: 240px;
     height: 180px;
+    border-radius: 20px;
 }
 
 /* 페이지 */
 #page{
     display: flex;
     justify-content: center;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+    top: -120px;
 }
 
-#page a, #page p{
-    margin: 3px;
-    padding: 3px;
+#page a{
+    display: inline-block;
+    width: 20px;
+    padding: 5px;
     font-size: 1.1rem;
+    color: whitesmoke;
+}
+
+#page p{
+    display: inline-block;
+    width: 20px;
+    margin: 0;
+    color: black;
+    background: #90CAF9;
+    border-radius: 100px;
+    padding: 5px;
 }
 
 a>i{
