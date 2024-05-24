@@ -27,6 +27,7 @@
             <c:otherwise>
                 <c:choose>
                     <c:when test="${uid==1}">
+                        <a class="menu_tab" href="/lecture_insert">강의등록</a>
                         <a class="menu_tab" href="/user_manager">관리자페이지</a>
                     </c:when>
                     <c:otherwise>

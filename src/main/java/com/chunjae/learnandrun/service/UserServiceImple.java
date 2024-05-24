@@ -1,6 +1,7 @@
 package com.chunjae.learnandrun.service;
 
 import com.chunjae.learnandrun.dao.UserMapper;
+import com.chunjae.learnandrun.dto.ChartDTO;
 import com.chunjae.learnandrun.dto.LectureDTO;
 import com.chunjae.learnandrun.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,6 +70,11 @@ public class UserServiceImple implements UserService{
     public List<LectureDTO> wishUser(int userNo) {
         System.out.println("serviceImple"+userNo);
         return userMapper.wishUser(userNo);
+    }
+
+    @Override
+    public List<ChartDTO> getChartData() {
+        return userMapper.getChartData();
     }
 
     @Override

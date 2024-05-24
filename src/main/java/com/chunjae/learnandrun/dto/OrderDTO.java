@@ -13,4 +13,7 @@ public class OrderDTO {
     private int lectureNo;
     private boolean authority;
     private String orderNum;
+
+    public LectureDTO lectureDTO;
+    public UserDTO userDTO;
 }
