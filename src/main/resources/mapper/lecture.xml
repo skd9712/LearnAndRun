@@ -8,9 +8,6 @@
         select count(*)
         from lecture
         <where>
-            <![CDATA[
-                and startDate <= now()
-            ]]>
             <if test="search_txt!=null and search_txt!='' and !''.equals(search_txt)">
                 <choose>
                     <when test="search=='all'">
@@ -33,7 +30,7 @@
     </select>
 
     <select id="listLecture" parameterType="hashmap" resultType="com.chunjae.learnandrun.dto.LectureDTO">
-        select lectureNo
+        select l.lectureNo
              , lectureName
              , teacher
              , subjectName
@@ -43,11 +40,10 @@
              , thumbnail
              , lectureData
              , target
-        from lecture
+             , count(o.lectureNo) as 'popular'
+        from lecture l left join orders o
+            on l.lectureNo=o.lectureNo
         <where>
-            <![CDATA[
-                and startDate <= now()
-            ]]>
             <if test="search_txt!=null and search_txt!='' and !''.equals(search_txt)">
                 <choose>
                     <when test="search=='all'">
@@ -67,13 +63,14 @@
                 </choose>
             </if>
         </where>
+        group by l.lectureNo
         <choose>
             <when test="sort=='new'">
                 order by startDate desc
             </when>
-            <!--            <when test="sort=='popular'">
-                            order by startDate desc
-                        </when>-->
+            <when test="sort=='popular'">
+                 order by popular desc
+            </when>
             <when test="sort=='lowPrice'">
                 order by price
             </when>
@@ -147,25 +144,25 @@
 
     <insert id="insertLecture" parameterType="com.chunjae.learnandrun.dto.LectureDTO">
         insert into lecture(lectureName
-        , teacher
-        , subjectName
-        , description
-        , price
-        , startDate
-        , target
-        , thumbnail
-        , lectureData
-        )
+                          , teacher
+                          , subjectName
+                          , description
+                          , price
+                          , startDate
+                          , target
+                          , thumbnail
+                          , lectureData
+                          )
         values(#{lectureName}
-        , #{teacher}
-        , #{subjectName}
-        , #{description}
-        , #{price}
-        , #{startDate}
-        , #{target}
-        , #{thumbnail}
-        , #{lectureData}
-        )
+             , #{teacher}
+             , #{subjectName}
+             , #{description}
+             , #{price}
+             , #{startDate}
+             , #{target}
+             , #{thumbnail}
+             , #{lectureData}
+             )
     </insert>
     <update id="updateLecture" parameterType="hashmap">
         <choose>
@@ -219,4 +216,10 @@
             </otherwise>
         </choose>
     </update>
+    <select id="getAuthority" parameterType="hashmap" resultType="int">
+        select count(*)
+        from user u inner join orders o
+            on u.userNo=o.userNo
+        where userId=#{userId} and lectureNo=#{lectureNo} and authority=1
+    </select>
 </mapper>

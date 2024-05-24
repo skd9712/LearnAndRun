@@ -15,11 +15,13 @@ public interface LectureService {
 
     int insertLecture(String uploadPath, LectureDTO dto);
 
-    void updateLecture(String uploadPath, LectureDTO dto, boolean ThumbnailIsEmpty, boolean LectureDataIsEmpty);
+    int updateLecture(String uploadPath, LectureDTO dto, boolean ThumbnailIsEmpty, boolean LectureDataIsEmpty);
 
     List<LectureDTO> before_open_lecture();
 
     List<LectureDTO> new_lecture();
 
     List<LectureDTO> hot_lecture();
+
+    String getAuthority(int lectureNo, String userId);
 }

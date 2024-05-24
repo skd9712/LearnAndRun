@@ -11,4 +11,10 @@ public interface SeriesService {
     int insertSeries(HashMap<String, Object> hm);
 
     int deleteSeries(int seriesNo);
+
+    int updateSeries(SeriesDTO dto);
+
+    SeriesDTO detailSeries(int seriesNo);
+
+    int getAuthority(int lectureNo, String userId);
 }

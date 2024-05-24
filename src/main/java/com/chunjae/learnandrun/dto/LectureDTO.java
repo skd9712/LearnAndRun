@@ -1,7 +1,14 @@
 package com.chunjae.learnandrun.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.web.multipart.MultipartFile;
 
+@Getter @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class LectureDTO {
     private int lectureNo; //강의번호
     private String lectureName; //강의명
@@ -14,139 +21,5 @@ public class LectureDTO {
     private MultipartFile lectureDataFile; //강의자료
     private String target; //수강대상
     private String thumbnail; //썸네일
-    private String lectureData;
-
-    public OrderDTO dto2;
-
-    public OrderDTO getDto2() {
-        return dto2;
-    }
-
-    public void setDto2(OrderDTO dto2) {
-        this.dto2 = dto2;
-    }
-
-    public WishDTO wishDTO;
-
-    public WishDTO getWishDTO() {
-        return wishDTO;
-    }
-
-    public void setWishDTO(WishDTO wishDTO) {
-        this.wishDTO = wishDTO;
-    }
-
-    public int getLectureNo() {
-        return lectureNo;
-    }
-
-    public void setLectureNo(int lectureNo) {
-        this.lectureNo = lectureNo;
-    }
-
-    public String getLectureName() {
-        return lectureName;
-    }
-
-    public void setLectureName(String lectureName) {
-        this.lectureName = lectureName;
-    }
-
-    public String getTeacher() {
-        return teacher;
-    }
-
-    public void setTeacher(String teacher) {
-        this.teacher = teacher;
-    }
-
-    public String getSubjectName() {
-        return subjectName;
-    }
-
-    public void setSubjectName(String subjectName) {
-        this.subjectName = subjectName;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public String getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
-    }
-
-    public MultipartFile getThumbnailFile() {
-        return thumbnailFile;
-    }
-
-    public void setThumbnailFile(MultipartFile thumbnailFile) {
-        this.thumbnailFile = thumbnailFile;
-    }
-
-    public MultipartFile getLectureDataFile() {
-        return lectureDataFile;
-    }
-
-    public void setLectureDataFile(MultipartFile lectureDataFile) {
-        this.lectureDataFile = lectureDataFile;
-    }
-
-    public String getTarget() {
-        return target;
-    }
-
-    public void setTarget(String target) {
-        this.target = target;
-    }
-
-    public String getThumbnail() {
-        return thumbnail;
-    }
-
-    public void setThumbnail(String thumbnail) {
-        this.thumbnail = thumbnail;
-    }
-
-    public String getLectureData() {
-        return lectureData;
-    }
-
-    public void setLectureData(String lectureData) {
-        this.lectureData = lectureData;
-    }
-
-    @Override
-    public String toString() {
-        return "LectureDTO{" +
-                "lectureNo=" + lectureNo +
-                ", lectureName='" + lectureName + '\'' +
-                ", teacher='" + teacher + '\'' +
-                ", subjectName='" + subjectName + '\'' +
-                ", description='" + description + '\'' +
-                ", price=" + price +
-                ", startDate='" + startDate + '\'' +
-                ", thumbnailFile=" + thumbnailFile +
-                ", lectureDataFile=" + lectureDataFile +
-                ", target='" + target + '\'' +
-                ", thumbnail='" + thumbnail + '\'' +
-                ", lectureData='" + lectureData + '\'' +
-                '}';
-    }
+    private String lectureData; //강의자료명
 }

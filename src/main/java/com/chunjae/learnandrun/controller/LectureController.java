@@ -2,6 +2,7 @@ package com.chunjae.learnandrun.controller;
 
 import com.chunjae.learnandrun.dto.LectureDTO;
 import com.chunjae.learnandrun.dto.MakePage;
+import com.chunjae.learnandrun.dto.UserDTO;
 import com.chunjae.learnandrun.service.LectureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
@@ -14,10 +15,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -72,8 +73,18 @@ public class LectureController {
 
     /** 강의 등록 폼 */
     @GetMapping("/lecture_insert")
-    public String insertLecture(){
-        return "lecture/lecture_insert";
+    public String insertLecture(HttpSession session){
+
+        UserDTO userDTO= (UserDTO) session.getAttribute("dto");
+
+        if(userDTO!=null){
+            if("admin".equals(userDTO.getUserId()))
+                return "lecture/lecture_insert";
+            else
+                return "redirect:/lecture_list";
+        }else{
+            return "redirect:/user_login";
+        }
     }
 
     /** 강의 등록 결과 */
@@ -86,8 +97,9 @@ public class LectureController {
         String uploadPath=request.getSession().getServletContext().getRealPath(path);
 
         int result=service.insertLecture(uploadPath, dto);
+        model.addAttribute("result", result);
 
-        return "redirect:lecture_list";
+        return "lecture/lecture_insert_result";
     }
 
 
@@ -155,27 +167,54 @@ public class LectureController {
 
     /** 강의 상세 */
     @GetMapping("/lecture_detail/{lectureNo}")
-    public String detailLecture(@PathVariable int lectureNo, Model model){
+    public String detailLecture(HttpSession session
+            , @PathVariable int lectureNo, Model model){
 
         LectureDTO dto=service.detailLecture(lectureNo);
         model.addAttribute("dto", dto);
+
+        UserDTO userDTO= (UserDTO) session.getAttribute("dto");
+        String authority="";
+
+        if(userDTO!=null){
+            if("admin".equals(userDTO.getUserId())){
+                authority="admin";
+            }else{
+                authority=service.getAuthority(lectureNo, userDTO.getUserId());
+            }
+        }else{
+            authority="false";
+        }
+
+        model.addAttribute("authority", authority);
+
         return "lecture/lecture_detail";
     }
 
     /** 강의 수정 폼 */
     @GetMapping("/lecture_update/{lectureNo}")
-    public String updateLecture(@PathVariable int lectureNo, Model model){
+    public String updateLecture(HttpSession session, @PathVariable int lectureNo, Model model){
 
         LectureDTO dto=service.detailLecture(lectureNo);
         model.addAttribute("dto", dto);
-        return "lecture/lecture_update";
+
+        UserDTO userDTO= (UserDTO) session.getAttribute("dto");
+
+        if(userDTO!=null){
+            if("admin".equals(userDTO.getUserId()))
+                return "lecture/lecture_update";
+            else
+                return "redirect:/lecture_list";
+        }else{
+            return "redirect:/user_login";
+        }
     }
 
     /** 강의 수정 결과 */
     @PostMapping("/lecture_update_result")
     public String updateLectureResult(HttpServletRequest request, LectureDTO dto
             , @RequestParam String prevLectureData
-            , @RequestParam String prevThumbnail){
+            , @RequestParam String prevThumbnail, Model model){
 
         boolean ThumbnailIsEmpty=false;
         boolean LectureDataIsEmpty=false;
@@ -193,23 +232,37 @@ public class LectureController {
         String path="upload";
         String uploadPath=request.getSession().getServletContext().getRealPath(path);
 
-        service.updateLecture(uploadPath, dto, ThumbnailIsEmpty, LectureDataIsEmpty);
+        int result=service.updateLecture(uploadPath, dto, ThumbnailIsEmpty, LectureDataIsEmpty);
+        model.addAttribute("result", result);
+        model.addAttribute("lectureNo", dto.getLectureNo());
 
-        return "redirect:/lecture_list";
+        return "lecture/lecture_update_result";
     }
 
     /** 강의 삭제 */
     @GetMapping("/lecture_delete/{lectureNo}")
-    public String deleteLecture(HttpServletRequest request, @PathVariable int lectureNo, Model model){
+    public String deleteLecture(HttpServletRequest request
+            , HttpSession session
+            , @PathVariable int lectureNo, Model model){
 
         String path="upload";
         String uploadPath=request.getSession().getServletContext().getRealPath(path);
 
-        int result=service.deleteLecture(uploadPath, lectureNo);
+        UserDTO userDTO= (UserDTO) session.getAttribute("dto");
 
+        if(userDTO!=null){
+            if("admin".equals(userDTO.getUserId())){
+                int result=service.deleteLecture(uploadPath, lectureNo);
+                model.addAttribute("result", result);
+                model.addAttribute("lectureNo", lectureNo);
+                return "lecture/lecture_delete_result";
+            }
+            else
+                return "redirect:/lecture_list";
+        }else{
+            return "redirect:/user_login";
+        }
 
-        model.addAttribute("result", result);
-
-        return "redirect:/lecture_list";
     }
+
 }
