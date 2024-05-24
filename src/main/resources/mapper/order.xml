@@ -18,9 +18,27 @@
         , #{order_id}
         )
     </insert>
-    <select id="getOrderCount" resultType="int">
+    <select id="getOrderCount" parameterType="hashmap" resultType="int">
         select count(*)
-        from orders
+        from orders o inner join lecture l
+        on o.lectureNo = l.lectureNo inner join user u
+        on o.userNo = u.userNo
+        <where>
+            <if test="search_txt!=null and search_txt!='' and !''.equals(search_txt)">
+                <choose>
+                    <when test="search=='all'">
+                        and u.userName like concat('%',#{search_txt},'%')
+                        or l.lectureName like concat('%',#{search_txt},'%')
+                    </when>
+                    <when test="search=='userName'">
+                        and u.userName like concat('%',#{search_txt},'%')
+                    </when>
+                    <when test="search=='lectureName'">
+                        and l.lectureName like concat('%',#{search_txt},'%')
+                    </when>
+                </choose>
+            </if>
+        </where>
     </select>
     <select id="listOrder" parameterType="hashmap" resultType="hashmap">
         select o.orderNo as orderNo, u.userName as userName,o.orderDate as orderDate
@@ -28,6 +46,22 @@
         from orders o inner join lecture l
         on o.lectureNo = l.lectureNo inner join user u
         on o.userNo = u.userNo
+        <where>
+            <if test="search_txt!=null and search_txt!='' and !''.equals(search_txt)">
+                <choose>
+                    <when test="search=='all'">
+                        and u.userName like concat('%',#{search_txt},'%')
+                        or l.lectureName like concat('%',#{search_txt},'%')
+                    </when>
+                    <when test="search=='userName'">
+                        and u.userName like concat('%',#{search_txt},'%')
+                    </when>
+                    <when test="search=='lectureName'">
+                        and l.lectureName like concat('%',#{search_txt},'%')
+                    </when>
+                </choose>
+            </if>
+        </where>
         <![CDATA[
         limit #{startRow},#{pageSize}
         ]]>

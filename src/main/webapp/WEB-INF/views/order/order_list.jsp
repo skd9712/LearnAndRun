@@ -10,6 +10,7 @@
 <html>
 <head>
     <title>Title</title>
+    <script src="https://kit.fontawesome.com/4e5b2f86bb.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/resources/css/order/order_list.css">
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -44,29 +45,33 @@
 </div>
 
 <div id="order_list">
-    <form method="post" action="updateAuthority">
-        <div class="admin_func">
-            <a href="/user_manager">
-                <h2>회원 정보</h2>
-            </a>
-            <a href="/order_list">
-                <h2>수강 내역</h2>
-            </a>
+    <div class="admin_func">
+        <a href="/user_manager">
+            <h2>회원 정보</h2>
+        </a>
+        <a href="/order_list">
+            <h2>수강 내역</h2>
+        </a>
+    </div>
+    <%--    검색--%>
+    <div id="search_form">
+        <form method="get"action="/order_list/${page.currPage}">
+        <select name="search" id="search">
+            <option value="all">전체검색</option>
+            <option value="userName">회원명</option>
+            <option value="lectureName">강의명</option>
+        </select>
+        <div id="input_box">
+            <input type="text" name="search_txt" id="search_txt">
+            <button type="submit" id="glass">
+                <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+            </button>
         </div>
-        <%--    검색--%>
-<%--        <form method="get" action="/order_list/${page.currPage}">--%>
-<%--            <select name="search" id="search">--%>
-<%--                <option value="all">전체검색</option>--%>
-<%--                <option value="userName">회원명</option>--%>
-<%--                <option value="lectureName">강의명</option>--%>
-<%--            </select>--%>
-<%--            <div id="input_box">--%>
-<%--                <input type="text" name="search_txt" id="search_txt">--%>
-<%--                <button type="submit" id="glass">--%>
-<%--                    <i class="fa-solid fa-magnifying-glass fa-lg"></i>--%>
-<%--                </button>--%>
-<%--            </div>--%>
-<%--        </form>--%>
+        </form>
+    </div>
+    <form method="post" action="updateAuthority">
+<%--        <input type="submit" class="updateAuth">--%>
+        <input type="image" src="/resources/img/order/order_list_update.png" alt="update" class="updateAuth">
         <ul class="detail_list">
             <li><span>주문번호</span>
                 <span>회원명</span>
@@ -112,7 +117,7 @@
                     <i class="fa-solid fa-angle-right"></i></a>
             </c:if>
         </div>
-        <input type="submit" value="Update">
+
     </form>
 </div>
 <jsp:include page="../main/footer.jsp"/>

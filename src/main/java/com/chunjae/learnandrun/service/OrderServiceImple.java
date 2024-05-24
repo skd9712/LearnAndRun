@@ -28,10 +28,12 @@ public class OrderServiceImple implements OrderService{
     }
 
     @Override
-    public List<HashMap<String, Object>> listOrder(int startRow, int pageSize) {
+    public List<HashMap<String, Object>> listOrder(int startRow, int pageSize,String search, String search_txt) {
         HashMap<String, Object> hm = new HashMap<>();
         hm.put("startRow",startRow);
         hm.put("pageSize",pageSize);
+        hm.put("search",search);
+        hm.put("search_txt",search_txt);
         List<HashMap<String,Object>> list = orderMapper.listOrder(hm);
         return list;
     }
@@ -44,8 +46,11 @@ public class OrderServiceImple implements OrderService{
     }
 
     @Override
-    public int getOrderCount() {
-        int result = orderMapper.getOrderCount();
+    public int getOrderCount(String search, String search_txt) {
+        HashMap<String,Object> hm =new HashMap<>();
+        hm.put("search",search);
+        hm.put("search_txt",search_txt);
+        int result = orderMapper.getOrderCount(hm);
         return result;
     }
 }

@@ -58,7 +58,8 @@
         </li>
     </ul>
 </form>
-<a href="/user_delete/${user.userNo}">회원 탈퇴</a>
+    <a href="/user_delete/${user.userNo}">회원 탈퇴</a>
+
 </div>
 <jsp:include page="../main/footer.jsp"/>
 </body>
