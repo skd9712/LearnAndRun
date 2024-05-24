@@ -1,3 +1,10 @@
+body{
+    background-image: url("/resources/img/index/night_background2.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+}
+
 form{
     margin: 0 auto 20px;
     display: flex;
@@ -66,6 +73,9 @@ a>i{
     position: relative;
     top: 4px;
 }
+svg{
+    border-radius: 10px;
+}
 /*관리자 페이지 크기*/
 #user_list{
     margin: 0 auto;
@@ -85,6 +95,7 @@ a>i{
 }
 .admin_func a{
     margin: 0 10px;
+    color: white;
 }
 .detail_list{
     list-style: none;
@@ -104,7 +115,7 @@ a>i{
 .detail_list li:first-child{
     justify-content: space-between;
     font-weight: bold;
-    background-color: #4C6EC6;
+    background-color: #2B3487;
     color: white;
 }
 .user_data {

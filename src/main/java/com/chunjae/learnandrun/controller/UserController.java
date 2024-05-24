@@ -234,6 +234,8 @@ public class UserController {
     @GetMapping(value = {"/order_list","/order_list/{curr}"})
     public String order_list(HttpServletRequest request
             , @PathVariable(required = false) String curr
+            , @RequestParam(required = false, defaultValue = "") String search
+            , @RequestParam(required = false, defaultValue = "") String search_txt
             , Model model
             , RedirectAttributes redirect) {
         HttpSession session = request.getSession(false);
@@ -244,13 +246,15 @@ public class UserController {
                     int currpage = 1;
                     if (curr != null)
                         currpage = Integer.parseInt(curr);
-                    int totalCount = orderService.getOrderCount();
+                    int totalCount = orderService.getOrderCount(search,search_txt);
                     int pageSize = 10;
                     int blockSize = 5;
                     MakePage page = new MakePage(currpage, totalCount, pageSize, blockSize);
-                    List<HashMap<String,Object>> list = orderService.listOrder(page.getStartRow(),pageSize);
+                    List<HashMap<String,Object>> list = orderService.listOrder(page.getStartRow(),pageSize,search,search_txt);
                     model.addAttribute("list", list);
                     model.addAttribute("page",page);
+                    model.addAttribute("search",search);
+                    model.addAttribute("search_txt",search_txt);
 
                     //차트 데이터 넘김
                     List<ChartDTO> chart_data = userService.getChartData();

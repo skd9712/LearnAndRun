@@ -16,5 +16,5 @@ public interface OrderMapper {
 //    void updateAuthorities(String key, Boolean value);
     void updateAuthorities(@Param("orderNo") String orderNo, @Param("authority") boolean authority);
 
-    int getOrderCount();
+    int getOrderCount(HashMap<String, Object>hm);
 }

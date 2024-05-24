@@ -1,3 +1,10 @@
+body{
+    background-image: url("/resources/img/index/night_background2.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+}
+
 .admin_func{
     display: flex;
     flex-direction: row;
@@ -17,6 +24,69 @@
     top: 12vh;
     position: relative;
 }
+#search_form > form{
+    margin: 0 auto 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 450px;
+}
+#search{
+    padding: 0 30px 0 5px;
+    border: 2px solid #4C6EC6;
+    border-radius: 5px;
+    appearance:none;
+    background-image: url("/resources/img/lecture/caret-down-solid.svg");
+    background-repeat: no-repeat;
+    background-size: 10px;
+    background-position: 70px 8px;
+}
+#input_box{
+    width: 280px;
+    border: 2px solid #4C6EC6;
+    border-radius: 20px;
+    padding: 5px 10px;
+    position: relative;
+}
+
+#search_txt{
+    border: none;
+    background-color: transparent;
+    width: 250px;
+    padding: 3px 0;
+}
+
+#search_txt:focus{
+    outline: none;
+}
+#glass{
+    position: absolute;
+    left: 270px;
+    top: 15px;
+    border: none;
+    background-color: transparent;
+    color: #4C6EC6;
+}
+i:hover{
+    cursor: pointer;
+}
+i:active{
+    cursor: pointer;
+}
+#page a, #page p{
+    margin: 3px;
+    padding: 3px;
+    font-size: 1.1rem;
+}
+a>i{
+    position: relative;
+    top: 4px;
+}
+.updateAuth{
+    position: relative;
+    left: 90%;
+    margin-bottom: 10px;
+}
 .detail_list{
     list-style: none;
     padding:0;
@@ -35,7 +105,7 @@
 .detail_list li:first-child{
     justify-content: space-between;
     font-weight: bold;
-    background-color: #4C6EC6;
+    background-color: #2B3487;
     color: white;
 }
 .user_data {

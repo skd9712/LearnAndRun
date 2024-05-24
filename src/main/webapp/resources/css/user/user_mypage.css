@@ -1,3 +1,10 @@
+body{
+    background-image: url("/resources/img/index/night_background4.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+}
+
 #mypage {
     margin:0 auto;
     padding: 0;
@@ -21,7 +28,7 @@
 
 .myinfo a {
     margin: 10px;
-    color: #007bff;
+    color: silver;
     text-decoration: none;
 }
 .myinfo a:hover {
@@ -51,5 +58,22 @@
 }
 
 .lecture_list h4 {
-    margin-top: 0;
+    margin-top: 20px;
+    color: black;
+}
+.lecture_list p{
+    color: black;
+}
+.mylecture .lecture_detail{
+    max-height: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.wishlist .lecture_wish{
+    max-height: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.lect{
+    margin-bottom: 50px;
 }
