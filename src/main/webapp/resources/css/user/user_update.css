@@ -22,6 +22,12 @@
     margin: 20px 0;
     padding: 0 20px;
 }
+#user_update a{
+    position: relative;
+    left: 44%;
+    top:10%;
+
+}
 li > input {
     border: none;
     border-radius: 15px;

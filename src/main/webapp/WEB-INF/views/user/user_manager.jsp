@@ -38,14 +38,13 @@
 </head>
 <body>
 <%--관리자 페이지입니다.--%>
-<%--환영합니다 ${dto.userId}님--%>
-<%--<a href="/user_logout">로그아웃</a>--%>
-<%--<a href="/lecture_insert">강의 등록하기</a>--%>
+
 <jsp:include page="../main/top.jsp"/>
 
 <div id="chart" style="width: 60vw; margin: 0 auto">
-    <h2 style="position: relative; top: 10vh">과목별 수강 인원</h2>
-    <div id="piechart_3d" style="margin-top: 10vh; width: 600px; height: 400px;"></div>
+    <h2 style="position: relative; top: 10vh; padding-bottom:20px;border-bottom: 1px solid silver">과목별 수강 인원</h2>
+    <div id="piechart_3d" style="margin-top: 10vh;
+    width: 600px; height: 400px; position: relative; top: 20px;"></div>
 </div>
 
 <div id="user">

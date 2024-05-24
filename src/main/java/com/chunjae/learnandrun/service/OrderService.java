@@ -9,9 +9,9 @@ import java.util.Map;
 public interface OrderService {
     void insertOrder(int buyer_buyid, int lecture_id, String order_id);
 
-    List<HashMap<String, Object>> listOrder(int startRow, int pageSize);
+    List<HashMap<String, Object>> listOrder(int startRow, int pageSize,String search, String search_txt);
 
     void updateAuthorities(Map<String, Boolean> hm);
 
-    int getOrderCount();
+    int getOrderCount(String search, String search_txt);
 }
