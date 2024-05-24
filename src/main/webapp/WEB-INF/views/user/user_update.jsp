@@ -11,10 +11,14 @@
     <title>Title</title>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="/resources/js/user/findaddr.js"></script>
+    <link rel="stylesheet" href="/resources/css/user/user_update.css">
 </head>
 <body>
+<jsp:include page="../main/top.jsp"/>
+<div id="user_update">
 <form method="post" action="updateresult">
     <ul>
+        <h2>정보수정</h2>
         <li>
             <input type="text" name="userNo" value="${user.userNo}" readonly>
         </li>
@@ -31,7 +35,7 @@
             <input type="text" name="address" value="${user.addr}">
         </li>
         <li>
-            <div><input type="text" id="addr" onclick="findAddr()">주소 입력하기</div>
+            <input type="text" id="addr" onclick="findAddr()" placeholder="주소 입력하기">
         </li>
         <li>
             <input type="text" name="postcode" id="postcode" placeholder="우편번호" readonly>
@@ -46,8 +50,7 @@
             <input type="text" name="extraAddress" id="extraAddress" placeholder="참고항목" readonly>
         </li>
         <li>
-            <span class="detail_addr">상세 주소를 입력해 주세요.</span>
-            <input type="text" name="detailAddress" id="detailAddress" placeholder="상세 주소">
+            <input type="text" name="detailAddress" id="detailAddress" placeholder="상세 주소 입력">
         </li>
         <li>
             <button type="submit">수정완료</button>
@@ -56,5 +59,7 @@
     </ul>
 </form>
 <a href="/user_delete/${user.userNo}">회원 탈퇴</a>
+</div>
+<jsp:include page="../main/footer.jsp"/>
 </body>
 </html>

@@ -248,7 +248,7 @@ public class UserController {
                     int pageSize = 10;
                     int blockSize = 5;
                     MakePage page = new MakePage(currpage, totalCount, pageSize, blockSize);
-                    List<OrderDTO> list = orderService.listOrder(page.getStartRow(),pageSize);
+                    List<HashMap<String,Object>> list = orderService.listOrder(page.getStartRow(),pageSize);
                     model.addAttribute("list", list);
                     model.addAttribute("page",page);
 
@@ -268,8 +268,9 @@ public class UserController {
         return "redirect:/user_login";
     }
 
-    @PostMapping("/updateAuthority")
-    public String updateAuth(@RequestParam Map<String, String> params) {
+    @PostMapping(value = {"/updateAuthority","/order_list/{curr}"})
+    public String updateAuth(@PathVariable(required = false) String curr
+            ,@RequestParam Map<String, String> params) {
         Map<String, Boolean> hm = new HashMap<>();
 
         // 파라미터 맵에서 orderNo와 authority 값 추출

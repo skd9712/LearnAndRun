@@ -64,7 +64,7 @@
             <select name="search" id="search">
                 <option value="all">전체검색</option>
                 <option value="userId">아이디</option>
-                <option value="userName">사용자명</option>
+                <option value="userName">회원명</option>
                 <option value="addr">주소</option>
             </select>
             <div id="input_box">
@@ -74,22 +74,22 @@
                 </button>
             </div>
         </form>
-        <table>
-            <th>
-                <tr>유저번호</tr>
-                <tr>아이디</tr>
-                <tr>사용자명</tr>
-                <tr>주소</tr>
-            </th>
+        <ul class="detail_list">
+            <li>
+                <span>회원번호</span>
+                <span>아이디</span>
+                <span>회원명</span>
+                <span>주소</span>
+            </li>
             <c:forEach var="item" items="${list}">
-                <tbody>
-                <td>${item.userNo}</td>
-                <td><a href="/user_update/${item.userId}">${item.userId}</a></td>
-                <td>${item.userName}</td>
-                <td>${item.addr}</td>
-                </tbody>
+                <li class="user_data">
+                    <span>${item.userNo}</span>
+                    <span><a  href="/user_update/${item.userId}">${item.userId}</a></span>
+                    <span>${item.userName}</span>
+                    <span>${item.addr}</span>
+                </li>
             </c:forEach>
-        </table>
+        </ul>
         <div id="page">
             <%--    이전--%>
             <c:if test="${page.prev}">
