@@ -1,5 +1,6 @@
 package com.chunjae.learnandrun.dao;
 
+import com.chunjae.learnandrun.dto.ChartDTO;
 import com.chunjae.learnandrun.dto.LectureDTO;
 import com.chunjae.learnandrun.dto.UserDTO;
 import org.apache.ibatis.annotations.Mapper;
@@ -28,4 +29,6 @@ public interface UserMapper {
     List<LectureDTO> lectUser(int userNo);
 
     List<LectureDTO> wishUser(int userNo);
+
+    List<ChartDTO> getChartData();
 }
