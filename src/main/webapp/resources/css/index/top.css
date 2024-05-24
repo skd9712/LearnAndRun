@@ -37,7 +37,7 @@ a {
 }
 
 .menu_tab{
-    margin-right: 10px;
+    margin-right: 30px;
 }
 
 .header_img_txt{
@@ -50,5 +50,14 @@ a {
     background-color: #1A2375;
     border-radius: 30px;
     color: whitesmoke;
+    padding: 10px;
+}
+
+#logout_btn{
+    font-weight: bold;
+    background-color: white;
+    border-radius: 30px;
+    border: 2px solid #1A2375;
+    color: #1A2375;
     padding: 10px;
 }

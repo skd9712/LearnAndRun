@@ -1,3 +1,19 @@
+@font-face {
+    font-family: 'SeoulNamsanM';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/SeoulNamsanM.woff') format('woff');
+    font-size: 1.2rem;
+    font-weight: normal;
+    font-style: normal;
+}
+
+body{
+    background-image: url("/resources/img/index/night_background3.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: whitesmoke;
+    font-family: SeoulNamsanM;
+}
+
 #order_detail_box{
     border-radius: 30px;
     width:100vw;
@@ -8,24 +24,25 @@
 
 #order_detail_info{
     border-radius: 30px;
-    width:600px;
-    height: 360px;
+    width: 600px;
+    height: 300px;
     margin: 0 auto;
     text-align: center;
     position: relative;
+    background: rgba(255, 255, 255, 0.9);
     box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
 }
 
 #order_detail_info h2{
     position: relative;
-    top: -140px;
+    top: -130px;
     font-size: 2rem;
 }
 
 #order_detail_info h4{
     position: relative;
-    top: -150px;
-    color: rgba(0,0,0,0.4);
+    top: -130px;
+    color: rgba(255, 255, 255, 0.6);
 }
 
 #back_link{
@@ -35,7 +52,9 @@
 }
 
 #back_link a{
-    border-bottom: 1px solid silver;
+    position: relative;
+    color: #90CAF9;
+    top: -20px;
 }
 
 ul{
@@ -58,11 +77,13 @@ ul{
  .field{
      width: 120px;
      font-weight: bold;
+     color: black;
  }
  .field_value{
      width: 350px;
      display: flex;
      justify-content: center;
+     color: black;
  }
  .blue_text{
      color: #3c66ab;
@@ -73,10 +94,11 @@ ul{
      background-color: #2B3487;
      border: #2B3487;
      color: whitesmoke;
-     border-radius: 15px;
+     border-radius: 20px;
      padding: 10px;
      width: 200px;
      position: relative;
      top: -50px;
      font-size: 1.2rem;
+     font-weight: bold;
  }
