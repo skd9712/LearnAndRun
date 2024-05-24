@@ -1,9 +1,6 @@
 package com.chunjae.learnandrun.controller;
 
-import com.chunjae.learnandrun.dto.LectureDTO;
-import com.chunjae.learnandrun.dto.MakePage;
-import com.chunjae.learnandrun.dto.OrderDTO;
-import com.chunjae.learnandrun.dto.UserDTO;
+import com.chunjae.learnandrun.dto.*;
 import com.chunjae.learnandrun.service.LectureService;
 import com.chunjae.learnandrun.service.OrderService;
 import com.chunjae.learnandrun.service.UserService;
@@ -216,6 +213,10 @@ public class UserController {
                     model.addAttribute("search", search);
                     model.addAttribute("search_txt", search_txt);
 
+                    //차트 데이터 넘김
+                    List<ChartDTO> chart_data = userService.getChartData();
+                    model.addAttribute("chart_data", chart_data);
+
                     return "user/user_manager";
                 } else {
                     // 일반 사용자인 경우 사용자 관리 페이지로 이동
@@ -250,6 +251,11 @@ public class UserController {
                     List<OrderDTO> list = orderService.listOrder(page.getStartRow(),pageSize);
                     model.addAttribute("list", list);
                     model.addAttribute("page",page);
+
+                    //차트 데이터 넘김
+                    List<ChartDTO> chart_data = userService.getChartData();
+                    model.addAttribute("chart_data", chart_data);
+
                     return "order/order_list";
                 } else {
                     model.addAttribute("user", user);

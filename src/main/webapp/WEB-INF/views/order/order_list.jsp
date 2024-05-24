@@ -11,9 +11,38 @@
 <head>
     <title>Title</title>
     <link rel="stylesheet" href="/resources/css/order/order_list.css">
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load("current", {packages:["corechart"]});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            let data = google.visualization.arrayToDataTable([
+                ['Task', 'Hours per Day'],
+                ["${chart_data.get(1).subjectName}",${chart_data.get(1).total_students}],
+                ["${chart_data.get(3).subjectName}",${chart_data.get(3).total_students}],
+                ["${chart_data.get(4).subjectName}",${chart_data.get(4).total_students}],
+                ["${chart_data.get(2).subjectName}",${chart_data.get(2).total_students}],
+                ["${chart_data.get(0).subjectName}",${chart_data.get(0).total_students}]
+            ]);
+
+            let options = {
+                is3D: true,
+            };
+
+            let chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+            chart.draw(data, options);
+        }
+    </script>
 </head>
 <body>
 <jsp:include page="../main/top.jsp"/>
+
+<div id="chart" style="width: 60vw; margin: 0 auto">
+    <h2 style="position: relative; top: 10vh">과목별 수강 인원</h2>
+    <div id="piechart_3d" style="margin-top: 10vh; width: 600px; height: 400px;"></div>
+</div>
+
 <div id="order_list">
 <form method="post" action="updateAuthority">
     <div class="admin_func">

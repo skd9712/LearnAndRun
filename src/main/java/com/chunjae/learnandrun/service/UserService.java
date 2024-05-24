@@ -1,6 +1,7 @@
 package com.chunjae.learnandrun.service;
 
 
+import com.chunjae.learnandrun.dto.ChartDTO;
 import com.chunjae.learnandrun.dto.LectureDTO;
 import com.chunjae.learnandrun.dto.UserDTO;
 
@@ -26,4 +27,6 @@ public interface UserService {
     List<LectureDTO> lectUser(int userNo);
 
     List<LectureDTO> wishUser(int userNo);
+
+    List<ChartDTO> getChartData();
 }
