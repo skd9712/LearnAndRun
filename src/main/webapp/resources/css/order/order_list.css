@@ -1,17 +1,71 @@
-#order_list{
-    margin: 0 auto;
-    padding: 0;
-    width: 60vw;
-    height: 80%;
-    top: 12vh;
-    position: relative;
-}
 .admin_func{
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
+    border-bottom: 1px solid silver;
+    margin-bottom: 20px;
 }
 .admin_func a{
     margin: 0 10px;
+}
+#order_list{
+    margin: 0 auto;
+    padding: 0;
+    width: 60vw;
+    height: 130%;
+    top: 12vh;
+    position: relative;
+}
+.detail_list{
+    list-style: none;
+    padding:0;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+    border:1px solid silver;
+    border-radius: 10px;
+    overflow: hidden; /* 내용이 넘치지 않도록 설정 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.detail_list li{
+    display: flex;
+    padding:10px;
+}
+.detail_list li:first-child{
+    justify-content: space-between;
+    font-weight: bold;
+    background-color: #4C6EC6;
+    color: white;
+}
+.user_data {
+    display: flex;
+    justify-content: space-between; /* 항목 간의 공간을 균등하게 분배 */
+    padding: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #e0e0e0;
+}
+.user_data span {
+    flex: 1; /* 모든 span 요소가 동일한 비율로 공간을 차지하도록 설정 */
+    text-align: center;
+}
+.detail_list li span{
+    flex: 1;
+    text-align: center;
+    margin: 0 5px;
+}
+.user_data:last-child {
+    border-bottom: none; /* 마지막 항목의 하단 선 제거 */
+}
+/*페이징*/
+#page{
+    display: flex;
+    justify-content: center;
+    margin:10px
+}
+
+#page a, #page p{
+    margin: 3px;
+    padding: 3px;
+    font-size: 1.1rem;
 }

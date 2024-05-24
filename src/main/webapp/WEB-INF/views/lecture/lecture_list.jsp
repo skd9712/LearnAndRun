@@ -5,12 +5,17 @@
 <head>
     <title>Title</title>
     <script src="https://kit.fontawesome.com/4e5b2f86bb.js" crossorigin="anonymous"></script>
-    <script src="/resources/js/lecture_list.js"></script>
     <link rel="stylesheet" href="/resources/css/lecture/lecture_list.css">
 </head>
 <body>
 <jsp:include page="../main/top.jsp"/>
 <div id="wrap">
+
+    <%--배너--%>
+    <div id="banner_box">
+
+    </div>
+
     <%-- 검색창 --%>
     <div id="lecture_search_box">
         <form method="get" action="/lecture_list/${page.currPage}">
@@ -29,49 +34,135 @@
         </form>
     </div>
 
-
-    <%-- 등록하기 : 관리자만 볼 수 있도록 수정하기 --%>
-    <a href="/lecture_insert" id="insert">강의등록</a>
-
     <%-- 정렬 --%>
     <div id="lecture_sort_box">
-        <ul class="select_list">
-            <li class="select_option">
-                <a href="/lecture_list/${page.currPage}?search=${search}&search_txt=${search_txt}&sort=new">최신순</a>
-            </li>
-            <li class="select_option">
-                <a href="/lecture_list/${page.currPage}?search=${search}&search_txt=${search_txt}&sort=popular">인기순</a>
-            </li>
-            <li class="select_option">
-                <a href="/lecture_list/${page.currPage}?search=${search}&search_txt=${search_txt}&sort=lowPrice">낮은가격순</a>
-            </li>
-            <li class="select_option">
-                <a href="/lecture_list/${page.currPage}?search=${search}&search_txt=${search_txt}&sort=highPrice">높은가격순</a>
-            </li>
-        </ul>
+        <c:choose>
+            <c:when test="${empty sort || sort=='' || sort=='new'}">
+                <a class="color_txt" href="/lecture_list/1?search=${search}&search_txt=${search_txt}&sort=new">
+                    <img class="sort_check" src="/resources/img/lecture/fill_star_icon_blue.png">
+                    최신순
+                </a>
+                <a class="white_txt" href="/lecture_list/1?search=${search}&search_txt=${search_txt}&sort=popular">
+                    <img class="sort_check" src="/resources/img/lecture/empty_star_icon.png">
+                    인기순
+                </a>
+                <a class="white_txt" href="/lecture_list/1?search=${search}&search_txt=${search_txt}&sort=lowPrice">
+                    <img class="sort_check" src="/resources/img/lecture/empty_star_icon.png">
+                    낮은가격순
+                </a>
+                <a class="white_txt" href="/lecture_list/1?search=${search}&search_txt=${search_txt}&sort=highPrice">
+                    <img class="sort_check" src="/resources/img/lecture/empty_star_icon.png">
+                    높은가격순
+                </a>
+            </c:when>
+
+            <c:when test="${sort=='popular'}">
+                <a class="white_txt" href="/lecture_list/1?search=${search}&search_txt=${search_txt}&sort=new">
+                    <img class="sort_check" src="/resources/img/lecture/empty_star_icon.png">
+                    최신순
+                </a>
+                <a class="color_txt" href="/lecture_list/1?search=${search}&search_txt=${search_txt}&sort=popular">
+                    <img class="sort_check" src="/resources/img/lecture/fill_star_icon_blue.png">
+                    인기순
+                </a>
+                <a class="white_txt" href="/lecture_list/1?search=${search}&search_txt=${search_txt}&sort=lowPrice">
+                    <img class="sort_check" src="/resources/img/lecture/empty_star_icon.png">
+                    낮은가격순
+                </a>
+                <a class="white_txt" href="/lecture_list/1?search=${search}&search_txt=${search_txt}&sort=highPrice">
+                    <img class="sort_check" src="/resources/img/lecture/empty_star_icon.png">
+                    높은가격순
+                </a>
+            </c:when>
+
+            <c:when test="${sort=='lowPrice'}">
+                <a class="white_txt" href="/lecture_list/1?search=${search}&search_txt=${search_txt}&sort=new">
+                    <img class="sort_check" src="/resources/img/lecture/empty_star_icon.png">
+                    최신순
+                </a>
+                <a class="white_txt" href="/lecture_list/1?search=${search}&search_txt=${search_txt}&sort=popular">
+                    <img class="sort_check" src="/resources/img/lecture/empty_star_icon.png">
+                    인기순
+                </a>
+                <a class="color_txt" href="/lecture_list/1?search=${search}&search_txt=${search_txt}&sort=lowPrice">
+                    <img class="sort_check" src="/resources/img/lecture/fill_star_icon_blue.png">
+                    낮은가격순
+                </a>
+                <a class="white_txt" href="/lecture_list/1?search=${search}&search_txt=${search_txt}&sort=highPrice">
+                    <img class="sort_check" src="/resources/img/lecture/empty_star_icon.png">
+                    높은가격순
+                </a>
+            </c:when>
+
+            <c:when test="${sort=='highPrice'}">
+                <a class="white_txt" href="/lecture_list/1?search=${search}&search_txt=${search_txt}&sort=new">
+                    <img class="sort_check" src="/resources/img/lecture/empty_star_icon.png">
+                    최신순
+                </a>
+                <a class="white_txt" href="/lecture_list/1?search=${search}&search_txt=${search_txt}&sort=popular">
+                    <img class="sort_check" src="/resources/img/lecture/empty_star_icon.png">
+                    인기순
+                </a>
+                <a class="white_txt" href="/lecture_list/1?search=${search}&search_txt=${search_txt}&sort=lowPrice">
+                    <img class="sort_check" src="/resources/img/lecture/empty_star_icon.png">
+                    낮은가격순
+                </a>
+                <a class="color_txt" href="/lecture_list/1?search=${search}&search_txt=${search_txt}&sort=highPrice">
+                    <img class="sort_check" src="/resources/img/lecture/fill_star_icon_blue.png">
+                    높은가격순
+                </a>
+            </c:when>
+
+
+        </c:choose>
+
     </div>
 
 
     <%-- 강의 리스트 --%>
     <div id="lecture_list">
         <c:forEach var="item" items="${list}">
-            <a href="/lecture_detail/${item.lectureNo}" class="lecture_href">
+
                 <div class="lecture_room">
+                    <a href="/lecture_detail/${item.lectureNo}" class="lecture_href">
                     <img src="/getImage/${item.thumbnail}" alt="썸네일" class="thumbnail">
-                    <ul>
+                    <ul class="lecture_info">
                         <li>
-                            <h4>${item.lectureName}</h4>
+                            <h4 class="lecture_name_field">${item.lectureName}</h4>
                         </li>
                         <li>
-                            <span>${item.subjectName}</span>
+                            <c:choose>
+                                <c:when test="${item.subjectName=='국어'}">
+                                    <span class="subject_style1">${item.subjectName}</span>
+                                </c:when>
+
+                                <c:when test="${item.subjectName=='수학'}">
+                                    <span class="subject_style2">${item.subjectName}</span>
+                                </c:when>
+
+                                <c:when test="${item.subjectName=='영어'}">
+                                    <span class="subject_style3">${item.subjectName}</span>
+                                </c:when>
+
+                                <c:when test="${item.subjectName=='사탐'}">
+                                    <span class="subject_style4">${item.subjectName}</span>
+                                </c:when>
+
+                                <c:when test="${item.subjectName=='과탐'}">
+                                    <span class="subject_style5">${item.subjectName}</span>
+                                </c:when>
+                            </c:choose>
+
                             <span>${item.teacher}</span>
                         </li>
                         <li>
+                            <span> ₩</span>
                             <span><fmt:formatNumber value="${item.price}" pattern="#,###" /></span>
                         </li>
                     </ul>
+                    </a>
                 </div>
-            </a>
+
         </c:forEach>
     </div>
 
@@ -102,5 +193,6 @@
     </div>
 </div>
 <jsp:include page="../main/footer.jsp"/>
+
 </body>
 </html>

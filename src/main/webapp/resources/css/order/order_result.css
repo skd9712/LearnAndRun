@@ -1,3 +1,19 @@
+@font-face {
+    font-family: 'SeoulNamsanM';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/SeoulNamsanM.woff') format('woff');
+    font-size: 1.2rem;
+    font-weight: normal;
+    font-style: normal;
+}
+
+body{
+    background-image: url("/resources/img/index/night_background3.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: whitesmoke;
+    font-family: SeoulNamsanM;
+}
+
 #order_result_box{
     border-radius: 30px;
     width:100vw;
@@ -26,17 +42,16 @@
 }
 
 #order_result_msg h4{
-    color: rgba(0,0,0,0.4);
+    color: rgba(255, 255, 255, 0.6);
 }
 
 #mypage_link{
-    color: rgba(0,0,0,0.4);
-    border-bottom: 1px solid silver;
+    color: rgba(255, 255, 255, 0.6);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.6);
 }
 
 #back_home_link{
-    background-color: #2B3487;
-    border: #2B3487;
+    border: 2px solid rgba(255, 255, 255, 0.6);
     color: whitesmoke;
     border-radius: 15px;
     padding: 10px;
