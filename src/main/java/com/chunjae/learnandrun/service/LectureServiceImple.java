@@ -68,6 +68,21 @@ public class LectureServiceImple implements LectureService{
     }
 
     @Override
+    public String getAuthority(int lectureNo, String userId) {
+
+        HashMap<String, Object> hm=new HashMap<>();
+        hm.put("lectureNo", lectureNo);
+        hm.put("userId", userId);
+
+        int result=mapper.getAuthority(hm);
+
+        if(result>0)
+            return "true";
+        else
+            return "false";
+    }
+
+    @Override
     public LectureDTO detailLecture(int lectureNo) {
         LectureDTO dto=mapper.detailLecture(lectureNo);
         return dto;
@@ -111,7 +126,7 @@ public class LectureServiceImple implements LectureService{
     }
 
     @Override
-    public void updateLecture(String uploadPath, LectureDTO dto, boolean ThumbnailIsEmpty, boolean LectureDataIsEmpty) {
+    public int updateLecture(String uploadPath, LectureDTO dto, boolean ThumbnailIsEmpty, boolean LectureDataIsEmpty) {
 
         if(!ThumbnailIsEmpty){
             String thumbnailPath=uploadPath+"/thumbnail";
@@ -134,7 +149,9 @@ public class LectureServiceImple implements LectureService{
         hm.put("ThumbnailIsEmpty", ThumbnailIsEmpty);
         hm.put("LectureDataIsEmpty", LectureDataIsEmpty);
         
-        mapper.updateLecture(hm);
+        int result=mapper.updateLecture(hm);
+
+        return result;
     }
 
     /** 썸네일 업로드 */

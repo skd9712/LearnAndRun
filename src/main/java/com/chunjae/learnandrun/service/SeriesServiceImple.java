@@ -39,4 +39,32 @@ public class SeriesServiceImple implements SeriesService{
 
         return result;
     }
+
+    @Override
+    public int updateSeries(SeriesDTO dto) {
+
+        int result=mapper.updateSeries(dto);
+
+        return result;
+    }
+
+    @Override
+    public SeriesDTO detailSeries(int seriesNo) {
+
+        SeriesDTO dto=mapper.detailSeries(seriesNo);
+
+        return dto;
+    }
+
+    @Override
+    public int getAuthority(int lectureNo, String userId) {
+
+        HashMap<String, Object> hm=new HashMap<>();
+        hm.put("lectureNo", lectureNo);
+        hm.put("userId", userId);
+
+        int result=mapper.getAuthority(hm);
+
+        return result;
+    }
 }

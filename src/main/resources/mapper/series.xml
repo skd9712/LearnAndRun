@@ -22,8 +22,28 @@
              , #{detailUrl}
              )
     </insert>
+    <update id="updateSeries" parameterType="com.chunjae.learnandrun.dto.SeriesDTO">
+        update series
+        set detailName=#{detailName}
+          , detailUrl=#{detailUrl}
+        where seriesNo=#{seriesNo}
+    </update>
     <delete id="deleteSeries" parameterType="int">
         delete from series
         where seriesNo=#{seriesNo}
     </delete>
+    <select id="detailSeries" parameterType="int" resultType="com.chunjae.learnandrun.dto.SeriesDTO">
+        select seriesNo
+             , lectureNO
+             , detailName
+             , detailUrl
+        from series
+        where seriesNo=#{seriesNo}
+    </select>
+    <select id="getAuthority" parameterType="hashmap" resultType="int">
+        select count(*)
+        from user u inner join orders o
+            on u.userNo=o.userNo
+        where userId=#{userId} and lectureNo=#{lectureNo} and authority=1
+    </select>
 </mapper>

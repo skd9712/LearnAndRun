@@ -73,7 +73,7 @@ screen and (min-height: 1024px) and (orientation: landscape){
         justify-content: center;
     }
 
-    .ul2 li a{
+    #order, #wish{
         color: white;
         margin: 0 2vw;
         padding: 0.6vw 5vw;
@@ -87,16 +87,31 @@ screen and (min-height: 1024px) and (orientation: landscape){
 
     #wish{
         background-color: #3662D4;
+        border: none;
+        cursor: pointer;
+    }
+
+    .fa-star{
+        position: relative;
+        top: -0.05vw;
+        right: 0.7vw;
+    }
+
+    .starOnOff{
+        color: #fff692;
     }
 
     /* 목차 */
     .ul3{
         /*width: 67%;*/
         margin: 7vw auto;
+        position: sticky;
+        top: 59px;
         display: flex;
         flex-direction: row;
         justify-content: center;
         font-size: 1vw;
+        background-color: white;
     }
 
     .ul3 li{
@@ -157,20 +172,54 @@ screen and (min-height: 1024px) and (orientation: landscape){
     }
 
     #lectureData span{
-        margin: 1.2vw;
         display: inline-block;
         font-size: 0.95vw;
     }
 
+    #lectureData>:nth-child(2){
+        margin: 1.5vw;
+        width: 7vw;
+    }
+
     #lectureData>:last-child>a{
-        margin-left: 1vw;
         color: #5b5b5b;
+        text-decoration: underline;
     }
 
     /* 세부 강의 */
     #lectureSeries{
         margin: 5vw auto;
         width: 60vw;
+    }
+
+    #series>form label{
+        margin: 0.7vw 1.5vw;
+        display: inline-block;
+        width: 7vw;
+        font-size: 0.95vw;
+    }
+
+    #series>form input{
+        display: inline-block;
+        width: 20vw;
+        padding: 0.25vw;
+        border: 1px solid silver;
+        border-radius: 5px;
+    }
+
+    #series>form input:focus{
+        outline-color: #b3bcd0;
+    }
+
+    #append{
+        position: relative;
+        top: 3px;
+        padding: 0.2vw 1.3vw;
+        margin-left: 1vw;
+        font-size: 0.9vw;
+        border: 1px solid silver;
+        border-radius: 10px;
+        cursor: pointer;
     }
 
     #seriesTable{
@@ -181,14 +230,31 @@ screen and (min-height: 1024px) and (orientation: landscape){
 
     .seriesTr{
         display: table-row;
+        height: 2.5vw;
     }
 
     .seriesTd{
         display: table-cell;
         border: 1px solid silver;
-        padding: 0.8vw;
+        /*padding: 0.15vw 0.5vw 0.6vw 0.5vw;*/
         font-size: 0.9vw;
         text-align: center;
+    }
+
+    .seriesTd>p{
+        position: relative;
+        top: 0.5vw;
+    }
+
+    .lectureIcon{
+        width: 1.5vw;
+        position: relative;
+        top: 0.45vw;
+        opacity: 0.6;
+    }
+
+    .update_btn{
+        cursor: pointer;
     }
 }
 
