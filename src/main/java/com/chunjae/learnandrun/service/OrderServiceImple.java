@@ -28,11 +28,11 @@ public class OrderServiceImple implements OrderService{
     }
 
     @Override
-    public List<OrderDTO> listOrder(int startRow, int pageSize) {
+    public List<HashMap<String, Object>> listOrder(int startRow, int pageSize) {
         HashMap<String, Object> hm = new HashMap<>();
         hm.put("startRow",startRow);
         hm.put("pageSize",pageSize);
-        List<OrderDTO> list = orderMapper.listOrder(hm);
+        List<HashMap<String,Object>> list = orderMapper.listOrder(hm);
         return list;
     }
 
@@ -45,6 +45,7 @@ public class OrderServiceImple implements OrderService{
 
     @Override
     public int getOrderCount() {
-        return orderMapper.getOrderCount();
+        int result = orderMapper.getOrderCount();
+        return result;
     }
 }
