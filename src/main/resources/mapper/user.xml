@@ -98,4 +98,11 @@
                             on w.lectureNo = l.lectureNo
         where w.userNo = #{userNo}
     </select>
+
+    <select id="getChartData" resultType="com.chunjae.learnandrun.dto.ChartDTO">
+        SELECT l.subjectName, COALESCE(COUNT(o.lectureNo), 0) AS total_students
+        FROM lecture l LEFT JOIN orders o
+                                 ON o.lectureNo = l.lectureNo AND o.authority = 1
+        GROUP BY l.subjectName
+    </select>
 </mapper>

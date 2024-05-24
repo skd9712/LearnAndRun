@@ -12,6 +12,29 @@
     <title>Title</title>
     <script src="https://kit.fontawesome.com/4e5b2f86bb.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/resources/css/user/user_manager.css">
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load("current", {packages:["corechart"]});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            let data = google.visualization.arrayToDataTable([
+                ['Task', 'Hours per Day'],
+                ["${chart_data.get(1).subjectName}",${chart_data.get(1).total_students}],
+                ["${chart_data.get(3).subjectName}",${chart_data.get(3).total_students}],
+                ["${chart_data.get(4).subjectName}",${chart_data.get(4).total_students}],
+                ["${chart_data.get(2).subjectName}",${chart_data.get(2).total_students}],
+                ["${chart_data.get(0).subjectName}",${chart_data.get(0).total_students}]
+            ]);
+
+            let options = {
+                is3D: true,
+            };
+
+            let chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+            chart.draw(data, options);
+        }
+    </script>
 </head>
 <body>
 <%--관리자 페이지입니다.--%>
@@ -19,6 +42,12 @@
 <%--<a href="/user_logout">로그아웃</a>--%>
 <%--<a href="/lecture_insert">강의 등록하기</a>--%>
 <jsp:include page="../main/top.jsp"/>
+
+<div id="chart" style="width: 60vw; margin: 0 auto">
+    <h2 style="position: relative; top: 10vh">과목별 수강 인원</h2>
+    <div id="piechart_3d" style="margin-top: 10vh; width: 600px; height: 400px;"></div>
+</div>
+
 <div id="user">
 
     <div id="user_list">
