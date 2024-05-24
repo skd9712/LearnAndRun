@@ -5,6 +5,8 @@
 <head>
     <title>Title</title>
     <link rel="stylesheet" href="/resources/css/lecture/lecture_detail.css">
+    <script src="https://kit.fontawesome.com/4e5b2f86bb.js" crossorigin="anonymous"></script>
+    <script src="/resources/js/lecture/lecture_detail.js"></script>
     <script src="/resources/js/lecture/series.js"></script>
 </head>
 <body>
@@ -12,8 +14,9 @@
 <div id="wrap">
     <section id="top">
         <h2>${dto.lectureName}</h2>
-        <%-- 강의수정 : 관리자만 볼 수 있도록 수정 --%>
-        <a href="/lecture_update/${dto.lectureNo}">수정하기</a>
+        <c:if test="${'admin'.equals(authority)}">
+            <a href="/lecture_update/${dto.lectureNo}">수정하기</a>
+        </c:if>
     </section>
     <div class="line"></div>
     <section>
@@ -48,14 +51,16 @@
         <ul class="ul2">
             <li>
                 <a href="/lecture_order/${lectureNo}" id="order">바로결제</a>
-                <a href="#" id="wish">찜하기</a>
+                <button type="button" id="wish"><i class="fa-solid fa-star"></i>찜하기</button>
             </li>
         </ul>
-
         <ul class="ul3">
-            <li><a href="#lectureDescription">강의소개</a></li>
+<%--            <li><a href="#lectureDescription">강의소개</a></li>
             <li><a href="#lectureData">강의자료</a></li>
-            <li><a href="#lectureSeries">세부강의</a></li>
+            <li><a href="#lectureSeries">세부강의</a></li>--%>
+            <li><a href="javascript:window.scrollTo(0, 700);">강의소개</a></li>
+            <li><a href="javascript:window.scrollTo(0, 900);">강의자료</a></li>
+            <li><a href="javascript:window.scrollTo(0, 1200);">세부강의</a></li>
         </ul>
         <article id="lectureDescription">
             <h3>강의소개</h3>
@@ -71,33 +76,59 @@
         <article id="lectureSeries">
             <h3>세부강의</h3>
             <div id="series">
-                <%-- 세부강의 등록 --%>
-                <form>
-                    <ul>
-                        <li>
-                            <label for="detailName">세부 강의명</label>
-                            <input type="text" name="detailName" id="detailName">
-                        </li>
-                        <li>
-                            <label for="detailUrl">세부 강의 URL</label>
-                            <input type="url" name="detailUrl" id="detailUrl">
-                            <input type="hidden" name="lectureNo" id="lectureNo" value="${dto.lectureNo}">
-                            <input type="button" name="append" id="append" value="등록">
-                        </li>
-                    </ul>
-                </form>
-                <div id="seriesTable">
-                    <div class="seriesTr">
-                        <div class="seriesTd">강의</div>
-                        <div class="seriesTd">강의명</div>
-                        <div class="seriesTd">강의듣기</div>
-                        <div class="seriesTd">수정</div>
-                        <div class="seriesTd">삭제</div>
+                <c:if test="${'admin'.equals(authority)}">
+                    <%-- 세부 강의 등록폼 --%>
+                    <form>
+                        <ul>
+                            <li>
+                                <label for="detailName">세부 강의명</label>
+                                <input type="text" name="detailName" id="detailName">
+                            </li>
+                            <li>
+                                <label for="detailUrl">세부 강의 URL</label>
+                                <input type="text" name="detailUrl" id="detailUrl">
+                                <button type="button" name="append" id="append">등록</button>
+                            </li>
+                        </ul>
+                    </form>
+                    <div id="seriesTable">
+                        <div class="seriesTr">
+                            <div class="seriesTd"><p>강의</p></div>
+                            <div class="seriesTd"><p>강의명</p></div>
+                            <div class="seriesTd"><p>강의듣기</p></div>
+                            <div class="seriesTd"><p>수정</p></div>
+                            <div class="seriesTd"><p>삭제</p></div>
+                        </div>
                     </div>
+                </c:if>
+
+                <div id="seriesTable">
+                    <c:choose>
+                        <c:when test="${'true'.equals(authority)}">
+                            <div class="seriesTr">
+                                <div class="seriesTd"><p>강의</p></div>
+                                <div class="seriesTd"><p>강의명</p></div>
+                                <div class="seriesTd"><p>강의듣기</p></div>
+                            </div>
+                        </c:when>
+                        <c:when test="${'false'.equals(authority)}">
+                            <div class="seriesTr">
+                                <p>세부 강의는 결제 후 확인 가능합니다.</p>
+                            </div>
+                        </c:when>
+                    </c:choose>
                 </div>
+                <c:if test="${'admin'.equals(authority) || 'true'.equals(authority)}">
+                    <input type="hidden" name="lectureNo" id="lectureNo" value="${dto.lectureNo}">
+                    <input type="hidden" name="lectureName" id="lectureName" value="${dto.lectureName}">
+                    <input type="hidden" name="authority" id="authority" value="${authority}">
+                </c:if>
             </div>
         </article>
     </section>
+    <c:if test="${'admin'.equals(authority)}">
+        <a href="/lecture_delete/${dto.lectureNo}">삭제하기</a>
+    </c:if>
 </div>
 <jsp:include page="../main/footer.jsp"/>
 
