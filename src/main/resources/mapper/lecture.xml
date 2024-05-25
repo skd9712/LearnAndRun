@@ -222,4 +222,21 @@
             on u.userNo=o.userNo
         where userId=#{userId} and lectureNo=#{lectureNo} and authority=1
     </select>
+    <select id="wishList" parameterType="hashmap" resultType="int">
+        select count(*)
+        from wish
+        where userNo=#{userNo} and lectureNo=#{lectureNo}
+    </select>
+    <delete id="deleteWish" parameterType="hashmap">
+        delete from wish
+        where userNo=#{userNo} and lectureNo=#{lectureNo}
+    </delete>
+    <insert id="insertWish" parameterType="hashmap">
+        insert into wish(userNo
+                       , lectureNo
+                        )
+        values(#{userNo}
+             , #{lectureNo}
+              )
+    </insert>
 </mapper>

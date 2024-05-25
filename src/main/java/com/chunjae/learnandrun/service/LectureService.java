@@ -1,6 +1,7 @@
 package com.chunjae.learnandrun.service;
 
 import com.chunjae.learnandrun.dto.LectureDTO;
+import com.chunjae.learnandrun.dto.WishDTO;
 
 import java.util.List;
 
@@ -24,4 +25,10 @@ public interface LectureService {
     List<LectureDTO> hot_lecture();
 
     String getAuthority(int lectureNo, String userId);
+
+    boolean wishList(int userNo, int lectureNo);
+
+    int deleteWish(int userNo, int lectureNo);
+
+    int insertWish(int userNo, int lectureNo);
 }
