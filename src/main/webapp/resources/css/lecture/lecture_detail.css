@@ -76,9 +76,9 @@ screen and (min-height: 1024px) and (orientation: landscape){
     #order, #wish{
         color: white;
         margin: 0 2vw;
-        padding: 0.6vw 5vw;
         font-size: 1vw;
         border-radius: 10px;
+        padding: 0.6vw 5vw;
     }
 
     #order{
@@ -89,16 +89,7 @@ screen and (min-height: 1024px) and (orientation: landscape){
         background-color: #3662D4;
         border: none;
         cursor: pointer;
-    }
-
-    .fa-star{
-        position: relative;
-        top: -0.05vw;
-        right: 0.7vw;
-    }
-
-    .starOnOff{
-        color: #fff692;
+        font-family: 'SeoulNamsanM';
     }
 
     /* 목차 */
@@ -220,6 +211,7 @@ screen and (min-height: 1024px) and (orientation: landscape){
         border: 1px solid silver;
         border-radius: 10px;
         cursor: pointer;
+        font-family: 'SeoulNamsanM';
     }
 
     #seriesTable{
@@ -233,17 +225,26 @@ screen and (min-height: 1024px) and (orientation: landscape){
         height: 2.5vw;
     }
 
+    .seriesTr p{
+        font-family: 'SeoulNamsanM';
+    }
+
     .seriesTd{
         display: table-cell;
         border: 1px solid silver;
         /*padding: 0.15vw 0.5vw 0.6vw 0.5vw;*/
         font-size: 0.9vw;
         text-align: center;
+        font-family: 'SeoulNamsanM';
+    }
+
+    .seriesTd button{
+        font-family: 'SeoulNamsanM';
     }
 
     .seriesTd>p{
         position: relative;
-        top: 0.5vw;
+        top: 0.8vw;
     }
 
     .lectureIcon{

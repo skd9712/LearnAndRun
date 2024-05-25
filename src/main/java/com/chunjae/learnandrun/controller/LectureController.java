@@ -3,6 +3,7 @@ package com.chunjae.learnandrun.controller;
 import com.chunjae.learnandrun.dto.LectureDTO;
 import com.chunjae.learnandrun.dto.MakePage;
 import com.chunjae.learnandrun.dto.UserDTO;
+import com.chunjae.learnandrun.dto.WishDTO;
 import com.chunjae.learnandrun.service.LectureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
@@ -25,6 +26,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
 import java.util.List;
 
 @Controller
@@ -175,6 +177,7 @@ public class LectureController {
 
         UserDTO userDTO= (UserDTO) session.getAttribute("dto");
         String authority="";
+        String user="";
 
         if(userDTO!=null){
             if("admin".equals(userDTO.getUserId())){
@@ -182,11 +185,14 @@ public class LectureController {
             }else{
                 authority=service.getAuthority(lectureNo, userDTO.getUserId());
             }
+            user="true";
         }else{
             authority="false";
+            user="false";
         }
 
         model.addAttribute("authority", authority);
+        model.addAttribute("user", user);
 
         return "lecture/lecture_detail";
     }
@@ -263,6 +269,44 @@ public class LectureController {
             return "redirect:/user_login";
         }
 
+    }
+
+    /** 강의 찜 여부 */
+    @GetMapping("/wish_list/{lectureNo}")
+    public @ResponseBody boolean wishList(HttpSession session
+            , @PathVariable int lectureNo){
+
+        UserDTO userDTO= (UserDTO) session.getAttribute("dto");
+
+        boolean wish=false;
+
+        if(userDTO!=null)
+            wish=service.wishList(userDTO.getUserNo(), lectureNo);
+
+        return wish;
+    }
+
+    /** 강의 찜 & 취소 */
+    @PostMapping("/insert_wish")
+    public @ResponseBody String insertWish(HttpSession session
+            , @RequestBody HashMap<String, Object> hm){
+
+        UserDTO userDTO= (UserDTO) session.getAttribute("dto");
+        String wish= (String) hm.get("wish");
+        int lectureNo= (int) hm.get("lectureNo");
+        int result;
+
+        if(userDTO!=null) {
+            // 찜 취소
+            if ("true".equals(wish)) {
+                result = service.deleteWish(userDTO.getUserNo(), lectureNo);
+            }
+            // 찜 추가
+            else if ("false".equals(wish)) {
+                result = service.insertWish(userDTO.getUserNo(), lectureNo);
+            }
+        }
+        return wish;
     }
 
 }

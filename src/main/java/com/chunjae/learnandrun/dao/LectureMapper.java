@@ -1,6 +1,7 @@
 package com.chunjae.learnandrun.dao;
 
 import com.chunjae.learnandrun.dto.LectureDTO;
+import com.chunjae.learnandrun.dto.WishDTO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.HashMap;
@@ -27,4 +28,10 @@ public interface LectureMapper {
     List<LectureDTO> hot_lecture();
 
     int getAuthority(HashMap<String, Object> hm);
+
+    int wishList(HashMap<String, Object> hm);
+
+    int deleteWish(HashMap<String, Object> hm);
+
+    int insertWish(HashMap<String, Object> hm);
 }
