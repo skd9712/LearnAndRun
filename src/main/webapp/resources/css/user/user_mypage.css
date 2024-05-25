@@ -10,8 +10,8 @@ body{
     padding: 0;
     width: 70%;
     position: relative;
-    height: 80%;
-    top: 10vh;
+    height: 100%;
+    top: 100px;
 }
 
 .myinfo {
@@ -21,15 +21,17 @@ body{
     border-bottom: 1px solid silver;
 }
 
-.myinfo h3 {
+.myinfo h2 {
     margin: 0;
-    padding-bottom: 10px;
+    padding-bottom: 30px;
 }
 
 .myinfo a {
     margin: 10px;
     color: silver;
     text-decoration: none;
+    position: relative;
+    top: 10px;
 }
 .myinfo a:hover {
     text-decoration: underline;
@@ -47,8 +49,8 @@ body{
     margin-right: 2%;
     vertical-align: top;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    background-color: #f9f9f9;
-    border-radius: 10px;
+    background-color: rgba(255,255,255,0.6);
+    border-radius: 30px;
 }
 .lecture_list .mylecture img{
     border-radius: 10px;
@@ -57,23 +59,56 @@ body{
     margin-right: 0;
 }
 
-.lecture_list h4 {
+.lecture_list h3 {
     margin-top: 20px;
     color: black;
 }
+
+.mypage_icon{
+    width: 20px;
+    position: relative;
+    top: 3px;
+    padding: 0 5px;
+}
+
 .lecture_list p{
     color: black;
 }
 .mylecture .lecture_detail{
     max-height: 500px;
-    overflow-y: auto;
-    overflow-x: hidden;
 }
+
+.scrollBar {
+    height: 400px;
+    margin: 10px 10px 30px 10px;
+    overflow-y: scroll;
+}
+.scrollBar::-webkit-scrollbar {
+    /* 스크롤바의 너비 */
+    width: 10px;
+}
+.scrollBar::-webkit-scrollbar-thumb {
+    /* 스크롤바의 길이 */
+    height: 30%;
+    /* 스크롤바의 색상 */
+    background: rgba(252,200,87,0.5);
+    border-radius: 10px;
+}
+
+.scrollBar::-webkit-scrollbar-track {
+    /*스크롤바 뒷 배경 색상*/
+    background: rgba(255,255,255,0.6);
+    border-radius: 50px;
+}
+
+
 .wishlist .lecture_wish{
     max-height: 500px;
     overflow-y: auto;
     overflow-x: hidden;
 }
 .lect{
-    margin-bottom: 50px;
+    border-bottom: 1px solid rgba(255,255,255,0.5);
+    margin: 10px 20px;
+    padding: 10px 0;
 }
