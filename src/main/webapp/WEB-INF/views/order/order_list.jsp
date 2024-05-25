@@ -40,8 +40,8 @@
 <jsp:include page="../main/top.jsp"/>
 
 <div id="chart" style="width: 60vw; margin: 0 auto">
-    <h2 style="position: relative; top: 10vh">과목별 수강 인원</h2>
-    <div id="piechart_3d" style="margin-top: 10vh; width: 600px; height: 400px;"></div>
+    <h2 style="position: relative; top: 10vh; padding-bottom: 20px;border-bottom: 1px solid silver">과목별 수강 인원</h2>
+    <div id="piechart_3d" style="margin-top: 10vh; width: 600px; height: 400px;position: relative;top: 20px"></div>
 </div>
 
 <div id="order_list">
@@ -70,7 +70,6 @@
         </form>
     </div>
     <form method="post" action="updateAuthority">
-<%--        <input type="submit" class="updateAuth">--%>
         <input type="image" src="/resources/img/order/order_list_update.png" alt="update" class="updateAuth">
         <ul class="detail_list">
             <li><span>주문번호</span>
@@ -95,25 +94,25 @@
         </ul>
         <div id="page">
             <c:if test="${page.prev}">
-                <a href="/order_list/1}"><i class="fa-solid fa-angles-left"></i></a>
-                <a href="/order_list/${page.startBlock-1}"><i
+                <a href="/order_list/1?search=${search}&search_txt=${search_txt}}"><i class="fa-solid fa-angles-left"></i></a>
+                <a href="/order_list/${page.startBlock-1}?search=${search}&search_txt=${search_txt}"><i
                         class="fa-solid fa-angles-left"></i></a>
             </c:if>
             <c:forEach var="index" begin="${page.startBlock}" end="${page.endBlock}">
                 <c:choose>
                     <c:when test="${index==page.currPage}">
-                        <p><c:out value="${index}"/></p>
+                        <a href="/order_list/${index}?search=${search}&search_txt=${search_txt}" class="current-page"><c:out value="${index}"/></a>
                     </c:when>
                     <c:otherwise>
-                        <a href="/order_list/${index}"><c:out
+                        <a href="/order_list/${index}?search=${search}&search_txt=${search_txt}"><c:out
                                 value="${index}"/></a>
                     </c:otherwise>
                 </c:choose>
             </c:forEach>
             <c:if test="${page.next}">
-                <a href="/order_list/${page.endBlock+1}">
+                <a href="/order_list/${page.endBlock+1}?search=${search}&search_txt=${search_txt}">
                     <i class="fa-solid fa-angle-right"></i></a>
-                <a href="/order_list/${page.totalPage}">
+                <a href="/order_list/${page.totalPage}?search=${search}&search_txt=${search_txt}">
                     <i class="fa-solid fa-angle-right"></i></a>
             </c:if>
         </div>
