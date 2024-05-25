@@ -31,10 +31,16 @@ body{
     border-radius: 20px;
     width: 70%;
     height: 230px;
-    background: #3c66ab;
+    background: black;
     margin: 0 auto;
     position: relative;
     top: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+#banner_box img{
+    height: 230px;
 }
 
 #lecture_search_box{
@@ -54,8 +60,8 @@ body{
 #lecture_sort_box a{
     margin-left: 30px;
     font-weight: bold;
-    font-family: pretty;
-    font-size: 20px;
+    font-family: SeoulNamsanM;
+    font-size: 18px;
 }
 
 #telescope{
@@ -85,16 +91,16 @@ form{
 #search{
     padding: 0 23px 0 10px;
     border: 2px solid #90CAF9;
-    border-radius: 10px;
+    border-radius: 20px;
     appearance:none;
     background-image: url("/resources/img/lecture/caret-down-solid.svg");
     background-repeat: no-repeat;
     background-size: 10px;
-    background-position: 70px 8px;
+    background-position: 70px 13px;
     opacity: 0.8;
     text-align: center;
-    font-family: pretty;
-    font-size: 18px;
+    font-family: SeoulNamsanM;
+    font-size: 15px;
 }
 
 #search:focus {
@@ -102,11 +108,15 @@ form{
 }
 
 #input_box{
-    width: 280px;
+    width: 300px;
     border: 2px solid #90CAF9;
     border-radius: 20px;
-    padding: 5px 10px;
+    padding: 10px;
     position: relative;
+}
+
+#input_box img{
+    width: 30px;
 }
 
 
@@ -114,8 +124,9 @@ form{
     border: none;
     background-color: transparent;
     width: 250px;
-    padding: 3px 0;
+    padding: 0 10px;
     color: whitesmoke;
+    font-size: 1.2rem;
 }
 
 #search_txt:focus{
@@ -124,8 +135,8 @@ form{
 
 #glass{
     position: absolute;
-    left: 270px;
-    top: 15px;
+    left: 285px;
+    top: 20px;
     border: none;
     background-color: transparent;
     color: #90CAF9;
@@ -161,6 +172,10 @@ ul li{
     border-radius: 30px;
     font-family: SeoulNamsanM;
 
+}
+
+.lecture_room:hover{
+    animation: neon-flicker2 1s infinite alternate;
 }
 
 /*.lecture_room:hover{*/
@@ -236,6 +251,7 @@ ul li{
     text-align: center;
     position: relative;
     top: -120px;
+    font-size: 18px;
 }
 
 #page a{
@@ -244,19 +260,62 @@ ul li{
     padding: 5px;
     font-size: 1.1rem;
     color: whitesmoke;
+    position: relative;
+    font-family: SeoulNamsanM;
+    font-size: 18px;
 }
 
 #page p{
     display: inline-block;
     width: 20px;
-    margin: 0;
-    color: black;
-    background: #90CAF9;
-    border-radius: 100px;
     padding: 5px;
+    margin: 0;
+    color: #A1D4F9;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+    animation: neon-flicker 1s infinite alternate;
+    font-family: SeoulNamsanM;
+    font-size: 18px;
+    font-weight: bolder;
 }
 
 a>i{
     position: relative;
     top: 4px;
+}
+
+
+.neon { /*네온 텍스트*/
+    color: #A1D4F9;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+    animation: neon-flicker 1s infinite alternate;
+}
+
+@keyframes neon-flicker { /*텍스트용*/
+    0% {
+        text-shadow:
+                0 0 10px rgba(0, 255, 255, 0.7),
+                0 0 20px rgba(0, 255, 255, 0.7),
+                0 0 30px rgba(0, 255, 255, 0.7);
+    }
+    100% {
+        text-shadow:
+                0 0 20px rgba(0, 255, 255, 0.7),
+                0 0 30px rgba(0, 255, 255, 0.7),
+                0 0 40px rgba(0, 255, 255, 0.7);
+    }
+}
+
+@keyframes neon-flicker2 { /*박스용*/
+    0% {
+        box-shadow:
+                0 0 10px rgba(0, 255, 255, 0.7),
+                0 0 20px rgba(0, 255, 255, 0.7),
+                0 0 30px rgba(0, 255, 255, 0.7);
+    }
+    100% {
+        box-shadow:
+                0 0 20px rgba(0, 255, 255, 0.7),
+                0 0 30px rgba(0, 255, 255, 0.7),
+                0 0 40px rgba(0, 255, 255, 0.7);
+    }
 }
