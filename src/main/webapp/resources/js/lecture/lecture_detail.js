@@ -142,6 +142,7 @@ const init_json2=function (){
     init_json();
 
     const wish=document.getElementById("wish");
+    const wish_star=document.getElementById("wish_star");
     let lecture_No=document.getElementById("lectureNo");
 
     fetch("/wish_list/"+num, {
@@ -156,7 +157,8 @@ const init_json2=function (){
     }).then(data=>{
 
         if(data===true){
-            wish.style.backgroundColor='#3f3f3f';
+            //wish.style.backgroundColor='#3f3f3f';
+            wish_star.src="/resources/img/lecture/fill_star_icon2.png";
             wish.value="true";
         }else{
             wish.value="false";

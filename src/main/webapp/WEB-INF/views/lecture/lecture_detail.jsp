@@ -48,12 +48,24 @@
        </article>
         <ul class="ul2">
             <li>
-                <a href="/lecture_order/${lectureNo}" id="order">바로결제</a>
-                <button type="button" id="wish" value="false">찜하기</button>
+                <c:set var="uid" value="${sessionScope.dto.userNo}"/>
+                <c:choose>
+                    <c:when test="${empty uid || uid==null}">
+                        <a href="/user_login" id="order">수강신청</a>
+                    </c:when>
+                    <c:otherwise>
+                        <c:choose>
+                            <c:when test="${'false'.equals(authority)}">
+                                <a href="/lecture_order/${lectureNo}" id="order">수강신청</a>
+                            </c:when>
+                        </c:choose>
+                    </c:otherwise>
+                </c:choose>
+                <button type="button" id="wish" value="false"><img id="wish_star" src="/resources/img/lecture/empty_star_icon2.png" alt="별">찜하기</button>
             </li>
         </ul>
         <ul class="ul3">
-<%--            <li><a href="#lectureDescription">강의소개</a></li>
+<%--        <li><a href="#lectureDescription">강의소개</a></li>
             <li><a href="#lectureData">강의자료</a></li>
             <li><a href="#lectureSeries">세부강의</a></li>--%>
             <li><a href="javascript:window.scrollTo(0, 700);">강의소개</a></li>
@@ -68,8 +80,17 @@
         </article>
         <article id="lectureData">
             <h3>강의자료</h3>
-            <span>첨부파일</span>
-            <span><a href="/download/${dto.lectureData}">강의자료(${dto.lectureName})</a></span>
+            <c:choose>
+                <c:when test="${'true'.equals(authority)}">
+                    <span>첨부파일</span>
+                    <span><a href="/download/${dto.lectureData}">강의자료(${dto.lectureName})</a></span>
+                </c:when>
+                <c:when test="${'false'.equals(authority)}">
+                    <p></p>
+                    <p class="info_msg">강의 자료는 결제 후 확인 가능합니다.</p>
+                </c:when>
+            </c:choose>
+
         </article>
         <article id="lectureSeries">
             <h3>세부강의</h3>
@@ -100,22 +121,22 @@
                     </div>
                 </c:if>
 
-                <div id="seriesTable">
+
                     <c:choose>
                         <c:when test="${'true'.equals(authority)}">
+                        <div id="seriesTable">
                             <div class="seriesTr">
                                 <div class="seriesTd"><p>강의</p></div>
                                 <div class="seriesTd"><p>강의명</p></div>
                                 <div class="seriesTd"><p>강의듣기</p></div>
                             </div>
+                        </div>
                         </c:when>
                         <c:when test="${'false'.equals(authority)}">
-                            <div class="seriesTr">
-                                <p>세부 강의는 결제 후 확인 가능합니다.</p>
-                            </div>
+                            <p class="info_msg">세부 강의는 결제 후 확인 가능합니다.</p>
                         </c:when>
                     </c:choose>
-                </div>
+
                 <c:if test="${'admin'.equals(authority) || 'true'.equals(authority)}">
                     <input type="hidden" name="lectureNo" id="lectureNo" value="${dto.lectureNo}">
                     <input type="hidden" name="lectureName" id="lectureName" value="${dto.lectureName}">

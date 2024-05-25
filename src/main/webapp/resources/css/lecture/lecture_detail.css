@@ -5,47 +5,60 @@ screen and (min-height: 1024px) and (orientation: landscape){
         padding: 0;
     }
 
+    body{
+        background-image: url("/resources/img/index/night_background.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        color: whitesmoke;
+    }
+
     #wrap{
         margin: 0 auto 300px;
-        width: 90vw;
+        width: 65%;
         position: relative;
         top: 150px;
+        background: whitesmoke;
+        color: black;
+        border-radius: 3vw;
+        padding: 50px 0;
     }
 
     /* 강의 이름 + 강의 수정 */
     #top{
         margin: 0 auto;
-        width: 67vw;
+        width: 90%;
         display: flex;
         justify-content: space-between;
     }
 
     #top h2{
         margin-left: 5px;
-        font-size: 1.4vw;
+        font-size: 1.6vw;
     }
 
     .line{
-        width: 67vw;
+        width: 90%;
         border: 1px solid silver;
-        margin: 5px auto 0;
+        margin: 40px auto 0;
     }
 
     /* 강의 정보 박스 */
     #mainInfo{
         margin: 3vw auto;
-        width: 60vw;
-        /*height: 280px;*/
-        border: 2px solid #a1a1a1;
-        border-radius: 15px;
+        width: 80%;
+        /* height: 280px; */
+        border: 2px solid silver;
+        border-radius: 2vw;
         display: flex;
         flex-direction: row;
+        padding: 20px 10px;
     }
 
     #mainInfo img{
         width: 32%;
         margin: auto 0;
         padding: 1.2vw;
+        border-radius: 20px;
     }
 
     ul li{
@@ -78,31 +91,41 @@ screen and (min-height: 1024px) and (orientation: landscape){
         margin: 0 2vw;
         font-size: 1vw;
         border-radius: 10px;
-        padding: 0.6vw 5vw;
     }
 
     #order{
         background-color: #1A2375;
+        padding: 12px;
+        width: 150px;
+        display: inline-block;
+        text-align: center;
     }
 
     #wish{
-        background-color: #3662D4;
-        border: none;
+        height: 36px;
+        border: 2px solid #1A2375;
         cursor: pointer;
-        font-family: 'SeoulNamsanM';
+        width: 170px;
+        display: inline-block;
+        text-align: center;
+        color: #1A2375;
+        font-family: SeoulNamsanM;
+    }
+
+    #wish img{
+        width: 10px;
+        margin-right: 5px;
     }
 
     /* 목차 */
     .ul3{
-        /*width: 67%;*/
-        margin: 7vw auto;
-        position: sticky;
-        top: 59px;
+        width: 80%;
+        margin: 80px auto;
+        position: relative;
         display: flex;
         flex-direction: row;
         justify-content: center;
         font-size: 1vw;
-        background-color: white;
     }
 
     .ul3 li{
@@ -116,26 +139,27 @@ screen and (min-height: 1024px) and (orientation: landscape){
     , .ul3 li:active{
 /*        border-top: 3px double #3662D4;
         border-bottom: 3px double #3662D4;    */
-        border-top: 2px solid #3662D4;
-        border-bottom: 2px solid #3662D4;
+        border-top: 2px solid #2B3487;
+        border-bottom: 2px solid #2B3487;
     }
 
     .ul3 li a{
-        padding: 1vw 8vw;
+        padding: 1vw 6.7vw;
         display: inline-block;
+        font-size: 1vw;
     }
 
     .ul3 li a:hover
     , .ul3 li a:active{
-        color: #3662D4;
+        color: #2B3487;
         font-weight: bolder;
     }
 
     /* 강의 소개 */
     article>h3{
-        margin: 0 0 10px 5px;
-        font-size: 1.1vw;
-        color: #3662D4;
+        margin: 0 0 10px 30px;
+        font-size: 1.4vw;
+        color: #2B3487;
     }
 
     #lectureDescription{
@@ -144,15 +168,17 @@ screen and (min-height: 1024px) and (orientation: landscape){
     }
 
     #lectureInfoBox{
+        width: 90%;
+        margin: 30px;
         height: 15vw;
         border: none;
-        border-radius: 10px;
+        border-radius: 2vw;
         box-shadow: 4px 3px 6px 2px rgba(180, 180, 180, 0.51), -1px -1px 5px 2px rgba(210, 210, 210, 0.6);
     }
 
     #lectureInfoBox>p{
         padding: 2vw;
-        font-size: 1vw;
+        font-size: 1.1vw;
         font-weight: normal;
     }
 
@@ -164,7 +190,8 @@ screen and (min-height: 1024px) and (orientation: landscape){
 
     #lectureData span{
         display: inline-block;
-        font-size: 0.95vw;
+        font-size: 1.4vw;
+        padding: 0 20px;
     }
 
     #lectureData>:nth-child(2){
@@ -211,12 +238,11 @@ screen and (min-height: 1024px) and (orientation: landscape){
         border: 1px solid silver;
         border-radius: 10px;
         cursor: pointer;
-        font-family: 'SeoulNamsanM';
     }
 
     #seriesTable{
         display: table;
-        width: 60vw;
+        width: 50vw;
         margin: 2vw auto;
     }
 
@@ -225,8 +251,10 @@ screen and (min-height: 1024px) and (orientation: landscape){
         height: 2.5vw;
     }
 
-    .seriesTr p{
-        font-family: 'SeoulNamsanM';
+    .info_msg{
+        padding: 10px 35px;
+        font-size: 1.1vw;
+        margin: 0;
     }
 
     .seriesTd{
@@ -235,11 +263,6 @@ screen and (min-height: 1024px) and (orientation: landscape){
         /*padding: 0.15vw 0.5vw 0.6vw 0.5vw;*/
         font-size: 0.9vw;
         text-align: center;
-        font-family: 'SeoulNamsanM';
-    }
-
-    .seriesTd button{
-        font-family: 'SeoulNamsanM';
     }
 
     .seriesTd>p{
@@ -256,6 +279,10 @@ screen and (min-height: 1024px) and (orientation: landscape){
 
     .update_btn{
         cursor: pointer;
+    }
+
+    footer p{
+        margin-bottom: 100px;
     }
 }
 
