@@ -13,7 +13,7 @@
 
     <%--배너--%>
     <div id="banner_box">
-
+        <img src="/resources/img/lecture/banner.gif" alt="배너">
     </div>
 
     <%-- 검색창 --%>
@@ -38,7 +38,7 @@
     <div id="lecture_sort_box">
         <c:choose>
             <c:when test="${empty sort || sort=='' || sort=='new'}">
-                <a class="color_txt" href="/lecture_list/1?search=${search}&search_txt=${search_txt}&sort=new">
+                <a class="color_txt, neon" href="/lecture_list/1?search=${search}&search_txt=${search_txt}&sort=new">
                     <img class="sort_check" src="/resources/img/lecture/fill_star_icon_blue.png">
                     최신순
                 </a>
@@ -61,7 +61,7 @@
                     <img class="sort_check" src="/resources/img/lecture/empty_star_icon.png">
                     최신순
                 </a>
-                <a class="color_txt" href="/lecture_list/1?search=${search}&search_txt=${search_txt}&sort=popular">
+                <a class="color_txt, neon" href="/lecture_list/1?search=${search}&search_txt=${search_txt}&sort=popular">
                     <img class="sort_check" src="/resources/img/lecture/fill_star_icon_blue.png">
                     인기순
                 </a>
@@ -84,7 +84,7 @@
                     <img class="sort_check" src="/resources/img/lecture/empty_star_icon.png">
                     인기순
                 </a>
-                <a class="color_txt" href="/lecture_list/1?search=${search}&search_txt=${search_txt}&sort=lowPrice">
+                <a class="color_txt, neon" href="/lecture_list/1?search=${search}&search_txt=${search_txt}&sort=lowPrice">
                     <img class="sort_check" src="/resources/img/lecture/fill_star_icon_blue.png">
                     낮은가격순
                 </a>
@@ -107,7 +107,7 @@
                     <img class="sort_check" src="/resources/img/lecture/empty_star_icon.png">
                     낮은가격순
                 </a>
-                <a class="color_txt" href="/lecture_list/1?search=${search}&search_txt=${search_txt}&sort=highPrice">
+                <a class="color_txt, neon" href="/lecture_list/1?search=${search}&search_txt=${search_txt}&sort=highPrice">
                     <img class="sort_check" src="/resources/img/lecture/fill_star_icon_blue.png">
                     높은가격순
                 </a>
