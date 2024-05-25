@@ -100,7 +100,7 @@
             <c:forEach var="index" begin="${page.startBlock}" end="${page.endBlock}">
                 <c:choose>
                     <c:when test="${index==page.currPage}">
-                        <p><c:out value="${index}"/></p>
+                        <a href="/user_manager/${index}?search=${search}&search_txt=${search_txt}" class="current-page"><c:out value="${index}"/></a>
                     </c:when>
                     <c:otherwise>
                         <a href="/user_manager/${index}?search=${search}&search_txt=${search_txt}"><c:out
