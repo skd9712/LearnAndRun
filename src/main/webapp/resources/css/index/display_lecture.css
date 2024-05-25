@@ -48,7 +48,7 @@
     margin-right: 8px;
 }
 
-/* 슬라이더 구현 */
+/* 슬라이더 시작 */
 
 .slider {
     position: relative;
@@ -72,9 +72,11 @@
 
     animation: slider 15s infinite linear;
 }
+/* 슬라이더 끝 */
+
 
 /*
-    slider animation 실행되는 시간 15초의 1/3
+    animation 실행되는 시간 15초의 1/3
     이미지가 3개라서 전체 시간을 3으로 나눔
     aimation은 100% / 3 = 33%로, 5초 안에 animation의 33%가 실행됨
 
@@ -94,23 +96,29 @@
     animation-delay: -10s;
 }
 
+/* 슬라이더 효과 옆으로 넘어가는게 어지러워서 제자리에서 바뀌도록 수정 */
 @keyframes slider {
     0% {
-        transform: translateX(0);
+        /*transform: translateX(0);*/
+        opacity: 1;
     }
 
     26% {
-        transform: translateX(0);
+        /*transform: translateX(0);*/
+        opacity: 1;
     }
     33% {
-        transform: translateX(-100%);
+        /*transform: translateX(-100%);*/
         animation-timing-function: step-end;
+        opacity: 0;
     }
     93% {
-        transform: translateX(100%);
+        /*transform: translateX(100%);*/
+        opacity: 0;
     }
 
     100% {
-        transform: translateX(0);
+        /*transform: translateX(0);*/
+        opacity: 0;
     }
 }
