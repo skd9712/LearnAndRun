@@ -63,16 +63,21 @@ i:active{
     margin:10px
 }
 
-#page a, #page p{
+#page a{
     margin: 3px;
     padding: 3px;
     font-size: 1.1rem;
+    text-decoration: none;
+    color: black;
 }
-
+#page a.current-page{
+    color: white;
+}
 a>i{
     position: relative;
     top: 4px;
 }
+/*차트 이미지*/
 svg{
     border-radius: 10px;
 }
@@ -111,6 +116,8 @@ svg{
 .detail_list li{
     display: flex;
     padding:10px;
+    background-color: white;
+    color: black;
 }
 .detail_list li:first-child{
     justify-content: space-between;
@@ -122,7 +129,6 @@ svg{
     display: flex;
     justify-content: space-between; /* 항목 간의 공간을 균등하게 분배 */
     padding: 10px;
-    margin-bottom: 10px;
     border-bottom: 1px solid #e0e0e0;
 }
 
