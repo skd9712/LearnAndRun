@@ -5,11 +5,22 @@ screen and (min-height: 1024px) and (orientation: landscape){
         padding: 0;
     }
 
+    body{
+        background-image: url("/resources/img/index/night_background.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        color: whitesmoke;
+    }
+
     #wrap{
         margin: 0 auto 300px;
-        width: 90vw;
+        width: 75%;
         position: relative;
         top: 150px;
+        background: rgba(255, 255, 255, 0.9);
+        color: black;
+        border-radius: 2vw;
+        padding: 60px 0;
     }
 
     #top{
@@ -20,15 +31,15 @@ screen and (min-height: 1024px) and (orientation: landscape){
     }
 
     #top h2{
-        margin-left: 5px;
+        margin: 0 0 20px 10px;
         font-size: 1.4vw;
     }
 
     #top p{
-        font-size: 1vw;
+        font-size: 1.2vw;
         position: relative;
-        top: 0.3vw;
-        margin-right: 5px;
+        top: 0.5vw;
+        margin-right: 15px;
     }
 
     .line{
@@ -47,6 +58,7 @@ screen and (min-height: 1024px) and (orientation: landscape){
         height: 27vw;
         display: block;
         margin: 0 auto;
+        border-radius: 30px;
     }
 
 }
