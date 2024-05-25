@@ -2,6 +2,7 @@ package com.chunjae.learnandrun.service;
 
 import com.chunjae.learnandrun.dao.LectureMapper;
 import com.chunjae.learnandrun.dto.LectureDTO;
+import com.chunjae.learnandrun.dto.WishDTO;
 import net.coobird.thumbnailator.Thumbnailator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -81,6 +82,43 @@ public class LectureServiceImple implements LectureService{
         else
             return "false";
     }
+
+    @Override
+    public boolean wishList(int userNo, int lectureNo) {
+
+        HashMap<String, Object> hm=new HashMap<>();
+        hm.put("userNo", userNo);
+        hm.put("lectureNo", lectureNo);
+
+        int result=mapper.wishList(hm);
+        boolean wish=false;
+
+        if(result>0)
+            wish=true;
+
+        return wish;
+    }
+
+    @Override
+    public int deleteWish(int userNo, int lectureNo) {
+        HashMap<String, Object> hm=new HashMap<>();
+        hm.put("userNo", userNo);
+        hm.put("lectureNo", lectureNo);
+        int result=mapper.deleteWish(hm);
+
+        return result;
+    }
+
+    @Override
+    public int insertWish(int userNo, int lectureNo) {
+        HashMap<String, Object> hm=new HashMap<>();
+        hm.put("userNo", userNo);
+        hm.put("lectureNo", lectureNo);
+        int result=mapper.insertWish(hm);
+
+        return result;
+    }
+
 
     @Override
     public LectureDTO detailLecture(int lectureNo) {
