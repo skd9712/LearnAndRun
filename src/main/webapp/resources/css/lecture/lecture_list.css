@@ -6,13 +6,6 @@
     font-style: normal;
 }
 
-@font-face {
-    font-family: 'pretty';
-    font-style: normal;
-    font-weight: 400;
-    src: url('/resources/font/omyu_pretty.ttf') format('truetype');
-}
-
 body{
     background-image: url("/resources/img/index/night_background.png");
     background-size: cover;
@@ -27,11 +20,12 @@ body{
     flex-direction: column;
 }
 
+/* 배너 상자 시작 */
 #banner_box{
     border-radius: 20px;
     width: 70%;
     height: 230px;
-    background: black;
+    background: #000A12;
     margin: 0 auto;
     position: relative;
     top: 100px;
@@ -43,41 +37,13 @@ body{
     height: 230px;
 }
 
+/* 배너 상자 끝 */
+
+
+/* 검색창 상자 시작 */
 #lecture_search_box{
     position: relative;
     top: 160px;
-}
-
-#lecture_sort_box{
-    display: block;
-    position: relative;
-    top: 220px;
-    padding: 10px 0;
-    width: 75%;
-    margin: 0 auto;
-}
-
-#lecture_sort_box a{
-    margin-left: 30px;
-    font-weight: bold;
-    font-family: SeoulNamsanM;
-    font-size: 18px;
-}
-
-#telescope{
-    width: 30px;
-}
-
-.sort_check{
-    width: 20px;
-}
-
-.color_txt{
-    /*color: #FED370;*/
-    color: #90CAF9;
-}
-.white_txt{
-    color: whitesmoke;
 }
 
 form{
@@ -142,12 +108,46 @@ form{
     color: #90CAF9;
 }
 
-/* 정렬 */
+/* 검색창 상자 끝 */
+
+
+
+/* 정렬 영역 시작 */
+
 ul li{
     list-style: none;
 }
 
-/* 강의 리스트 */
+#lecture_sort_box{
+    display: block;
+    position: relative;
+    top: 220px;
+    padding: 10px 0;
+    width: 75%;
+    margin: 0 auto;
+}
+
+#lecture_sort_box a{
+    margin-left: 30px;
+    font-weight: bold;
+    font-family: SeoulNamsanM;
+    font-size: 18px;
+}
+
+.sort_check{
+    width: 20px;
+}
+
+.color_txt{
+    /*color: #FED370;*/
+    color: #90CAF9;
+}
+.white_txt{
+    color: whitesmoke;
+}
+
+
+/* 강의 리스트 시작 */
 
 #lecture_list{
     width: 70vw;
@@ -234,16 +234,16 @@ ul li{
     background: #DDE7CF;
 }
 
-
-
-
 .thumbnail{
     width: 240px;
     height: 180px;
     border-radius: 20px;
 }
 
-/* 페이지 */
+/* 강의 리스트 끝 */
+
+
+/* 페이지 시작 */
 #page{
     display: flex;
     justify-content: center;
@@ -283,6 +283,10 @@ a>i{
     top: 4px;
 }
 
+/* 페이지 끝 */
+
+
+/* 네온 효과 시작 */
 
 .neon { /*네온 텍스트*/
     color: #A1D4F9;
@@ -319,3 +323,5 @@ a>i{
                 0 0 40px rgba(0, 255, 255, 0.7);
     }
 }
+
+/* 네온 효과 끝 */
