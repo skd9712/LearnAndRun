@@ -5,9 +5,7 @@
 <head>
     <title>Title</title>
     <link rel="stylesheet" href="/resources/css/lecture/lecture_detail.css">
-    <script src="https://kit.fontawesome.com/4e5b2f86bb.js" crossorigin="anonymous"></script>
     <script src="/resources/js/lecture/lecture_detail.js"></script>
-    <script src="/resources/js/lecture/series.js"></script>
 </head>
 <body>
 <jsp:include page="../main/top.jsp"/>
@@ -51,7 +49,7 @@
         <ul class="ul2">
             <li>
                 <a href="/lecture_order/${lectureNo}" id="order">바로결제</a>
-                <button type="button" id="wish"><i class="fa-solid fa-star"></i>찜하기</button>
+                <button type="button" id="wish" value="false">찜하기</button>
             </li>
         </ul>
         <ul class="ul3">
@@ -123,6 +121,7 @@
                     <input type="hidden" name="lectureName" id="lectureName" value="${dto.lectureName}">
                     <input type="hidden" name="authority" id="authority" value="${authority}">
                 </c:if>
+                <input type="hidden" name="user" id="user" value="${user}">
             </div>
         </article>
     </section>
