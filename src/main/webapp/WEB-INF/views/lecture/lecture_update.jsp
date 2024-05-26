@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <title>Title</title>
@@ -16,7 +17,7 @@
             <li id="li1">
                 <label for="thumbnailFile">썸네일</label>
                 <img src="/getImage/${dto.thumbnail}" alt="${dto.thumbnail}" id="thumbnailImg">
-                <input type="file" name="thumbnailFile" id="thumbnailFile">
+                <input type="file" accept="image/*" name="thumbnailFile" id="thumbnailFile">
                 <input type="hidden" name="prevThumbnail" value="${dto.thumbnail}">
             </li>
             <li>
@@ -75,7 +76,9 @@
             </li>
             <li>
                 <label for="price">가격</label>
-                <input type="text" name="price" id="price" value="${dto.price}">
+                <input type="text" name="price" id="price"
+                       value="<fmt:formatNumber value="${dto.price}" pattern="#,###"/>"
+                       onchange="getNumber(this)" onkeyup="getNumber(this)">
             </li>
             <li>
                 <label for="startDate">개강일</label>
@@ -84,7 +87,7 @@
             <li>
                 <label for="lectureDataFile">강의자료</label>
                 <input type="text" name="lectureData" id="lectureData" value="${dto.lectureData}" readonly>
-                <input type="file" name="lectureDataFile" id="lectureDataFile">
+                <input type="file" accept="application/zip" name="lectureDataFile" id="lectureDataFile">
                 <input type="hidden" name="prevLectureData" id="prevLectureData" value="=${dto.lectureData}">
             </li>
             <li>
