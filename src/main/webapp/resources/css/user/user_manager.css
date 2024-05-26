@@ -71,7 +71,7 @@ i:active{
     padding: 3px;
     font-size: 1.1rem;
     text-decoration: none;
-    color: rgba(102,51,153,0.8);
+    color: rgba(183,103,183,0.8);
 }
 #page a.current-page{
     color: white;
@@ -125,7 +125,7 @@ svg{
 .detail_list li:first-child{
     justify-content: space-between;
     font-weight: bold;
-    background-color: rgba(102,51,153,0.8);
+    background-color: rgba(183,103,183,0.8);
     color: white;
 }
 .user_data {
@@ -141,7 +141,8 @@ svg{
 }
 
 .user_data span a {
-    color: rebeccapurple;
+    color: #b768b7;
+    /*color: rebeccapurple;*/
 }
 
 .detail_list li span{
