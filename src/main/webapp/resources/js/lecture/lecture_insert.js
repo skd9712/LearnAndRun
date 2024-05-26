@@ -24,6 +24,8 @@ window.onload=function (){
     thumbnailFile.onchange=function () {
         thumbnailImg.src = URL.createObjectURL(thumbnailFile.files[0]);
         thumbnailImg.alt = thumbnailFile.files[0].name;
+        thumbnailImg.style.width="12vw";
+        thumbnailImg.style.top="0.7vw";
     }
 
 }

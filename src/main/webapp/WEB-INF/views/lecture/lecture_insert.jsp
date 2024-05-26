@@ -3,17 +3,18 @@
 <head>
     <title>Title</title>
     <link rel="stylesheet" href="/resources/css/lecture/lecture_insert.css">
+    <script src="/resources/js/lecture/lecture_insert.js"></script>
 </head>
 <body>
 <jsp:include page="../main/top.jsp"/>
 <div id="wrap">
     <h2>강의 등록</h2>
-    <div class="line"></div>
     <form method="post" action="/lecture_insert_result" enctype="multipart/form-data">
         <ul>
             <li>
                 <label for="thumbnailFile">썸네일</label>
-                <input type="file" name="thumbnailFile" id="thumbnailFile">
+                <img src="" alt="썸네일" id="thumbnailImg">
+                <input type="file" accept="image/*" name="thumbnailFile" id="thumbnailFile">
             </li>
             <li>
                 <label for="lectureName">강의명</label>
@@ -47,7 +48,8 @@
             </li>
             <li>
                 <label for="price">가격</label>
-                <input type="text" name="price" id="price">
+                <input type="text" name="price" id="price"
+                       onchange="getNumber(this)" onkeyup="getNumber(this)">
             </li>
             <li>
                 <label for="startDate">개강일</label>
@@ -55,7 +57,7 @@
             </li>
             <li>
                 <label for="lectureDataFile">강의자료</label>
-                <input type="file" name="lectureDataFile" id="lectureDataFile">
+                <input type="file" accept="application/zip" name="lectureDataFile" id="lectureDataFile">
             </li>
             <li>
                 <input type="submit" id="append" value="등록하기">
