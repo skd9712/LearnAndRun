@@ -12,9 +12,6 @@
 <div id="wrap">
     <section id="top">
         <h2>${dto.lectureName}</h2>
-        <c:if test="${'admin'.equals(authority)}">
-            <a href="/lecture_update/${dto.lectureNo}">수정하기</a>
-        </c:if>
     </section>
     <div class="line"></div>
     <section>
@@ -47,21 +44,41 @@
            </ul>
        </article>
         <ul class="ul2">
+            <c:set var="now" value="<%=new java.util.Date()%>"/>
+            <fmt:formatDate var="today" value="${now}" pattern="yyyy-MM-dd" />
+            <c:set var="uid" value="${sessionScope.dto.userNo}"/>
             <li>
-                <c:set var="uid" value="${sessionScope.dto.userNo}"/>
                 <c:choose>
-                    <c:when test="${empty uid || uid==null}">
-                        <a href="/user_login" id="order">수강신청</a>
+                    <c:when test="${uid==1}">
+                        <a id="lecture_edit_btn" href="/lecture_update/${dto.lectureNo}">수정하기</a>
+                        <a id="lecture_del_btn" href="/lecture_delete/${dto.lectureNo}">삭제하기</a>
                     </c:when>
                     <c:otherwise>
                         <c:choose>
-                            <c:when test="${'false'.equals(authority)}">
-                                <a href="/lecture_order/${lectureNo}" id="order">수강신청</a>
+
+                            <c:when test="${empty uid || uid==null}">
+                                <a href="/user_login" id="order">수강신청</a>
                             </c:when>
+
+                            <c:otherwise>
+                                <c:choose>
+                                    <c:when test="${'false'.equals(authority)}">
+                                        <c:choose>
+                                            <c:when test="${dto.startDate>today}">
+                                                <a href="#" id="order">개강전 강의</a>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <a href="/lecture_order/${lectureNo}" id="order">수강신청</a>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </c:when>
+                                </c:choose>
+                            </c:otherwise>
                         </c:choose>
+                        <button type="button" id="wish" value="false"><img id="wish_star" src="/resources/img/lecture/empty_star_icon2.png" alt="별">찜하기</button>
+
                     </c:otherwise>
                 </c:choose>
-                <button type="button" id="wish" value="false"><img id="wish_star" src="/resources/img/lecture/empty_star_icon2.png" alt="별">찜하기</button>
             </li>
         </ul>
         <ul class="ul3">
@@ -81,13 +98,13 @@
         <article id="lectureData">
             <h3>강의자료</h3>
             <c:choose>
-                <c:when test="${'true'.equals(authority)}">
+                <c:when test="${'true'.equals(authority) || uid==1}">
                     <span>첨부파일</span>
                     <span><a href="/download/${dto.lectureData}">강의자료(${dto.lectureName})</a></span>
                 </c:when>
                 <c:when test="${'false'.equals(authority)}">
                     <p></p>
-                    <p class="info_msg">강의 자료는 결제 후 확인 가능합니다.</p>
+                    <p class="info_msg">강의 자료는 수강 신청 후 확인 가능합니다.</p>
                 </c:when>
             </c:choose>
 
@@ -133,7 +150,7 @@
                         </div>
                         </c:when>
                         <c:when test="${'false'.equals(authority)}">
-                            <p class="info_msg">세부 강의는 결제 후 확인 가능합니다.</p>
+                            <p class="info_msg">세부 강의는 수강 신청 후 확인 가능합니다.</p>
                         </c:when>
                     </c:choose>
 
@@ -146,9 +163,6 @@
             </div>
         </article>
     </section>
-    <c:if test="${'admin'.equals(authority)}">
-        <a href="/lecture_delete/${dto.lectureNo}">삭제하기</a>
-    </c:if>
 </div>
 <jsp:include page="../main/footer.jsp"/>
 
