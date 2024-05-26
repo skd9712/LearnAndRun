@@ -20,37 +20,46 @@
     <ul>
         <h2>회원정보 수정</h2>
         <li>
-            <input type="text" name="userNo" value="${user.userNo}" readonly>
+            <input type="hidden" name="userNo" value="${user.userNo}" readonly>
         </li>
         <li>
             <input type="hidden" name="password" value="${user.password}">
         </li>
-        <li>
+        <li class="form-item">
+            <label>아이디</label>
             <input type="text" name="userId" value="${user.userId}" readonly>
         </li>
-        <li>
+        <li class="form-item">
+            <label>이름</label>
             <input type="text" name="userName" id="userName" value="${user.userName}">
         </li>
-        <li>
+        <li class="form-item">
+            <label>기존 주소</label>
             <input type="text" name="address" value="${user.addr}">
         </li>
-        <li>
+        <li class="form-item">
+            <label>새 주소</label>
             <input type="text" id="addr" onclick="findAddr()" placeholder="주소 입력하기">
         </li>
-        <li>
+        <li class="form-item">
+            <label>우편번호</label>
             <input type="text" name="postcode" id="postcode" placeholder="우편번호" readonly>
         </li>
-        <li>
+        <li class="form-item">
+            <label>도로명주소</label>
             <input type="text" name="roadAddress" id="roadAddress" placeholder="도로명주소" readonly>
         </li>
-        <li>
+        <li class="form-item">
+            <label>지번주소</label>
             <input type="text" name="jibunAddress" id="jibunAddress" placeholder="지번주소" readonly>
         </li>
-        <li>
+        <li class="form-item">
+            <label>참고항목</label>
             <input type="text" name="extraAddress" id="extraAddress" placeholder="참고항목" readonly>
         </li>
-        <li>
-            <input type="text" name="detailAddress" id="detailAddress" placeholder="상세 주소 입력">
+        <li class="form-item">
+            <label>상세주소</label>
+            <input type="text" name="detailAddress" id="detailAddress" placeholder="상세주소 입력하기">
         </li>
         <li>
             <button type="submit">수정완료</button>
