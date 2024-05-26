@@ -47,6 +47,7 @@ form img{
     width: 12vw;
     height: 9vw;
     margin-right: 10px;
+    border-radius: 15px;
 }
 
 textarea{

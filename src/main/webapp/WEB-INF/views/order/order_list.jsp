@@ -22,6 +22,8 @@
 
             let options = {
                 is3D: true,
+                colors:['#ffedc9','#f8dddc','#c7d8eb','#d2dce0','#dde7cf'],
+                pieSliceTextStyle: {color: '#7392aa'},
             };
 
             let chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
@@ -80,7 +82,7 @@
                     <span>${item.orderDate}</span>
                     <span>${item.lectureName}</span>
                     <span style="display: none"><input type="hidden" name="orderNo_${item.orderNo}" value="${item.orderNo}"></span>
-                    <span><input type="checkbox" name="authority_${item.orderNo}"
+                    <span><input class="chk_box" type="checkbox" name="authority_${item.orderNo}"
                                  value="true" ${item.authority ? 'checked' : ''}/></span>
 
                 </li>

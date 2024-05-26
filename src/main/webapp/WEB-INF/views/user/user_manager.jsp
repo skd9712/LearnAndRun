@@ -29,6 +29,8 @@
 
             let options = {
                 is3D: true,
+                colors:['#ffedc9','#f8dddc','#c7d8eb','#d2dce0','#dde7cf'],
+                pieSliceTextStyle: {color: '#7392aa'},
             };
 
             let chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
