@@ -6,7 +6,7 @@ body{
 }
 
 form{
-    margin: 0 auto 20px;
+    margin: 0 auto 30px;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -14,30 +14,33 @@ form{
 }
 
 #search{
-    padding: 0 30px 0 5px;
-    border: 2px solid #4C6EC6;
-    border-radius: 5px;
-    appearance:none;
-    background-image: url("/resources/img/lecture/caret-down-solid.svg");
+    padding: 12px 30px 12px 12px;
+    border: 2px solid white;
+    border-radius: 20px;
+    appearance: none;
+    background-image: url(/resources/img/lecture/caret-down-solid.svg);
     background-repeat: no-repeat;
     background-size: 10px;
-    background-position: 70px 8px;
+    background-position: 75px 11px;
+    opacity: 0.9;
 }
 
 
 #input_box{
-    width: 280px;
-    border: 2px solid #4C6EC6;
+    width: 300px;
+    border: 2px solid white;
     border-radius: 20px;
-    padding: 5px 10px;
+    padding: 0 10px;
     position: relative;
+    background: rgba(255, 255, 255, 0.9);
 }
 
 #search_txt{
     border: none;
     background-color: transparent;
     width: 250px;
-    padding: 3px 0;
+    padding: 7px 10px;
+    font-size: 1.1rem;
 }
 
 #search_txt:focus{
@@ -45,11 +48,11 @@ form{
 }
 #glass{
     position: absolute;
-    left: 270px;
-    top: 15px;
+    left: 285px;
+    top: 18px;
     border: none;
     background-color: transparent;
-    color: #4C6EC6;
+    color: silver;
 }
 i:hover{
     cursor: pointer;
@@ -60,7 +63,7 @@ i:active{
 #page{
     display: flex;
     justify-content: center;
-    margin:10px
+    margin:30px
 }
 
 #page a{
@@ -68,7 +71,7 @@ i:active{
     padding: 3px;
     font-size: 1.1rem;
     text-decoration: none;
-    color: black;
+    color: rgba(102,51,153,0.8);
 }
 #page a.current-page{
     color: white;
@@ -85,8 +88,8 @@ svg{
 #user_list{
     margin: 0 auto;
     padding: 0;
-    width: 60vw;
-    height: 130%;
+    width: 60%;
+    height: 110%;
     top: 12vh;
     position: relative;
 }
@@ -95,11 +98,11 @@ svg{
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    border-bottom: 1px solid silver;
-    margin-bottom: 20px;
+    border-bottom: 1px solid white;
+    margin-bottom: 30px;
 }
 .admin_func a{
-    margin: 0 10px;
+    margin: 0 20px;
     color: white;
 }
 .detail_list{
@@ -108,21 +111,21 @@ svg{
     margin: 0;
     width: 100%;
     box-sizing: border-box;
-    border:1px solid silver;
+    border:1px solid transparent;
     border-radius: 10px;
     overflow: hidden; /* 내용이 넘치지 않도록 설정 */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 .detail_list li{
     display: flex;
-    padding:10px;
-    background-color: white;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
     color: black;
 }
 .detail_list li:first-child{
     justify-content: space-between;
     font-weight: bold;
-    background-color: #2B3487;
+    background-color: rgba(102,51,153,0.8);
     color: white;
 }
 .user_data {
@@ -136,6 +139,11 @@ svg{
     flex: 1; /* 모든 span 요소가 동일한 비율로 공간을 차지하도록 설정 */
     text-align: center;
 }
+
+.user_data span a {
+    color: rebeccapurple;
+}
+
 .detail_list li span{
     flex: 1;
     text-align: center;
@@ -143,4 +151,8 @@ svg{
 }
 .user_data:last-child {
     border-bottom: none; /* 마지막 항목의 하단 선 제거 */
+}
+
+#enroll_manage_tab{
+    color: rgba(255,255,255,0.4);
 }
