@@ -36,6 +36,14 @@ body{
     left: 46%;
     top: 40px;
 }
+.form-item{
+    display: flex;
+    justify-content: space-between;
+}
+.form-item label{
+    color: black;
+    margin: 20px
+}
 
 #del_user_link{
     position: relative;
