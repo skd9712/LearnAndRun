@@ -47,7 +47,7 @@ const init_json=function (){
             let td3_a=document.createElement('a');
             td3_a.href="/lecture_class/"+num+"/"+lectureName+"/"+item.seriesNo;
             let a_icon=document.createElement('img');
-            a_icon.src="/resources/img/lecture/free-icon-youtube-logo-87421.png";
+            a_icon.src="/resources/img/lecture/youtube_icon.png";
             a_icon.className='lectureIcon';
             td3_a.appendChild(a_icon);
             td3_div.appendChild(td3_a);
