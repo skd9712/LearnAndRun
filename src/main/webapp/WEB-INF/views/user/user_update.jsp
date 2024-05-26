@@ -62,7 +62,7 @@
             <input type="text" name="detailAddress" id="detailAddress" placeholder="상세주소 입력하기">
         </li>
         <li>
-            <button type="submit">수정완료</button>
+            <button type="submit">수정 완료</button>
 <%--            <button type="reset">취소</button>--%>
         </li>
     </ul>

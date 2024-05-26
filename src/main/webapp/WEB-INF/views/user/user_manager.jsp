@@ -52,10 +52,10 @@
     <div id="user_list">
         <div class="admin_func">
         <a href="/user_manager/">
-            <h2>회원 정보</h2>
+            <h2 id="user_manage_tab">회원 관리</h2>
         </a>
         <a href="/order_list">
-            <h2>수강 내역</h2>
+            <h2 id="enroll_manage_tab">수강 관리</h2>
         </a>
         </div>
         <%--    검색--%>
