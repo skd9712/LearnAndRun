@@ -1,10 +1,19 @@
+body{
+    background-image: url("/resources/img/index/night_background2.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+}
 #user_update{
     margin:0 auto;
     padding: 0;
     width: 30vw;
-    height: 130%;
+    height: 150%;
     top: 3vh;
     position: relative;
+}
+#user_update h2{
+    color: black;
 }
 #user_update ul{
     background: whitesmoke;
@@ -25,7 +34,7 @@
 #user_update a{
     position: relative;
     left: 44%;
-    top:10%;
+    top:9%;
 
 }
 li > input {
