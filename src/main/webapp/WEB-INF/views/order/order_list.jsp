@@ -1,11 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: user
-  Date: 2024-05-23
-  Time: 오후 3:18
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -47,10 +40,10 @@
 <div id="order_list">
     <div class="admin_func">
         <a href="/user_manager">
-            <h2>회원 정보</h2>
+            <h2 id="user_manage_tab">회원 관리</h2>
         </a>
         <a href="/order_list">
-            <h2>수강 내역</h2>
+            <h2 id="enroll_manage_tab">수강 관리</h2>
         </a>
     </div>
     <%--    검색--%>
@@ -70,25 +63,26 @@
         </form>
     </div>
     <form method="post" action="updateAuthority">
-        <input type="image" src="/resources/img/order/order_list_update.png" alt="update" class="updateAuth">
+        <input type="image" src="/resources/img/order/reload_icon.png" alt="update" class="updateAuth">
         <ul class="detail_list">
             <li><span>주문번호</span>
                 <span>회원명</span>
                 <span>주문일</span>
                 <span>강의명</span>
                 <span>수강상태</span>
-                <span>주문번호</span>
+<%--                <span>주문번호</span>--%>
             </li>
             <c:forEach var="item" items="${list}">
                 <li class="user_data">
-                    <span>${item.orderNo}</span>
+<%--                    <span>${item.orderNo}</span>--%>
+                    <span>${item.orderNum}</span>
                     <span>${item.userName}</span>
                     <span>${item.orderDate}</span>
                     <span>${item.lectureName}</span>
                     <span style="display: none"><input type="hidden" name="orderNo_${item.orderNo}" value="${item.orderNo}"></span>
                     <span><input type="checkbox" name="authority_${item.orderNo}"
                                  value="true" ${item.authority ? 'checked' : ''}/></span>
-                    <span>${item.orderNum}</span>
+
                 </li>
             </c:forEach>
         </ul>
