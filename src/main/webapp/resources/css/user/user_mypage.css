@@ -104,8 +104,6 @@ body{
 
 .wishlist .lecture_wish{
     max-height: 500px;
-    overflow-y: auto;
-    overflow-x: hidden;
 }
 .lect{
     border-bottom: 1px solid rgba(255,255,255,0.5);
