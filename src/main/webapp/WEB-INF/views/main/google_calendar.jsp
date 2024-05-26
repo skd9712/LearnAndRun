@@ -99,7 +99,7 @@
       height: 480px;
       background: rgba(255,255,255,0.4);
       border-radius: 20px;
-      padding: 0 10px 30px 10px;
+      padding: 0 10px 30px 30px;
       overflow: hidden;
       white-space: nowrap;
     }
