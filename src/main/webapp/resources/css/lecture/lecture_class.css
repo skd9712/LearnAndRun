@@ -14,18 +14,18 @@ screen and (min-height: 1024px) and (orientation: landscape){
 
     #wrap{
         margin: 0 auto 300px;
-        width: 75%;
+        width: 60%;
         position: relative;
         top: 150px;
         background: rgba(255, 255, 255, 0.9);
         color: black;
         border-radius: 2vw;
-        padding: 60px 0;
+        padding: 40px 0 50px 0;
     }
 
     #top{
         margin: 0 auto;
-        width: 67vw;
+        width: 90%;
         display: flex;
         justify-content: space-between;
     }
@@ -36,14 +36,15 @@ screen and (min-height: 1024px) and (orientation: landscape){
     }
 
     #top p{
-        font-size: 1.2vw;
+        font-size: 1.1vw;
         position: relative;
-        top: 0.5vw;
+        top: 0vw;
         margin-right: 15px;
+        font-family: SeoulNamsanM;
     }
 
     .line{
-        width: 67vw;
+        width: 90%;
         border: 1px solid silver;
         margin: 5px auto 3vw;
     }
