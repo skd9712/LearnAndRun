@@ -18,7 +18,7 @@
 <div id="user_update">
 <form method="post" action="updateresult">
     <ul>
-        <h2>정보수정</h2>
+        <h2>회원정보 수정</h2>
         <li>
             <input type="text" name="userNo" value="${user.userNo}" readonly>
         </li>
@@ -54,11 +54,12 @@
         </li>
         <li>
             <button type="submit">수정완료</button>
-            <button type="reset">취소</button>
+<%--            <button type="reset">취소</button>--%>
         </li>
     </ul>
+    <a id="del_user_link" href="/user_delete/${user.userNo}">회원 탈퇴</a>
 </form>
-    <a href="/user_delete/${user.userNo}">회원 탈퇴</a>
+
 
 </div>
 <jsp:include page="../main/footer.jsp"/>
