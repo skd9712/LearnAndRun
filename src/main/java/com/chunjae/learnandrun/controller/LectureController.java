@@ -141,6 +141,9 @@ public class LectureController {
         String realpath=  request.getSession().getServletContext().getRealPath(path);
 
         String fname= URLEncoder.encode(filename, StandardCharsets.UTF_8).replace("+","%20");
+        // 업로드 전 파일 이름으로 다운되도록
+        int fnameIndex=fname.indexOf("_", fname.indexOf("_")+1);
+        String fnameChange=fname.substring(fnameIndex+1);
 
         File file=new File(realpath+"/" + fname);
         if(!file.exists()) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -151,7 +154,7 @@ public class LectureController {
         try {
             resource= new InputStreamResource(new FileInputStream(file));
             response.setHeader("Content-Type", "application/octet-stream");
-            response.setHeader("Content-Disposition", "attachment; filename="+fname);
+            response.setHeader("Content-Disposition", "attachment; filename="+fnameChange);
             headers.add("Cache-Control", "no-cache, no-store, must-revalidate");
             headers.add("Pragma", "no-cache");
             headers.add("Expires", "0");
