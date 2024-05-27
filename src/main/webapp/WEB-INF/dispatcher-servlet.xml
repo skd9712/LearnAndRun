@@ -39,12 +39,7 @@
             <mvc:exclude-mapping path="/user_logout*"/>
             <mvc:exclude-mapping path="/index*"/>
             <mvc:exclude-mapping path="/lecture_list*"/>
-            <mvc:exclude-mapping path="/lecture_insert*"/>
-            <mvc:exclude-mapping path="/lecture_update*"/>
-            <mvc:exclude-mapping path="/lecture_delete*"/>
             <mvc:exclude-mapping path="/lecture_detail*"/>
-            <mvc:exclude-mapping path="/insertSeries*"/>
-            <mvc:exclude-mapping path="/listSeries*"/>
 
             <ref bean="authInterrupt"/>
         </mvc:interceptor>
