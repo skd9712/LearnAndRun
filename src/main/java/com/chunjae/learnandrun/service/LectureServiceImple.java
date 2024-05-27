@@ -209,19 +209,12 @@ public class LectureServiceImple implements LectureService{
                 File file=new File(uploadPath, fileName);
                 multi.transferTo(file);
 
-
                 //썸네일 업로드
                 thumbnailName="thumbnail_"+uuid+"_"+originalFilename;
                 String thumbnailPath=uploadPath+"/"+thumbnailName;
 
                 File thumbnail=new File(thumbnailPath);
-                Thumbnailator.createThumbnail(file, thumbnail, 240, 180);
-
-/*                //로컬에 업로드
-                String localPath="D:\\LearnAndRun_test\\src\\main\\webapp\\upload\\thumbnail"
-                        +"/"+thumbnailName;
-                File thumbnailLocal=new File(localPath);
-                Thumbnailator.createThumbnail(file, thumbnailLocal, 240, 180);*/
+                Thumbnailator.createThumbnail(file, thumbnail, 480, 360);
 
                 //원본 이미지 삭제
                 file.delete();
@@ -253,14 +246,6 @@ public class LectureServiceImple implements LectureService{
 //                String fileName=uuid+"_"+originalFilename;
 //                File file=new File(uploadPath, fileName);
                 multi.transferTo(file);
-
-/*
-                //로컬에 업로드
-                String localPath="D:\\LearnAndRun_test\\src\\main\\webapp\\upload\\lectureData"
-                        +"/"+lectureDataName;
-                File lectureDataLocal=new File(localPath);
-                multi.transferTo(lectureDataLocal);
-*/
 
             }
         }catch (IOException e){
