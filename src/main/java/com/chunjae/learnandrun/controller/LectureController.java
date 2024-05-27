@@ -218,9 +218,7 @@ public class LectureController {
 
     /** 강의 수정 결과 */
     @PostMapping("/lecture_update_result")
-    public String updateLectureResult(HttpServletRequest request, LectureDTO dto
-            , @RequestParam String prevLectureData
-            , @RequestParam String prevThumbnail, Model model){
+    public String updateLectureResult(HttpServletRequest request, LectureDTO dto, Model model){
 
         boolean ThumbnailIsEmpty=false;
         boolean LectureDataIsEmpty=false;

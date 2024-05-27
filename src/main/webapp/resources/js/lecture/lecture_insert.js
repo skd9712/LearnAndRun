@@ -1,4 +1,4 @@
-/* 가격 콤마 */
+/*/!* 가격 콤마 *!/
 function getNumber(obj){
     let price = obj.value;
     price = price.replace(/\D/g,"");
@@ -14,7 +14,7 @@ function setComma(n) {
         n=n.replace(reg, '$1'+','+'$2');
     }
     return n;
-}
+}*/
 
 /* 이미지 미리보기 */
 window.onload=function (){
