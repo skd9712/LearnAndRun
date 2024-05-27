@@ -104,6 +104,7 @@
       white-space: nowrap;
     }
 
+
     .scrollBar li{
       width: 320px;
       overflow: hidden;
