@@ -104,6 +104,14 @@
       white-space: nowrap;
     }
 
+
+    .scrollBar li{
+      width: 320px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
     #schedule_box{
       flex-basis: 50vw;
       text-align: center;
