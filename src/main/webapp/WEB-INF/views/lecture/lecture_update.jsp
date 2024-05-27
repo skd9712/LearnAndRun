@@ -22,15 +22,15 @@
             </li>
             <li>
                 <label for="lectureName">강의명</label>
-                <input type="text" name="lectureName" id="lectureName" value="${dto.lectureName}">
+                <input type="text" name="lectureName" id="lectureName" value="${dto.lectureName}" required>
             </li>
             <li>
                 <label for="teacher">강사명</label>
-                <input type="text" name="teacher" id="teacher" value="${dto.teacher}">
+                <input type="text" name="teacher" id="teacher" value="${dto.teacher}" required>
             </li>
             <li>
                 <label for="description">강의설명</label>
-                <textarea cols="40" rows="5" maxlength="250" name="description" id="description">${dto.description}</textarea>
+                <textarea cols="40" rows="5" maxlength="250" name="description" id="description" required>${dto.description}</textarea>
             </li>
             <li>
                 <label for="subjectName">과목</label>
@@ -76,11 +76,11 @@
             </li>
             <li>
                 <label for="price">가격</label>
-                <input type="text" name="price" id="price" value="${dto.price}">
+                <input type="text" name="price" id="price" value="${dto.price}" required>
             </li>
             <li>
                 <label for="startDate">개강일</label>
-                <input type="date" name="startDate" id="startDate" value="${dto.startDate}">
+                <input type="date" name="startDate" id="startDate" value="${dto.startDate}" required>
             </li>
             <li>
                 <label for="lectureDataFile">강의자료</label>

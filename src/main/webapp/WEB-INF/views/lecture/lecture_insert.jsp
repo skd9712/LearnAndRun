@@ -14,19 +14,19 @@
             <li>
                 <label for="thumbnailFile">썸네일</label>
                 <img src="" alt="썸네일" id="thumbnailImg">
-                <input type="file" accept="image/*" name="thumbnailFile" id="thumbnailFile">
+                <input type="file" accept="image/*" name="thumbnailFile" id="thumbnailFile" required>
             </li>
             <li>
                 <label for="lectureName">강의명</label>
-                <input type="text" name="lectureName" id="lectureName">
+                <input type="text" name="lectureName" id="lectureName" required>
             </li>
             <li>
                 <label for="teacher">강사명</label>
-                <input type="text" name="teacher" id="teacher">
+                <input type="text" name="teacher" id="teacher" required>
             </li>
             <li>
                 <label for="description">강의설명</label>
-                <textarea cols="40" rows="5" maxlength="250" name="description" id="description"></textarea>
+                <textarea cols="40" rows="5" maxlength="250" name="description" id="description" required></textarea>
             </li>
             <li>
                 <label for="subjectName">과목</label>
@@ -48,15 +48,15 @@
             </li>
             <li>
                 <label for="price">가격</label>
-                <input type="text" name="price" id="price">
+                <input type="text" name="price" id="price" required>
             </li>
             <li>
                 <label for="startDate">개강일</label>
-                <input type="date" name="startDate" id="startDate">
+                <input type="date" name="startDate" id="startDate" required>
             </li>
             <li>
                 <label for="lectureDataFile">강의자료</label>
-                <input type="file" accept="application/zip" name="lectureDataFile" id="lectureDataFile">
+                <input type="file" accept="application/zip" name="lectureDataFile" id="lectureDataFile" required>
             </li>
             <li>
                 <input type="submit" id="append" value="등록하기">
