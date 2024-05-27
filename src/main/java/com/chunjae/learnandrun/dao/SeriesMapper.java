@@ -21,4 +21,6 @@ public interface SeriesMapper {
     SeriesDTO detailSeries(int seriesNo);
 
     int getAuthority(HashMap<String, Object> hm);
+
+    String getLectureName(int lectureNo);
 }

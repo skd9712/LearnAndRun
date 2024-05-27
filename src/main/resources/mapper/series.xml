@@ -46,4 +46,9 @@
             on u.userNo=o.userNo
         where userId=#{userId} and lectureNo=#{lectureNo} and authority=1
     </select>
+    <select id="getLectureName" parameterType="int" resultType="string">
+        select lectureName
+        from lecture
+        where lectureNo=#{lectureNo}
+    </select>
 </mapper>
