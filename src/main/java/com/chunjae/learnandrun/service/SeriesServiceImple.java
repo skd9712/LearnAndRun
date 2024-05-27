@@ -67,4 +67,12 @@ public class SeriesServiceImple implements SeriesService{
 
         return result;
     }
+
+    @Override
+    public String getLectureName(int lectureNo) {
+
+        String lectureName=mapper.getLectureName(lectureNo);
+
+        return lectureName;
+    }
 }
