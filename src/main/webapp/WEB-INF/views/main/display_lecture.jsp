@@ -16,8 +16,8 @@
                         <a href="/lecture_detail/${hl_list[i].lectureNo}">
                             <div class="lecture_box">
                                 <img src="/getImage/${hl_list[i].thumbnail}" alt="강의썸네일">
-                                <h3>${hl_list[i].lectureName}</h3>
-                                <p>${hl_list[i].description}</p>
+                                <h3 class="lecture_name_field">${hl_list[i].lectureName}</h3>
+                                <p class="lecture_name_field">${hl_list[i].description}</p>
                             </div>
                         </a>
                     </c:forEach>
@@ -28,8 +28,8 @@
                         <a href="/lecture_detail/${hl_list[i].lectureNo}">
                             <div class="lecture_box">
                                 <img src="/getImage/${hl_list[i].thumbnail}" alt="강의썸네일">
-                                <h3>${hl_list[i].lectureName}</h3>
-                                <p>${hl_list[i].description}</p>
+                                <h3 class="lecture_name_field">${hl_list[i].lectureName}</h3>
+                                <p class="lecture_name_field">${hl_list[i].description}</p>
                             </div>
                         </a>
                     </c:forEach>
@@ -40,8 +40,8 @@
                         <a href="/lecture_detail/${hl_list[i].lectureNo}">
                             <div class="lecture_box">
                                 <img src="/getImage/${hl_list[i].thumbnail}" alt="강의썸네일">
-                                <h3>${hl_list[i].lectureName}</h3>
-                                <p>${hl_list[i].description}</p>
+                                <h3 class="lecture_name_field">${hl_list[i].lectureName}</h3>
+                                <p class="lecture_name_field">${hl_list[i].description}</p>
                             </div>
                         </a>
                     </c:forEach>

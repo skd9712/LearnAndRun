@@ -48,6 +48,13 @@
     margin-right: 8px;
 }
 
+.lecture_name_field{
+    width: 220px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 /* 슬라이더 시작 */
 
 .slider {
