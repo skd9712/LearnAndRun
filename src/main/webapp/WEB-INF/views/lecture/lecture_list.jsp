@@ -18,7 +18,7 @@
 
     <%-- 검색창 --%>
     <div id="lecture_search_box">
-        <form method="get" action="/lecture_list/${page.currPage}">
+        <form method="get" action="/lecture_list/1">
             <select name="search" id="search">
                 <option value="all">전체검색</option>
                 <option value="lectureName">강의명</option>
@@ -112,7 +112,7 @@
                     높은가격순
                 </a>
             </c:when>
-
+ⅠⅡ
 
         </c:choose>
 
