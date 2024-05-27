@@ -122,13 +122,17 @@ public class UserController {
                 int userNo = user.getUserNo();
                 //마이페이지
                 model.addAttribute("user", user);
-                List<LectureDTO> list = userService.lectUser(userNo);
-                List<LectureDTO> wishlist = userService.wishUser(userNo);
-                //내가 수강중인 강의 목록
-                model.addAttribute("lecturelist", list);
-                //찜한 목록
-                model.addAttribute("wishlist", wishlist);
-                return "user/user_mypage";
+                if("admin".equals(user.getUserId())){
+                    return "redirect:/user_manager";
+                }else{
+                    List<LectureDTO> list = userService.lectUser(userNo);
+                    List<LectureDTO> wishlist = userService.wishUser(userNo);
+                    //내가 수강중인 강의 목록
+                    model.addAttribute("lecturelist", list);
+                    //찜한 목록
+                    model.addAttribute("wishlist", wishlist);
+                    return "user/user_mypage";
+                }
             }
         }
         redirect.addFlashAttribute("message", "로그인필요");
