@@ -17,4 +17,6 @@ public interface SeriesService {
     SeriesDTO detailSeries(int seriesNo);
 
     int getAuthority(int lectureNo, String userId);
+
+    String getLectureName(int lectureNo);
 }
