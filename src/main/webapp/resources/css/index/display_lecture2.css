@@ -43,6 +43,13 @@
     width: 15px;
 }
 
+.lecture_name_field{
+    width: 220px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 
 /*최신 강의 슬라이더 구현*/
 .lecture_box2>img{
