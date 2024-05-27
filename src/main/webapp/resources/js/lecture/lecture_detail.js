@@ -141,33 +141,38 @@ const init_json=function (){
 const init_json2=function (){
     init_json();
 
-    const wish=document.getElementById("wish");
-    const wish_star=document.getElementById("wish_star");
-    let lecture_No=document.getElementById("lectureNo");
+    if(document.getElementById("wish")!=null){
 
-    fetch("/wish_list/"+num, {
-        method: "GET"
-        , headers: {
-            'Accept':'application/json'
-        }
-    }).then(response=>{
-        if(!response.ok)
-            throw new Error('not load');
-        return response.json();
-    }).then(data=>{
+        const wish=document.getElementById("wish");
+        const wish_star=document.getElementById("wish_star");
+        let lecture_No=document.getElementById("lectureNo");
 
-        if(data===true){
-            //wish.style.backgroundColor='#3f3f3f';
-            wish_star.src="/resources/img/lecture/fill_star_icon2.png";
-            wish.value="true";
-        }else{
-            wish.value="false";
-        }
+        fetch("/wish_list/"+num, {
+            method: "GET"
+            , headers: {
+                'Accept':'application/json'
+            }
+        }).then(response=>{
+            if(!response.ok)
+                throw new Error('not load');
+            return response.json();
+        }).then(data=>{
 
-    }).catch(error=>console.log(error))
-        .finally(()=>{
-            console.log('finally');
-        });
+            if(data===true){
+                //wish.style.backgroundColor='#3f3f3f';
+                wish_star.src="/resources/img/lecture/fill_star_icon2.png";
+                wish.value="true";
+            }else{
+                wish.value="false";
+            }
+
+        }).catch(error=>console.log(error))
+            .finally(()=>{
+                console.log('finally');
+            });
+    }
+
+
 }//강의 찜 여부
 
 
@@ -178,51 +183,54 @@ window.onload=function (){
     const wish=document.getElementById("wish");
     let lecture_No=document.getElementById("lectureNo");
 
-    wish.onclick=function (){
+    if(document.getElementById("wish")!=null){
+        wish.onclick=function (){
 
-        let user=document.getElementById("user").value;
+            let user=document.getElementById("user").value;
 
-        if(user==="true"){
+            if(user==="true"){
 
-            let wishList={'wish': wish.value
-                , 'lectureNo': num}
+                let wishList={'wish': wish.value
+                    , 'lectureNo': num}
 
-            fetch("/insert_wish", {
-                method: "POST"
-                , headers: {
-                    'Content-Type':'application/json;charset=utf-8'
-                    , 'Accept':'application/json'
+                fetch("/insert_wish", {
+                    method: "POST"
+                    , headers: {
+                        'Content-Type':'application/json;charset=utf-8'
+                        , 'Accept':'application/json'
+                    }
+                    , body: JSON.stringify(wishList)
+                }).then(response=>{
+                    if(response.status===200)
+                        console.log('저장완료');
+                    else if(response.status===403)
+                        console.log('code-403error');
+                    return response.json();
+                }).then(data=>{
+                    console.log('data......', data);
+
+                }).catch(error=>{
+                    console.log('error......', error);
+
+                }).finally(()=>{
+                    console.log('finally');
+                });
+
+                if(wish.value==="false"){
+                    alert("찜 목록에 추가하였습니다.");
+                }else if(wish.value==="true"){
+                    alert("찜 목록에서 삭제하였습니다.");
                 }
-                , body: JSON.stringify(wishList)
-            }).then(response=>{
-                if(response.status===200)
-                    console.log('저장완료');
-                else if(response.status===403)
-                    console.log('code-403error');
-                return response.json();
-            }).then(data=>{
-                console.log('data......', data);
+                location.reload();
 
-            }).catch(error=>{
-                console.log('error......', error);
-
-            }).finally(()=>{
-                console.log('finally');
-            });
-
-            if(wish.value==="false"){
-                alert("찜 목록에 추가하였습니다.");
-            }else if(wish.value==="true"){
-                alert("찜 목록에서 삭제하였습니다.");
+            }else if(user==="false"){
+                alert("찜하기는 로그인 후 가능합니다.");
+                location.href="/user_login";
             }
-            location.reload();
 
-        }else if(user==="false"){
-            alert("찜하기는 로그인 후 가능합니다.");
-            location.href="/user_login";
         }
-
-    }//강의 찜 & 취소
+    }
+    //강의 찜 & 취소
 
 
     //////////////////////////////////////////////////////////
