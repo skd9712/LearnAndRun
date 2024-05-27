@@ -13,7 +13,9 @@
 
     <%--배너--%>
     <div id="banner_box">
-        <img src="/resources/img/lecture/banner.gif" alt="배너">
+        <a href="/lecture_list">
+            <img src="/resources/img/lecture/banner.gif" alt="배너">
+        </a>
     </div>
 
     <%-- 검색창 --%>
