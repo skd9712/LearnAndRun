@@ -76,9 +76,7 @@
             </li>
             <li>
                 <label for="price">가격</label>
-                <input type="text" name="price" id="price"
-                       value="<fmt:formatNumber value="${dto.price}" pattern="#,###"/>"
-                       onchange="getNumber(this)" onkeyup="getNumber(this)">
+                <input type="text" name="price" id="price" value="${dto.price}">
             </li>
             <li>
                 <label for="startDate">개강일</label>
