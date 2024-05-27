@@ -10,6 +10,13 @@
 <body>
 <jsp:include page="../main/top.jsp"/>
 <div id="wrap">
+    <%--카카오 스티커--%>
+    <div id="kakao_channel">
+        <a href="http://pf.kakao.com/_mkuUs">
+            <img src="/resources/img/lecture/kakao_icon2.webp" alt="카카오 채널추가">
+        </a>
+    </div>
+
     <section id="top">
         <h2>${dto.lectureName}</h2>
     </section>
