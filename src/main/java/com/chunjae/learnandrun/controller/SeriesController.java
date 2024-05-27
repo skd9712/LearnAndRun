@@ -70,14 +70,14 @@ public class SeriesController {
 
 
     /** 세부 강의 수강 페이지 */
-    @GetMapping("lecture_class/{lectureNo}/{lectureName}/{seriesNo}")
+    @GetMapping("lecture_class/{lectureNo}/{seriesNo}")
     public String detailSeries(HttpSession session
             , @PathVariable int lectureNo
-            , @PathVariable String lectureName
             , @PathVariable int seriesNo
             , Model model) {
 
         SeriesDTO dto = service.detailSeries(seriesNo);
+        String lectureName=service.getLectureName(lectureNo);
 
         model.addAttribute("dto", dto);
         model.addAttribute("lectureName", lectureName);

@@ -66,19 +66,19 @@
         group by l.lectureNo
         <choose>
             <when test="sort=='new'">
-                order by startDate desc
+                order by startDate desc, lectureNo desc
             </when>
             <when test="sort=='popular'">
-                 order by popular desc
+                 order by popular desc, lectureNo desc
             </when>
             <when test="sort=='lowPrice'">
-                order by price
+                order by price, lectureNo desc
             </when>
             <when test="sort=='highPrice'">
-                order by price desc
+                order by price desc, lectureNo desc
             </when>
             <otherwise>
-                order by startDate desc
+                order by startDate desc, lectureNo desc
             </otherwise>
         </choose>
         <![CDATA[

@@ -45,7 +45,7 @@ const init_json=function (){
             let lectureName=document.getElementById("lectureName").value;
 
             let td3_a=document.createElement('a');
-            td3_a.href="/lecture_class/"+num+"/"+lectureName+"/"+item.seriesNo;
+            td3_a.href="/lecture_class/"+num+"/"+item.seriesNo;
             let a_icon=document.createElement('img');
             a_icon.src="/resources/img/lecture/youtube_icon.png";
             a_icon.className='lectureIcon';
