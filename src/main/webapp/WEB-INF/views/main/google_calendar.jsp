@@ -184,8 +184,8 @@
             <a href="/lecture_detail/${item.lectureNo}">
               <div class="lecture_box2">
                 <img src="/getImage/${item.thumbnail}" alt="강의썸네일">
-                <h3>${item.lectureName}</h3>
-                <p>${item.description}</p>
+                <h3 class="lecture_name_field">${item.lectureName}</h3>
+                <p class="lecture_name_field">${item.description}</p>
               </div>
             </a>
           </div>
