@@ -59,7 +59,7 @@
 
 ## 🥕 브랜드 및 컨셉
 ![logo](https://github.com/skd9712/LearnAndRun/assets/59557044/a72bcceb-46b5-4811-8afd-2e61b8d14f90)
-
+<img src="https://github.com/skd9712/LearnAndRun/assets/59557044/a72bcceb-46b5-4811-8afd-2e61b8d14f90">
 
 ### 배우다(learn) + 달리다(run)
 
