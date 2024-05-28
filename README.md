@@ -17,7 +17,7 @@
 | 이름 | 역할 | 연락처 | GitHub |
 |------|------|--------|--------|
 | 황현준 | 팀장 | email@example.com | [황현준](https://github.com/skd9712) |
-| 은 별 | 개발자 | email@example.com | [은 별](https://github.com/Agstarr) |
+| 은 별 | 개발자 | ebyeol628@gmail.com | [은 별](https://github.com/Agstarr) |
 | 최현훈 | 개발자 | tongueeye1@gmail.com | [최현훈](https://github.com/tongueEye) |
 
 ## 🥕 프로젝트 목표
