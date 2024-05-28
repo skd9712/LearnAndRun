@@ -76,6 +76,3 @@
 **로그인/가입 기능**
 - 관리자로 로그인 시 강의 와 세부 강의에 대한 CRUD가 가능함
 - 사용자로 로그인 시 강의조회와  내 정보 수정만 가능함.
-
-## WBS
-![WBS](https://github.com/skd9712/LearnAndRun/assets/59557044/e66fe74a-3b3d-42a4-b6cf-33607c57ceaa)
