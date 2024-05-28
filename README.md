@@ -34,7 +34,8 @@
 ### 3. 학습 지원 및 성장 도모
 - 사용자들의 원활한 수강을 위한 **학습 기자재 제공**하여 지속적인 성장을 도모
 
-- <span style="background-color: yellow">형광펜</span>
+<span style="background-color: #f6f8fa">회색형광펜</span>
+
                   
 
 ## 🥕 기술 스택
