@@ -95,6 +95,6 @@
         </ul>
     </form>
 </div>
-<jsp:include page="../main/top.jsp"/>
+<jsp:include page="../main/footer.jsp"/>
 </body>
 </html>

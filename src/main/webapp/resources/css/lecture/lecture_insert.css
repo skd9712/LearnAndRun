@@ -117,3 +117,7 @@ input[type=date]{
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     transform: translateY(1px);
 }
+
+footer{
+    margin-bottom: 10px;
+}
