@@ -16,5 +16,5 @@
 | 이름 | 역할 | 연락처 | GitHub |
 |------|------|--------|--------|
 | 황현준 | 팀장 | email@example.com | [황현준](https://github.com/skd9712) |
-| 김철수 | 프론트엔드 개발자 | email@example.com | [김철수](https://github.com/kimcheolsu) |
+| 김철수 | 프론트엔드 개발자 | email@example.com | [김철수](https://github.com/Agstarr) |
 | 이영희 | 백엔드 개발자 | email@example.com | [이영희](https://github.com/leeyounghee) |
