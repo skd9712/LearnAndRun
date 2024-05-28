@@ -1,4 +1,4 @@
-# 🐰 시범강의 예약 웹 서비스 Learn And Run
+# 🐇 시범강의 예약 웹 서비스 Learn & Run
 ![learn_and_run_poster2](https://github.com/skd9712/LearnAndRun/assets/109783402/877573ce-314a-4eeb-9293-de92a945e120)
 
 ### 천재교육 풀스택 5기 3차 프로젝트
