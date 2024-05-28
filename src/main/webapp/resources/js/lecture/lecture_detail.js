@@ -64,7 +64,6 @@ const init_json=function (){
                 td4_div.appendChild(update_btn);
                 let updateOk_btn='';
                 update_btn.className='update_btn';
-                updateOk_btn.className='update_btn';
 
                 let detailNameInput=document.getElementById("detailName");
                 let detailUrlInput=document.getElementById("detailUrl");
@@ -94,6 +93,7 @@ const init_json=function (){
                     updateOk_btn=document.createElement('button');
                     let updateOk_txt=document.createTextNode('수정완료');
                     updateOk_btn.appendChild(updateOk_txt);
+                    updateOk_btn.className='update_btn';
 
                     updateOk_btn.addEventListener('click', function (){
                         location.href="/updateSeries/"+lecture_No+"/"+item.seriesNo+"/"

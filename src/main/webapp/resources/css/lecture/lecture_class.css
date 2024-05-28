@@ -29,14 +29,14 @@ body{
 }
 
 #top h2{
-    margin: 0 0 20px 10px;
+    /*margin: 0 0 20px 10px;*/
     font-size: 1.4vw;
 }
 
 #top p{
     font-size: 1.1vw;
     position: relative;
-    top: 0vw;
+    top: 0.5vw;
     margin-right: 15px;
     font-family: SeoulNamsanM;
 }
@@ -44,7 +44,7 @@ body{
 .line{
     width: 90%;
     border: 1px solid silver;
-    margin: 5px auto 3vw;
+    margin: 1vw auto 3vw;
 }
 
 /* 강의 영상 */
