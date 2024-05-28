@@ -5,13 +5,12 @@
 </head>
 <body>
     <script>
-        if(parseInt(${result})>0){
+        if(parseInt(${result})>0)
             alert("수정이 완료되었습니다.");
-            location.href="/lecture_detail/${lectureNo}";
-        }else{
+        else
             alert("수정을 실패했습니다.");
-            location.href="/lecture_detail/${lectureNo}";
-        }
+
+        location.href="/lecture_detail/${lectureNo}";
     </script>
 </body>
 </html>
