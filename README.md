@@ -54,6 +54,6 @@
 ## 브랜드 및 컨셉
 ![logo](https://github.com/skd9712/LearnAndRun/assets/59557044/a72bcceb-46b5-4811-8afd-2e61b8d14f90)
 
-배우다(learn) + 달리다(run)
+### 배우다(learn) + 달리다(run)
 웹사이트의 강의 콘텐츠를 통해 배우고 앞으로 나아갈 수 있다는
-'지식적 성장'의 뜻을 담음
+         **'지식적 성장'**의 뜻을 담음
