@@ -58,7 +58,7 @@
 ![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
 
 ## 🥕 브랜드 및 컨셉
-<img src="https://github.com/skd9712/LearnAndRun/assets/59557044/a72bcceb-46b5-4811-8afd-2e61b8d14f90" width=400px height=200px>
+<img src="https://github.com/skd9712/LearnAndRun/assets/59557044/a72bcceb-46b5-4811-8afd-2e61b8d14f90" width=400px height=auto>
 
 ### 배우다(learn) + 달리다(run)
 
