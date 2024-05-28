@@ -39,7 +39,7 @@
         </li>
         <li class="form-item">
             <label>새 주소</label>
-            <input type="text" id="addr" onclick="findAddr()" placeholder="주소 입력하기">
+            <input type="text" id="addr" onclick="findAddr()" placeholder="주소 입력하기" required>
         </li>
         <li class="form-item">
             <label>우편번호</label>
