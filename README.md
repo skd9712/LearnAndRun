@@ -124,4 +124,4 @@
 ![스토리보드12](https://github.com/skd9712/LearnAndRun/assets/59557044/b9326d1e-e894-4df3-a101-a00e94822b59)
 
 ## 🥕 시연영상
-[![LearnAndRun 소개 비디오](http://img.youtube.com/vi/AUtqfz3vTWg/0.jpg)](https://www.youtube.com/watch?v=AUtqfz3vTWg)
+[![LearnAndRun 소개 비디오](http://img.youtube.com/watch?v=rkmx_l5Oku0/0.jpg)](https://www.youtube.com/watch?v=rkmx_l5Oku0)
