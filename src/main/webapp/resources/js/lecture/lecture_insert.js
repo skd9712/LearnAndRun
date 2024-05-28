@@ -1,31 +1,22 @@
-/*/!* 가격 콤마 *!/
-function getNumber(obj){
-    let price = obj.value;
-    price = price.replace(/\D/g,"");
-    price = setComma(price);
-    obj.value =  price;
-
-}
-
-function setComma(n) {
-    let reg = /(^[+-]?\d+)(\d{3})/;
-    n.toString();
-    while (reg.test(n)) {
-        n=n.replace(reg, '$1'+','+'$2');
-    }
-    return n;
-}*/
-
 /* 이미지 미리보기 */
 window.onload=function (){
     const thumbnailFile=document.getElementById("thumbnailFile");
-    const thumbnailImg=document.getElementById("thumbnailImg");
+    const thumbnailImg=document.createElement("img");
 
     thumbnailFile.onchange=function () {
+        thumbnailFile.insertAdjacentElement("beforebegin", thumbnailImg);
         thumbnailImg.src = URL.createObjectURL(thumbnailFile.files[0]);
         thumbnailImg.alt = thumbnailFile.files[0].name;
         thumbnailImg.style.width="12vw";
+        thumbnailImg.style.height="9vw";
         thumbnailImg.style.top="0.7vw";
+    }
+
+    const lectureDataFile=document.getElementById("lectureDataFile");
+    const lectureData=document.getElementById("lectureData");
+
+    lectureDataFile.onchange=function (){
+        lectureData.value=lectureDataFile.value;
     }
 
 }

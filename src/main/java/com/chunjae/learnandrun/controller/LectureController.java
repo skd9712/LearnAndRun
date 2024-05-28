@@ -3,7 +3,6 @@ package com.chunjae.learnandrun.controller;
 import com.chunjae.learnandrun.dto.LectureDTO;
 import com.chunjae.learnandrun.dto.MakePage;
 import com.chunjae.learnandrun.dto.UserDTO;
-import com.chunjae.learnandrun.dto.WishDTO;
 import com.chunjae.learnandrun.service.LectureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
@@ -135,7 +134,8 @@ public class LectureController {
     /** 다운로드 */
     @GetMapping(value="/download/{filename}")
     @ResponseBody
-    public  ResponseEntity<Resource> getFile(@PathVariable String filename, HttpServletRequest request, HttpServletResponse response){
+    public  ResponseEntity<Resource> getFile(@PathVariable String filename
+            , HttpServletRequest request, HttpServletResponse response){
 
         String path="/upload/lectureData";
         String realpath=  request.getSession().getServletContext().getRealPath(path);
@@ -176,7 +176,6 @@ public class LectureController {
             , @PathVariable int lectureNo, Model model){
 
         LectureDTO dto=service.detailLecture(lectureNo);
-        model.addAttribute("dto", dto);
 
         UserDTO userDTO= (UserDTO) session.getAttribute("dto");
         String authority="";
@@ -193,11 +192,16 @@ public class LectureController {
             authority="false";
             user="false";
         }
-
-        model.addAttribute("authority", authority);
-        model.addAttribute("user", user);
-
-        return "lecture/lecture_detail";
+        
+        if(dto!=null){
+            model.addAttribute("dto", dto);
+            model.addAttribute("authority", authority);
+            model.addAttribute("user", user);
+            return "lecture/lecture_detail";
+        }else{
+            //존재하지 않는 강의인 경우
+            return "lecture/lecture_not_exist";
+        }
     }
 
     /** 강의 수정 폼 */
@@ -205,17 +209,23 @@ public class LectureController {
     public String updateLecture(HttpSession session, @PathVariable int lectureNo, Model model){
 
         LectureDTO dto=service.detailLecture(lectureNo);
-        model.addAttribute("dto", dto);
 
-        UserDTO userDTO= (UserDTO) session.getAttribute("dto");
+        if(dto!=null){
+            model.addAttribute("dto", dto);
 
-        if(userDTO!=null){
-            if("admin".equals(userDTO.getUserId()))
-                return "lecture/lecture_update";
-            else
-                return "redirect:/lecture_list";
+            UserDTO userDTO= (UserDTO) session.getAttribute("dto");
+
+            if(userDTO!=null){
+                if("admin".equals(userDTO.getUserId()))
+                    return "lecture/lecture_update";
+                else
+                    return "redirect:/lecture_list";
+            }else{
+                return "redirect:/user_login";
+            }
         }else{
-            return "redirect:/user_login";
+            //존재하지 않는 강의인 경우
+            return "lecture/lecture_not_exist";
         }
     }
 
@@ -257,17 +267,24 @@ public class LectureController {
 
         UserDTO userDTO= (UserDTO) session.getAttribute("dto");
 
-        if(userDTO!=null){
-            if("admin".equals(userDTO.getUserId())){
-                int result=service.deleteLecture(uploadPath, lectureNo);
-                model.addAttribute("result", result);
-                model.addAttribute("lectureNo", lectureNo);
-                return "lecture/lecture_delete_result";
+        LectureDTO dto=service.detailLecture(lectureNo);
+
+        if(dto!=null){
+            if(userDTO!=null){
+                if("admin".equals(userDTO.getUserId())){
+                    int result=service.deleteLecture(uploadPath, lectureNo);
+                    model.addAttribute("result", result);
+                    model.addAttribute("lectureNo", lectureNo);
+                    return "lecture/lecture_delete_result";
+                }
+                else
+                    return "redirect:/lecture_list";
+            }else{
+                return "redirect:/user_login";
             }
-            else
-                return "redirect:/lecture_list";
         }else{
-            return "redirect:/user_login";
+            //존재하지 않는 강의인 경우
+            return "lecture/lecture_not_exist";
         }
 
     }

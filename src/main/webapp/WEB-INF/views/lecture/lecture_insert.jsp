@@ -13,7 +13,6 @@
         <ul>
             <li>
                 <label for="thumbnailFile">썸네일</label>
-                <img src="" alt="썸네일" id="thumbnailImg">
                 <input type="file" accept="image/*" name="thumbnailFile" id="thumbnailFile" required>
             </li>
             <li>
