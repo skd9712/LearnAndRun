@@ -105,27 +105,46 @@
 
 /* 슬라이더 효과 옆으로 넘어가는게 어지러워서 제자리에서 바뀌도록 수정 */
 @keyframes slider {
+    /*0% {*/
+    /*    !*transform: translateX(0);*!*/
+    /*}*/
+
+    /*26% {*/
+    /*    !*transform: translateX(0);*!*/
+    /*}*/
+    /*33% {*/
+    /*    !*transform: translateX(-100%);*!*/
+    /*    animation-timing-function: step-end;*/
+    /*}*/
+    /*93% {*/
+    /*    !*transform: translateX(100%);*!*/
+    /*}*/
+
+    /*100% {*/
+    /*    !*transform: translateX(0);*!*/
+    /*}*/
+
     0% {
-        /*transform: translateX(0);*/
+        opacity: 0;
+    }
+
+    10% {
         opacity: 1;
     }
 
     26% {
-        /*transform: translateX(0);*/
         opacity: 1;
     }
+
     33% {
-        /*transform: translateX(-100%);*/
-        animation-timing-function: step-end;
         opacity: 0;
     }
+
     93% {
-        /*transform: translateX(100%);*/
         opacity: 0;
     }
 
     100% {
-        /*transform: translateX(0);*/
         opacity: 0;
     }
 }
