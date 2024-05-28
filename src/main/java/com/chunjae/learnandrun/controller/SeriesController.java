@@ -15,7 +15,7 @@ import java.util.List;
 @Controller
 public class SeriesController {
 
-    private SeriesService service;
+    private final SeriesService service;
     @Autowired
     public SeriesController(SeriesService service){
         this.service=service;
