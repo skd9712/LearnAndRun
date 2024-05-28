@@ -2,10 +2,6 @@
 
 ## 천재교육 3차 프로젝트(2024-05-17~2024-05-30)
 
-![Spring](https://img.shields.io/badge/spring-6DB33F?style=flat&logo=spring&logoColor=white)
-![Java](https://img.shields.io/badge/java-F89820?style=flat&logo=java&logoColor=white)
-
-
 ## 기획의도 
 **차별화된 UI/UX 디자인 구현** - 사용자들에게 기존 인강 사이트와는 다른 감성적이고 활기찬 UI를 제공하여 학습을 더욱 흥미롭게 만듦
 
@@ -20,3 +16,20 @@
 | 황현준 | 팀장 | email@example.com | [황현준](https://github.com/skd9712) |
 | 은 별 | 개발자 | email@example.com | [은 별](https://github.com/Agstarr) |
 | 최현훈 | 개발자 | email@example.com | [최현훈](https://github.com/tongueEye) |
+
+## 기술 스택
+
+![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)
+![Spring](https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white)
+![AWS](https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white)
+![AJAX](https://img.shields.io/badge/AJAX-5A29E4?style=for-the-badge&logo=ajax&logoColor=white)
+![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
+![HTML](https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS](https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![API](https://img.shields.io/badge/API-0052CC?style=for-the-badge&logo=api&logoColor=white)
+![Servlet](https://img.shields.io/badge/Servlet-009639?style=for-the-badge&logo=java&logoColor=white)
+![JSP](https://img.shields.io/badge/JSP-8A2BE2?style=for-the-badge&logo=java&logoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
+![MariaDB](https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white)
+![IntelliJ IDEA](https://img.shields.io/badge/IntelliJ_IDEA-000000?style=for-the-badge&logo=intellij-idea&logoColor=white)
