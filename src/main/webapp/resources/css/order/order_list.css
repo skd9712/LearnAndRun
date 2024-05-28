@@ -10,13 +10,21 @@ body{
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    border-bottom: 1px solid white;
     margin-bottom: 30px;
 }
 .admin_func a{
     margin: 0 20px;
     color: white;
 }
+
+#enroll_manage_btn{
+    border-bottom: 4px solid white;
+}
+
+#user_manage_btn{
+    border-bottom: 4px solid transparent;
+}
+
 #order_list{
     margin: 0 auto;
     padding: 0;
