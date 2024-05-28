@@ -83,3 +83,6 @@
 
 ## ERD
 ![ERD수정](https://github.com/skd9712/LearnAndRun/assets/59557044/8e46c97a-9e6a-48fb-85b6-69c6b8245aa1)
+
+## 유스케이스
+![유스케이스](https://github.com/skd9712/LearnAndRun/assets/59557044/ca236b8e-64ae-4cb0-943b-5664f1345cbe)
