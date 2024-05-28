@@ -53,10 +53,10 @@
 
     <div id="user_list">
         <div class="admin_func">
-        <a href="/user_manager/">
+        <a id = "user_manage_btn" href="/user_manager/">
             <h2 id="user_manage_tab">회원 관리</h2>
         </a>
-        <a href="/order_list">
+        <a id="enroll_manage_btn" href="/order_list">
             <h2 id="enroll_manage_tab">수강 관리</h2>
         </a>
         </div>
