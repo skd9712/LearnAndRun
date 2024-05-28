@@ -42,30 +42,54 @@ public class SeriesController {
 
     /** 세부 강의 수정 */
     @GetMapping("/updateSeries/{lectureNo}/{seriesNo}/{updateDetailName}/{updateDetailUrl}")
-    public String updateSeries(@PathVariable int lectureNo
+    public String updateSeries(HttpSession session
+            , @PathVariable int lectureNo
             , @PathVariable int seriesNo
             , @PathVariable(required = false) String updateDetailName
             , @PathVariable(required = false) String updateDetailUrl){
 
-        SeriesDTO dto=new SeriesDTO();
-        dto.setSeriesNo(seriesNo);
-        dto.setDetailName(updateDetailName);
-        dto.setDetailUrl(updateDetailUrl);
+        UserDTO userDTO= (UserDTO) session.getAttribute("dto");
+        SeriesDTO seriesDTO=service.detailSeries(seriesNo);
 
-        int result=service.updateSeries(dto);
+        if(seriesDTO!=null && userDTO!=null){
+            if("admin".equals(userDTO.getUserId())){
+                SeriesDTO dto=new SeriesDTO();
+                dto.setSeriesNo(seriesNo);
+                dto.setDetailName(updateDetailName);
+                dto.setDetailUrl(updateDetailUrl);
+                int result=service.updateSeries(dto);
 
-        return "redirect:/lecture_detail/"+lectureNo;
+                return "redirect:/lecture_detail/"+lectureNo;
+            }else
+                return "redirect:/lecture_list";
+        }else{
+            return "redirect:/lecture_list";
+        }
+
+
     }
 
 
     /** 세부 강의 삭제 */
     @GetMapping("/deleteSeries/{lectureNo}/{seriesNo}")
-    public String deleteSeries(@PathVariable int lectureNo
+    public String deleteSeries(HttpSession session
+            , @PathVariable int lectureNo
             , @PathVariable int seriesNo){
 
-        int result=service.deleteSeries(seriesNo);
+        UserDTO userDTO= (UserDTO) session.getAttribute("dto");
+        SeriesDTO seriesDTO=service.detailSeries(seriesNo);
 
-        return "redirect:/lecture_detail/"+lectureNo+"#lectureSeries";
+        if(userDTO!=null && seriesDTO!=null){
+            if("admin".equals(userDTO.getUserId())){
+                int result=service.deleteSeries(seriesNo);
+                return "redirect:/lecture_detail/"+lectureNo+"#lectureSeries";
+            }else
+                return "redirect:/lecture_list";
+        }else{
+            return "redirect:/lecture_list";
+        }
+
+
     }
 
 
@@ -76,15 +100,15 @@ public class SeriesController {
             , @PathVariable int seriesNo
             , Model model) {
 
-        SeriesDTO dto = service.detailSeries(seriesNo);
+        SeriesDTO seriesDTO = service.detailSeries(seriesNo);
         String lectureName=service.getLectureName(lectureNo);
 
-        model.addAttribute("dto", dto);
+        model.addAttribute("dto", seriesDTO);
         model.addAttribute("lectureName", lectureName);
 
         UserDTO userDTO = (UserDTO) session.getAttribute("dto");
 
-        if(userDTO!=null){
+        if(seriesDTO!=null && userDTO!=null){
             int authority=service.getAuthority(lectureNo, userDTO.getUserId());
 
             if("admin".equals(userDTO.getUserId()) || authority>0){
