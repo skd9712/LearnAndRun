@@ -38,7 +38,8 @@
           let start_second = info.event.start.getSeconds();
           let end_hour = info.event.end.getHours();
 
-          let start = start_year + "년 " + start_month + "월 " + start_date + "일 " + start_hour + "시 - " + end_hour + "시";
+          // let start = start_year + "년 " + start_month + "월 " + start_date + "일 " + start_hour + "시 - " + end_hour + "시";
+          let start = start_year + "년 " + start_month + "월 " + start_date + "일 ";
 
           let attends = "";
           info.event.extendedProps.attachments.forEach(function(item) {
