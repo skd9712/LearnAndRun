@@ -104,3 +104,6 @@
 ### 결제시스템
 ![시퀀스_결제](https://github.com/skd9712/LearnAndRun/assets/59557044/972cce0c-d3e8-4e49-a0a0-c75c27696920)
 
+## 스토리보드
+![스토리보드1](https://github.com/skd9712/LearnAndRun/assets/59557044/c0302904-f1fe-4978-acca-bb927412308a)
+
