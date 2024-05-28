@@ -92,3 +92,13 @@
 ![클래스2](https://github.com/skd9712/LearnAndRun/assets/59557044/9088437b-8b5c-4edd-a403-ee163388dec1)
 ![클래스3](https://github.com/skd9712/LearnAndRun/assets/59557044/0d6aa81d-2c1c-4da1-b01a-60ce84cd2c73)
 ![클래스4](https://github.com/skd9712/LearnAndRun/assets/59557044/13003f4a-e90b-4344-b12f-824f444cdb06)
+
+## 시퀀스 다이어그램
+![시퀀스_가입](https://github.com/skd9712/LearnAndRun/assets/59557044/051ce661-7587-4cf8-a88b-97e8e18a5874)
+### 회원가입
+
+![시퀀스_등록](https://github.com/skd9712/LearnAndRun/assets/59557044/2847b97a-5e4e-4808-9c7e-53065358cea1)
+### 강의 등록
+
+![시퀀스_결제](https://github.com/skd9712/LearnAndRun/assets/59557044/972cce0c-d3e8-4e49-a0a0-c75c27696920)
+### 결제시스템
