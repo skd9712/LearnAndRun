@@ -12,3 +12,9 @@
 간편한 서비스 및 기능 제공 - 사용자들이 쉽게 가입하고 강의를 찾을 수 있으며, 간편한 결제를 통해 수강할 수 있는 편의성을 제공 
 
 지속적인 학습 지원 및 성장 도모 - 사용자들의 원활한 수강을 위한 학습 기자재 제공하여 지속적인 성장을 도모
+
+| 이름 | 역할 | 연락처 | GitHub |
+|------|------|--------|--------|
+| 황현준 | 팀장 | email@example.com | [황현준](https://github.com/skd9712) |
+| 김철수 | 프론트엔드 개발자 | email@example.com | [김철수](https://github.com/kimcheolsu) |
+| 이영희 | 백엔드 개발자 | email@example.com | [이영희](https://github.com/leeyounghee) |
