@@ -106,4 +106,15 @@
 
 ## 스토리보드
 ![스토리보드1](https://github.com/skd9712/LearnAndRun/assets/59557044/c0302904-f1fe-4978-acca-bb927412308a)
+![스토리보드2](https://github.com/skd9712/LearnAndRun/assets/59557044/807784ed-1a32-4010-82b5-4f81f09c223e)
+![스토리보드3](https://github.com/skd9712/LearnAndRun/assets/59557044/8388c027-3765-4b41-9f22-b07e8c62a644)
+![스토리보드4](https://github.com/skd9712/LearnAndRun/assets/59557044/b3a344b9-eda7-423f-89ff-c4e094c96ad8)
+![스토리보드5](https://github.com/skd9712/LearnAndRun/assets/59557044/0f3168f7-2dee-4e1f-a68b-4568f7ab748f)
+![스토리보드6](https://github.com/skd9712/LearnAndRun/assets/59557044/4ab037e4-5c01-4736-8fa7-03dd4b21da99)
+![스토리보드7](https://github.com/skd9712/LearnAndRun/assets/59557044/623edd61-9bf0-43d7-907c-030f61ea6857)
+![스토리보드8](https://github.com/skd9712/LearnAndRun/assets/59557044/bc7c358a-2ed9-4999-8c32-7540aaa81e73)
+![스토리보드9](https://github.com/skd9712/LearnAndRun/assets/59557044/a4ce3c04-2406-45bf-8930-dda268c53aeb)
+![스토리보드10](https://github.com/skd9712/LearnAndRun/assets/59557044/577f97e3-aba4-430b-ae43-ae0976c00e8b)
+![스토리보드11](https://github.com/skd9712/LearnAndRun/assets/59557044/4c7c748d-5cca-4ee5-a639-1ade9694c663)
+![스토리보드12](https://github.com/skd9712/LearnAndRun/assets/59557044/b9326d1e-e894-4df3-a101-a00e94822b59)
 
