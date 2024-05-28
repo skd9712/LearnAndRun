@@ -1,21 +1,3 @@
-/*/!* 가격 콤마 *!/
-function getNumber(obj){
-    let price = obj.value;
-    price = price.replace(/\D/g,"");
-    price = setComma(price);
-    obj.value =  price;
-
-}
-
-function setComma(n) {
-    let reg = /(^[+-]?\d+)(\d{3})/;
-    n.toString();
-    while (reg.test(n)) {
-        n=n.replace(reg, '$1'+','+'$2');
-    }
-    return n;
-}*/
-
 /* 이미지 미리보기 & 강의 자료명 미리보기 */
 window.onload=function (){
     const thumbnailFile=document.getElementById("thumbnailFile");
