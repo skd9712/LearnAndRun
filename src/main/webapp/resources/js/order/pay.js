@@ -7,7 +7,7 @@ const lid = document.getElementById('lecture_no').value;
 const pname = document.getElementById('product_name').textContent;
 const total_price = document.getElementById('order_total').textContent;
 const teacher_name = document.getElementById('teacher_name').textContent;
-const order_no = "order_"+uid+"_"+"1";
+const order_no = "order_"+uid+"_"+lid+"_"+(Math.random()*100) //주문번호 생성
 
 const onClickPay = async () => {
     //결제 정보 넘김

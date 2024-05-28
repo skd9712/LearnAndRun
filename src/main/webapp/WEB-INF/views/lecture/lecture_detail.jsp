@@ -107,7 +107,7 @@
             <c:choose>
                 <c:when test="${'true'.equals(authority) || uid==1}">
                     <span>첨부파일</span>
-                    <span><a href="/download/${dto.lectureData}">강의자료(${dto.lectureName})</a></span>
+                    <span><a href="/download/${dto.lectureData}">강의자료(${dto.lectureName}).zip</a></span>
                 </c:when>
                 <c:when test="${'false'.equals(authority)}">
                     <p></p>
