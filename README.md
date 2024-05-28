@@ -13,8 +13,10 @@
 
 지속적인 학습 지원 및 성장 도모 - 사용자들의 원활한 수강을 위한 학습 기자재 제공하여 지속적인 성장을 도모
 
+## 팀원
+
 | 이름 | 역할 | 연락처 | GitHub |
 |------|------|--------|--------|
 | 황현준 | 팀장 | email@example.com | [황현준](https://github.com/skd9712) |
-| 김철수 | 프론트엔드 개발자 | email@example.com | [김철수](https://github.com/Agstarr) |
-| 이영희 | 백엔드 개발자 | email@example.com | [이영희](https://github.com/leeyounghee) |
+| 은 별 | 개발자 | email@example.com | [은 별](https://github.com/Agstarr) |
+| 최현훈 | 개발자 | email@example.com | [최현훈](https://github.com/tongueEye) |
