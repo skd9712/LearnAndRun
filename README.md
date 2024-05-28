@@ -84,5 +84,11 @@
 ## ERD
 ![ERD수정](https://github.com/skd9712/LearnAndRun/assets/59557044/8e46c97a-9e6a-48fb-85b6-69c6b8245aa1)
 
-## 유스케이스
+## 유스케이스 다이어그램
 ![유스케이스](https://github.com/skd9712/LearnAndRun/assets/59557044/ca236b8e-64ae-4cb0-943b-5664f1345cbe)
+
+## 클래스 다이어그램
+![클래스1](https://github.com/skd9712/LearnAndRun/assets/59557044/2b8a2196-f4cd-4bfe-a106-4b047ba34950)
+![클래스2](https://github.com/skd9712/LearnAndRun/assets/59557044/9088437b-8b5c-4edd-a403-ee163388dec1)
+![클래스3](https://github.com/skd9712/LearnAndRun/assets/59557044/0d6aa81d-2c1c-4da1-b01a-60ce84cd2c73)
+![클래스4](https://github.com/skd9712/LearnAndRun/assets/59557044/13003f4a-e90b-4344-b12f-824f444cdb06)
