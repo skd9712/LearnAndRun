@@ -79,3 +79,6 @@
 
 ## WBS
 ![WBS](https://github.com/skd9712/LearnAndRun/assets/59557044/fe1f8360-7fb5-4818-a559-2487ae74517d)
+
+## ERD
+![ERD수정](https://github.com/skd9712/LearnAndRun/assets/59557044/8e46c97a-9e6a-48fb-85b6-69c6b8245aa1)
