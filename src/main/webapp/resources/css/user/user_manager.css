@@ -103,6 +103,7 @@ svg{
 .admin_func a{
     margin: 0 20px;
     color: white;
+    padding: 0 25px;
 }
 .detail_list{
     list-style: none;
@@ -160,6 +161,6 @@ svg{
     border-bottom: none; /* 마지막 항목의 하단 선 제거 */
 }
 
-#enroll_manage_tab{
-    color: rgba(255,255,255,0.4);
-}
+/*#enroll_manage_tab{*/
+/*    color: rgba(255,255,255,0.4);*/
+/*}*/

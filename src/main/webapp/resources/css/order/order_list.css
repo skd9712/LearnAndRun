@@ -15,6 +15,7 @@ body{
 .admin_func a{
     margin: 0 20px;
     color: white;
+    padding: 0 25px;
 }
 
 #enroll_manage_btn{
@@ -165,9 +166,9 @@ svg{
     color: rgba(183,103,183,0.8);
 }
 
-#user_manage_tab{
-    color: rgba(255,255,255,0.4);
-}
+/*#user_manage_tab{*/
+/*    color: rgba(255,255,255,0.4);*/
+/*}*/
 
 /*체크박스 색 변경*/
 .chk_box{
