@@ -4,6 +4,7 @@ import com.chunjae.learnandrun.dao.LectureMapper;
 import com.chunjae.learnandrun.dto.LectureDTO;
 import com.chunjae.learnandrun.dto.WishDTO;
 import net.coobird.thumbnailator.Thumbnailator;
+import net.coobird.thumbnailator.Thumbnails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -214,8 +215,8 @@ public class LectureServiceImple implements LectureService{
                 String thumbnailPath=uploadPath+"/"+thumbnailName;
 
                 File thumbnail=new File(thumbnailPath);
-                Thumbnailator.createThumbnail(file, thumbnail, 480, 360);
-
+//                Thumbnailator.createThumbnail(file, thumbnail, 480, 360);
+                Thumbnails.of(file).size(480, 360).toFile(thumbnail);
                 //원본 이미지 삭제
                 file.delete();
 
