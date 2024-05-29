@@ -152,7 +152,7 @@ ul li{
 /* 목차 */
 .ul3{
     width: 80%;
-    margin: 80px auto;
+    margin: 4.5vw auto;
     position: relative;
     display: flex;
     flex-direction: row;
@@ -258,9 +258,11 @@ article>h3{
 #series>form input{
     display: inline-block;
     width: 20vw;
+    height: 1.6vw;
     padding: 0.25vw;
     border: 1px solid silver;
     border-radius: 5px;
+    font-size: 1vw;
 }
 
 #series>form input:focus{
