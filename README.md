@@ -108,7 +108,7 @@
   
 **강의 결제 기능**
 
-  <img src="https://github.com/skd9712/LearnAndRun/assets/109783402/8ddee4d5-3055-4182-b654-1cf8f83ef33c" alt="결제기능">
+  <img src="https://github.com/skd9712/LearnAndRun/assets/109783402/8ddee4d5-3055-4182-b654-1cf8f83ef33c" alt="결제기능" width="800px">
   - 결제 버튼을 누르면 카카오페이 결제를 통해 간편 결제가 가능하며, 결제 완료 후 수강에 대한 권한을 부여 받고, 마이페이지>수강중인 강좌 목록에서 확인이 가능하다.
   
 **마이페이지 기능**
